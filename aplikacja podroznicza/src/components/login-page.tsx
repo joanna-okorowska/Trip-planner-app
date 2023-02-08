@@ -22,13 +22,131 @@ const Container = styled.div`
   box-shadow: 0px 0px 31px 22px rgba(0, 0, 0, 0.3);
 `;
 const Logintxt = styled.span`
-  
-`
+  font-family: "Domine", serif;
+  font-size: 35px;
+  padding-top: 50px;
+  margin-left: 70px;
+  margin-right: 30px;
+  display: block;
+`;
+const Field = styled.input`
+  margin-left: 70px;
+  width: 350px;
+  height: 50px;
+  background-color: #9e9e9e;
+  border-radius: 10px;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  color: white;
+  font-family: "Krub", sans-serif;
+  font-size: 20px;
+`;
+const Name = styled.label`
+  margin-left: 80px;
+  font-family: "Krub", sans-serif;
+  font-size: 20px;
+  margin-bottom: -12px;
+  display: block;
+  margin-top: 30px;
+`;
+const Button = styled.input`
+  margin-top: 50px;
+  margin-left: 70px;
+  width: 355px;
+  height: 50px;
+  background-color: #9e9e9e;
+  border-radius: 10px;
+  border-style: hidden;
+  color: white;
+  font-family: "Krub", sans-serif;
+  font-size: 20px;
+  background-color: #064547;
+  box-shadow: 0px 0px 24px 8px rgba(0, 0, 0, 0.42);
+  &:hover {
+    background-color: #062F30;
+    cursor: pointer;
+  }
+`;
+const Line = styled.div`
+  background-color: black;
+  height: 1px;
+  width: 100px;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+`;
+const Separator = styled.div`
+  margin-top: 50px;
+  margin-left: 55px;
+  display: flex;
+`;
+const Septxt = styled.span`
+  font-family: "Domine", serif;
+`;
+const Google = styled.button`
+  display: block;
+  width: 355px;
+  height: 50px;
+  left: 542px;
+  top: 556px;
+  border-style: hidden;
+  background: #b60000;
+  border-radius: 10px;
+  margin-left: 70px;
+  margin-top: 30px;
+  color: white;
+  font-size: 20px;
+  &:hover {
+    background-color: #670000;
+    cursor: pointer;
+  }
+`;
+const Facebook = styled.button`
+  margin-top: 30px;
+  display: block;
+  width: 355px;
+  height: 50px;
+  left: 542px;
+  top: 556px;
+  border-style: hidden;
+  background: #0125a8;
+  border-radius: 10px;
+  margin-left: 70px;
+  color: white;
+  font-size: 20px;
+  &:hover {
+    background-color: #001049;
+    cursor: pointer;
+  }
+`;
+
 export function Login() {
   return (
     <div>
       <GlobalStyle />
-      <Container><Logintxt>hej</Logintxt></Container>
+      <Container>
+        <Logintxt>Sign In To TripTastic:</Logintxt>
+        <form>
+          <Name>e-mail:</Name>
+          <br />
+          <Field></Field>
+          <br />
+          <Name>password:</Name>
+          <br />
+          <Field type={"password"}></Field>
+          <br />
+          <Button type="submit" value="Sign In"></Button>
+        </form>
+        <Separator>
+          <Line></Line>
+          <Septxt>You Can Also:</Septxt>
+          <Line></Line>
+        </Separator>
+        <Google>Sign In With Google</Google>
+        <Facebook>Sign In With Facebook</Facebook>
+      </Container>
     </div>
   );
 }

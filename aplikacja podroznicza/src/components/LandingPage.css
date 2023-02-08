@@ -1,0 +1,10 @@
+body {
+  background-image: url("landindPage-background.jpg");
+  background-size: cover;
+  background-position: top center;
+}
+
+.btn {
+    width: 300px;
+    height: 55px;
+}

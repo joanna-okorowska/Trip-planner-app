@@ -65,7 +65,7 @@ const Button = styled.input`
   background-color: #064547;
   box-shadow: 0px 0px 24px 8px rgba(0, 0, 0, 0.42);
   &:hover {
-    background-color: #062F30;
+    background-color: #062f30;
     cursor: pointer;
   }
 `;
@@ -98,6 +98,9 @@ const Google = styled.button`
   margin-top: 30px;
   color: white;
   font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
     background-color: #670000;
     cursor: pointer;
@@ -116,12 +119,26 @@ const Facebook = styled.button`
   margin-left: 70px;
   color: white;
   font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
     background-color: #001049;
     cursor: pointer;
   }
 `;
-
+const Gglimg = styled.img`
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
+  margin-left: -20px;
+`;
+const Txt = styled.a``;
+const Fbimg = styled.img`
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
+`
 export function Login() {
   return (
     <div>
@@ -144,8 +161,13 @@ export function Login() {
           <Septxt>You Can Also:</Septxt>
           <Line></Line>
         </Separator>
-        <Google>Sign In With Google</Google>
-        <Facebook>Sign In With Facebook</Facebook>
+        <Google>
+          <Gglimg src="src/assets/Google.png"></Gglimg>
+          <Txt>Sign In With Google</Txt>
+        </Google>
+        <Facebook>
+          <Fbimg src="src/assets/Facebook.png"></Fbimg>Sign In With Facebook
+        </Facebook>
       </Container>
     </div>
   );

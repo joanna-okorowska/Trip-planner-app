@@ -11,7 +11,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100px;
   opacity: 0.7;
-  position: fixed;
+  position: sticky;
   display: flex;
   justify-content: space-between;
 `;

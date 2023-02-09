@@ -15,7 +15,7 @@ import {
   Txt,
   Facebook,
   Fbimg,
-} from "./login-and-register-page-styled";
+} from "../Styles/login-and-register-page-styled";
 
 export function Login() {
   return (

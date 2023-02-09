@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import {
-  GlobalStyle,
+  Global,
   Container,
   Logintxt,
   Name,
@@ -17,10 +17,10 @@ import {
   Fbimg,
 } from "./login-and-register-page-styled";
 
-export function Login() {
+export function Register() {
   return (
     <div>
-      <GlobalStyle />
+      <Global />
       <Container>
         <Logintxt>Sign Up To TripTastic:</Logintxt>
         <form>
@@ -32,7 +32,7 @@ export function Login() {
           <br />
           <Field type={"password"}></Field>
           <br />
-          <Button type="submit" value="Sign In"></Button>
+          <Button type="submit" value="Sign Up"></Button>
         </form>
         <Separator>
           <Line></Line>

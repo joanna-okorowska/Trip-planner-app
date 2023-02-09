@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import {
-  GlobalStyle,
+  Global,
   Container,
   Logintxt,
   Name,
@@ -20,7 +20,7 @@ import {
 export function Login() {
   return (
     <div>
-      <GlobalStyle />
+      <Global />
       <Container>
         <Logintxt>Sign In To TripTastic:</Logintxt>
         <form>

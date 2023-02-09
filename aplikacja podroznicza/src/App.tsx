@@ -6,15 +6,15 @@ import { Footer } from "./components/Footer";
 
 function App() {
   return (
-    // <HashRouter>
-    //   <div className="app">
-    //     <Routes>
-    //       <Route path="/" element={<LandingPage />} />
-    //       <Route path="/signIn" element={<Login />} />
-    //     </Routes>
-    //   </div>
-    // </HashRouter>
-    <Footer/>
+    <HashRouter>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signIn" element={<Login />} />
+        </Routes>
+      </div>
+    </HashRouter>
+    
   );
 }
 

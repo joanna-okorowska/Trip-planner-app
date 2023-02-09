@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
    justify-content: center;
    align-items: center;
    height: 100vh;
+   color: #064547;
   }
 `;
 const Container = styled.div`
@@ -63,14 +64,14 @@ const Button = styled.input`
   font-family: "Krub", sans-serif;
   font-size: 20px;
   background-color: #064547;
-  box-shadow: 0px 0px 24px 8px rgba(0, 0, 0, 0.42);
+  // box-shadow: 0px 0px 24px 8px rgba(0, 0, 0, 0.42);
   &:hover {
     background-color: #062f30;
     cursor: pointer;
   }
 `;
 const Line = styled.div`
-  background-color: black;
+  background-color: #064547;
   height: 1px;
   width: 100px;
   margin-top: 10px;
@@ -138,7 +139,8 @@ const Fbimg = styled.img`
   height: 30px;
   width: 30px;
   margin-right: 20px;
-`
+`;
+
 export function Login() {
   return (
     <div>

@@ -1,10 +1,96 @@
 body {
-  background-image: url("landindPage-background.jpg");
+  background-image: url("src/assets/Background.jpg");
   background-size: cover;
   background-position: top center;
+  background-repeat: no-repeat;
+  font-family: "Domine", serif;
+  color: white;
+}
+
+.container {
+  width: 364px;
+  align-self: flex-end;
+  margin: 50px 80px;
+}
+
+.flex {
+  height: 98.3vh;
+  display: flex;
 }
 
 .btn {
-    width: 300px;
-    height: 55px;
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  font-family: "Krub", sans-serif;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.upperBtn {
+  background-color: #064547;
+  color: #d9d9d9;
+  margin-bottom: 10px;
+}
+
+.upperBtn:hover {
+  background-color: #053737;
+}
+
+.lowerBtn {
+  background-color: #d9d9d9;
+  color: #064547;
+  margin: 10px 0;
+}
+
+.lowerBtn:hover {
+  background-color: #c5c4c4;
+}
+
+.introduction {
+  font-size: 50px;
+  color: white;
+  font-family: "Domine", serif;
+  font-weight: 400;
+  text-shadow: 2px 2px 2px #064547;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 14px;
+  margin: 10px 5px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.lines-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  background-color: white;
+  height: 1px;
+  width: 100%;
+  border: 0;
+}
+
+.underlined {
+  text-decoration: underline;
+}
+
+.underlined:hover {
+  cursor: pointer;
+  color: #d9d9d9;
+}
+
+.accountQuestion {
+  width: 800px;
 }

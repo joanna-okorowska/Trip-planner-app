@@ -6,7 +6,9 @@ export function LandingPage() {
   const navigateToSignIn = () => {
     navigate("/signIn");
   };
-
+  const navigateToSignUp = () => {
+    navigate("/signUp");
+  };
   return (
     <div className="flex">
       <div className="container">
@@ -22,7 +24,7 @@ export function LandingPage() {
               <div className="line" />
             </div>
           </div>
-          <button className="btn lowerBtn">Sign Up</button>
+          <button className="btn lowerBtn" onClick={() => navigateToSignUp()}>Sign Up</button>
           <h3>or</h3>
           <h3 className="underlined">Explore as a guest</h3>
         </div>

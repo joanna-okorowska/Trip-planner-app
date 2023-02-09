@@ -2,6 +2,7 @@ import "./App.css";
 import { Login } from "./components/login-page";
 import { LandingPage } from "./components/LandingPage";
 import { HashRouter, Route, Routes } from "react-router-dom";
+import { Footer } from "./components/Footer";
 import { CreateTrip } from "./components/create-trip";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         </Routes>
       </div>
     </HashRouter>
+    
   );
 }
 

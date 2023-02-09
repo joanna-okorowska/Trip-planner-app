@@ -17,12 +17,12 @@ import {
   Fbimg,
 } from "../Styles/login-and-register-page-styled";
 
-export function Login() {
+export function Register() {
   return (
     <div>
       <Global />
       <Container>
-        <Logintxt>Sign In To TripTastic:</Logintxt>
+        <Logintxt>Sign Up To TripTastic:</Logintxt>
         <form>
           <Name>e-mail:</Name>
           <br />
@@ -32,7 +32,7 @@ export function Login() {
           <br />
           <Field type={"password"}></Field>
           <br />
-          <Button type="submit" value="Sign In"></Button>
+          <Button type="submit" value="Sign Up"></Button>
         </form>
         <Separator>
           <Line></Line>
@@ -41,10 +41,10 @@ export function Login() {
         </Separator>
         <Google>
           <Gglimg src="src/assets/Google.png"></Gglimg>
-          <Txt>Sign In With Google</Txt>
+          <Txt>Sign Up With Google</Txt>
         </Google>
         <Facebook>
-          <Fbimg src="src/assets/Facebook.png"></Fbimg>Sign In With Facebook
+          <Fbimg src="src/assets/Facebook.png"></Fbimg>Sign Up With Facebook
         </Facebook>
       </Container>
     </div>

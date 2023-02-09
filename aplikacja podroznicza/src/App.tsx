@@ -3,6 +3,7 @@ import { Login } from "./components/login-page";
 import { LandingPage } from "./components/LandingPage";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer";
+import { Navbar } from "./components/navbar";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
     //     </Routes>
     //   </div>
     // </HashRouter>
-    <Footer/>
+    <Navbar/>
   );
 }
 

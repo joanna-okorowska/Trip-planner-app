@@ -1,15 +1,18 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import { Login } from "./components/login-page";
+import { LandingPage } from "./components/LandingPage";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div>
-      <Login />
-    </div>
+    <HashRouter>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signIn" element={<Login />} />
+        </Routes>
+      </div>
+    </HashRouter>
   );
 }
 

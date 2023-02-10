@@ -1,7 +1,7 @@
 import { Navbar } from "./navbar";
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
-import { Separator } from "../Styles/login-and-register-page-styled";
+
 const Global = createGlobalStyle`
   html {
    margin: 0;
@@ -23,7 +23,7 @@ const Container = styled.div`
 const Box = styled.div`
   background-color: white;
   height: 600px;
-  width: 1000px;
+  width: 1200px;
   margin-top: 120px;
   margin-bottom: 120px;
   border-radius: 30px;
@@ -50,7 +50,7 @@ const AddBox = styled.div`
 `;
 const Scrolldiv = styled.div`
   height: 400px;
-  width: 400px;
+  width: 500px;
   background-color: darkgray;
   position: relative;
   border-radius: 30px;
@@ -69,7 +69,6 @@ const Scrolldiv = styled.div`
   &::-webkit-scrollbar-thumb {
     background: #5e5d5d;
     border-radius: 5px;
-    width: 5px;
   }
 `;
 const Line = styled.div`
@@ -84,31 +83,58 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   margin-left: 50px;
+  font-family: "Krub", sans-serif;
+  font-size: 13px;
 `;
 const Item = styled.div`
-  width: 320px;
-  height: 100px;
-  background-color: white;
-  margin-bottom: 30px;
+  width: 430px;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 const Itemwrapper = styled.div`
   margin-left: 40px;
-  margin-top: 10px;
+
   position: absolute;
 `;
 const Scrollfix = styled.div`
   height: 400px;
-  width: 410px;
+  width: 510px;
   background-color: darkgray;
-  position: relative;
+
   border-radius: 30px;
   overflow: auto;
 `;
 const Separator = styled.div`
   height: 1px;
   width: 400px;
-  
-`
+  background-color: black;
+`;
+const Photo = styled.img`
+  height: 70px;
+  width: 90px;
+`;
+const Info = styled.div`
+  width: 350px;
+  display: flex;
+  align-items: center;
+`;
+const Txt = styled.span`
+  margin-left: 10px;
+`;
+const Readmore = styled.span`
+  margin-left: 350px;
+  color: #064547;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+`;
+const Icon = styled.img`
+  height: 30px;
+  position: relative;
+  left: 60px;
+`;
 export function Venues() {
   return (
     <>
@@ -122,12 +148,76 @@ export function Venues() {
               <Scrollfix>
                 <Scrolldiv>
                   <Itemwrapper>
-                    <Item></Item>
-                    <Separator></Separator>
-                    <Item></Item>
-                    <Item></Item>
-                    <Item></Item>
-                    <Item></Item>
+                    <Item>
+                      <Info>
+                        <Photo src="src/assets/Placeholder.png"></Photo>
+                        <Txt>
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Numquam inventore iure sed dicta totam vero,
+                          expedita ipsa, molestiae nisi accusamus quaerat
+                          similique est ratione enim.
+                        </Txt>
+                        <Icon src="src/assets/Add.png"></Icon>
+                      </Info>
+                      <Readmore>read more...</Readmore>
+                      <Separator></Separator>
+                    </Item>
+                    <Item>
+                      <Info>
+                        <Photo src="src/assets/Placeholder.png"></Photo>
+                        <Txt>
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Numquam inventore iure sed dicta totam vero,
+                          expedita ipsa, molestiae nisi accusamus quaerat
+                          similique est ratione enim.
+                        </Txt>
+                        <Icon src="src/assets/Add.png"></Icon>
+                      </Info>
+                      <Readmore>read more...</Readmore>
+                      <Separator></Separator>
+                    </Item>
+                    <Item>
+                      <Info>
+                        <Photo src="src/assets/Placeholder.png"></Photo>
+                        <Txt>
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Numquam inventore iure sed dicta totam vero,
+                          expedita ipsa, molestiae nisi accusamus quaerat
+                          similique est ratione enim.
+                        </Txt>
+                        <Icon src="src/assets/Add.png"></Icon>
+                      </Info>
+                      <Readmore>read more...</Readmore>
+                      <Separator></Separator>
+                    </Item>
+                    <Item>
+                      <Info>
+                        <Photo src="src/assets/Placeholder.png"></Photo>
+                        <Txt>
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Numquam inventore iure sed dicta totam vero,
+                          expedita ipsa, molestiae nisi accusamus quaerat
+                          similique est ratione enim.
+                        </Txt>
+                        <Icon src="src/assets/Add.png"></Icon>
+                      </Info>
+                      <Readmore>read more...</Readmore>
+                      <Separator></Separator>
+                    </Item>
+                    <Item>
+                      <Info>
+                        <Photo src="src/assets/Placeholder.png"></Photo>
+                        <Txt>
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Numquam inventore iure sed dicta totam vero,
+                          expedita ipsa, molestiae nisi accusamus quaerat
+                          similique est ratione enim.
+                        </Txt>
+                        <Icon src="src/assets/Add.png"></Icon>
+                      </Info>
+                      <Readmore>read more...</Readmore>
+                      <Separator></Separator>
+                    </Item>
                   </Itemwrapper>
                 </Scrolldiv>
               </Scrollfix>
@@ -138,11 +228,34 @@ export function Venues() {
               <Scrollfix>
                 <Scrolldiv>
                   <Itemwrapper>
-                    <Item></Item>
-                    <Item></Item>
-                    <Item></Item>
-                    <Item></Item>
-                    <Item></Item>
+                    <Item>
+                      <Info>
+                        <Photo src="src/assets/Placeholder.png"></Photo>
+                        <Txt>
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Numquam inventore iure sed dicta totam vero,
+                          expedita ipsa, molestiae nisi accusamus quaerat
+                          similique est ratione enim.
+                        </Txt>
+                        <Icon src="src/assets/Remove.png"></Icon>
+                      </Info>
+                      <Readmore>read more...</Readmore>
+                      <Separator></Separator>
+                    </Item>
+                    <Item>
+                      <Info>
+                        <Photo src="src/assets/Placeholder.png"></Photo>
+                        <Txt>
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Numquam inventore iure sed dicta totam vero,
+                          expedita ipsa, molestiae nisi accusamus quaerat
+                          similique est ratione enim.
+                        </Txt>
+                        <Icon src="src/assets/Remove.png"></Icon>
+                      </Info>
+                      <Readmore>read more...</Readmore>
+                      <Separator></Separator>
+                    </Item>
                   </Itemwrapper>
                 </Scrolldiv>
               </Scrollfix>

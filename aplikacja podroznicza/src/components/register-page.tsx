@@ -16,23 +16,49 @@ import {
   Facebook,
   Fbimg,
 } from "../Styles/login-and-register-page-styled";
+import React, { useContext, useEffect, useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase-config";
 
-export function Register() {
+export function Register(): JSX.Element {
+  const [registerEmail, setRegisterEmail] = useState<string>("");
+  const [registerPassword, setRegisterPassword] = useState<string>("");
+  const register = async (event: React.FormEvent) => {
+    event.preventDefault();
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
+    } catch (error) {
+      console.log("Error accured during register");
+    }
+  };
   return (
     <div>
       <Global />
       <Container>
         <Logintxt>Sign Up To TripTastic:</Logintxt>
-        <form>
+        <form onSubmit={register}>
           <Name>e-mail:</Name>
           <br />
-          <Field></Field>
+          <Field
+            onChange={(event) => {
+              setRegisterEmail(event.target.value);
+            }}
+          />
           <br />
           <Name>password:</Name>
           <br />
-          <Field type={"password"}></Field>
+          <Field
+            type={"password"}
+            onChange={(event) => {
+              setRegisterPassword(event.target.value);
+            }}
+          />
           <br />
-          <Button type="submit" value="Sign Up"></Button>
+          <Button type="submit" value="Sign Up" />
         </form>
         <Separator>
           <Line></Line>

@@ -1,5 +1,6 @@
 import "./App.css";
 import { Login } from "./components/login-page";
+import { Register } from "./components/register-page";
 import { LandingPage } from "./components/LandingPage";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer";
@@ -15,12 +16,11 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signIn" element={<Login />} />
-          <Route path="/create-new-trip" element={<CreateTrip />}/>
+          <Route path="/create-new-trip" element={<CreateTrip />} />
           <Route path="/signUp" element={<Register />} />
         </Routes>
       </div>
     </HashRouter>
-    
   );
 }
 

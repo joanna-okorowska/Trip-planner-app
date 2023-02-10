@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Html = createGlobalStyle`
    body {
@@ -11,7 +12,7 @@ const Container = styled.div`
   width: 100vw;
   height: 100px;
   opacity: 0.7;
-  position: fixed;
+  position: sticky;
   display: flex;
   justify-content: space-between;
 `;
@@ -19,7 +20,7 @@ const Logo = styled.a`
   font-size: 50px;
   color: white;
   font-family: "Domine", serif;
-  margin-left: 30px;
+  margin-left: 10px;
   margin-top: 20px;
   display: block;
 `;
@@ -36,42 +37,57 @@ const NavItem = styled.div`
   height: 100px;
   &:hover {
     text-decoration: underline;
-    cursor: pointer;   
+    cursor: pointer;
   }
 `;
 const Icon = styled.img`
   height: 35px;
   width: 35px;
   margin-right: 15px;
-  margin-top: 30px; 
+  margin-top: 30px;
 `;
 const Txt = styled.a`
   margin-top: 7px;
   margin-top: 35px;
 `;
+const Logoimg = styled.img`
+  height: 90px;
+  width: 90px;
+  margin-top: 5px;
+`
+const Logocontainer = styled.div`
+  display: flex;
+`
 // const Placeholder = styled.div`
 //   background-color: black;
 //   height: 4000px;
 //   width: 100px;
 // `;
 export function Navbar() {
+  const navigate = useNavigate();
+  const navigateToCreate = () => {
+    navigate("/create-new-trip");
+  };
   return (
     <div>
       <Html></Html>
       <Container>
+        <Logocontainer>
+        <Logoimg src="src/assets/triptastic.png"></Logoimg>
         <Logo>TripTastic</Logo>
+        </Logocontainer>
         <Nav>
           <NavItem>
             <Icon src="src/assets/Mytrips.png"></Icon>
             <Txt>My trips</Txt>
           </NavItem>
           <NavItem>
-            <Icon src="src/assets/Explore.png"></Icon>
-            <Txt>Explore</Txt>
+            <Icon src="src/assets/Create.png"></Icon>
+            <Txt onClick={() => navigateToCreate()}>Create new trip</Txt>
           </NavItem>
           <NavItem>
-            <Icon src="src/assets/Create.png"></Icon>
-            <Txt href="/create-new-trip">Create new trip</Txt>
+            <Icon src="src/assets/Logout.png"></Icon>
+            <Txt>SignOut</Txt>
           </NavItem>
         </Nav>
       </Container>

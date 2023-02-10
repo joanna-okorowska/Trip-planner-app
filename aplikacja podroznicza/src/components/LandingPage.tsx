@@ -18,7 +18,9 @@ export function LandingPage() {
   const navigateToSignIn = () => {
     navigate("/signIn");
   };
-
+  const navigateToSignUp = () => {
+    navigate("/signUp");
+  };
   return (
     <>
       <Global />
@@ -34,7 +36,7 @@ export function LandingPage() {
                 <Line />
               </LinesContainer>
             </div>
-            <LowerBtn>Sign Up</LowerBtn>
+            <LowerBtn onClick={() => navigateToSignUp()}>Sign Up</LowerBtn>
             <h3>or</h3>
             <Underlined>Explore as a guest</Underlined>
           </Centered>

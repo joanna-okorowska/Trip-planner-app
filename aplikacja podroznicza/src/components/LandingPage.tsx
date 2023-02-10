@@ -1,5 +1,17 @@
-import "./LandingPage.css";
 import { useNavigate } from "react-router-dom";
+import {
+  Flex,
+  Global,
+  Container,
+  Introduction,
+  Centered,
+  UpperBtn,
+  LinesContainer,
+  AccountQuestion,
+  LowerBtn,
+  Underlined,
+  Line,
+} from "../Styles/landing-page-styled";
 
 export function LandingPage() {
   const navigate = useNavigate();
@@ -10,25 +22,26 @@ export function LandingPage() {
     navigate("/signUp");
   };
   return (
-    <div className="flex">
-      <div className="container">
-        <h1 className="introduction">Plan your trip with TripTastic</h1>
-        <div className="centered">
-          <button className="btn upperBtn" onClick={() => navigateToSignIn()}>
-            Sign In
-          </button>
-          <div>
-            <div className="lines-container">
-              <div className="line" />
-              <h3 className="accountQuestion">Don't have an account yet?</h3>
-              <div className="line" />
+    <>
+      <Global />
+      <Flex>
+        <Container>
+          <Introduction>Plan your trip with TripTastic</Introduction>
+          <Centered>
+            <UpperBtn onClick={() => navigateToSignIn()}>Sign In</UpperBtn>
+            <div>
+              <LinesContainer>
+                <Line />
+                <AccountQuestion>Don't have an account yet?</AccountQuestion>
+                <Line />
+              </LinesContainer>
             </div>
-          </div>
-          <button className="btn lowerBtn" onClick={() => navigateToSignUp()}>Sign Up</button>
-          <h3>or</h3>
-          <h3 className="underlined">Explore as a guest</h3>
-        </div>
-      </div>
-    </div>
+            <LowerBtn>Sign Up</LowerBtn>
+            <h3>or</h3>
+            <Underlined>Explore as a guest</Underlined>
+          </Centered>
+        </Container>
+      </Flex>
+    </>
   );
 }

@@ -10,17 +10,17 @@ import { Venues } from "./components/Venues";
 
 function App() {
   return (
-    // <HashRouter>
-    //   <div className="app">
-    //     <Routes>
-    //       <Route path="/" element={<LandingPage />} />
-    //       <Route path="/signIn" element={<Login />} />
-    //       <Route path="/create-new-trip" element={<CreateTrip />}/>
-    //       <Route path="/signUp" element={<Register />} />
-    //     </Routes>
-    //   </div>
-    // </HashRouter>
-    <Venues></Venues>
+    <HashRouter>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signIn" element={<Login />} />
+          <Route path="/create-new-trip" element={<CreateTrip />}/>
+          <Route path="/signUp" element={<Register />} />
+        </Routes>
+      </div>
+    </HashRouter>
+    
   );
 }
 

@@ -60,10 +60,10 @@ const Logocontainer = styled.div`
 `
 
 export function Navbar() {
-  // const navigate = useNavigate();
-  // const navigateToCreate = () => {
-  //   navigate("/create-new-trip");
-  // };
+  const navigate = useNavigate();
+  const navigateToCreate = () => {
+    navigate("/create-new-trip");
+  };
   return (
     <div>
       <Html></Html>

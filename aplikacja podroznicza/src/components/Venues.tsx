@@ -29,12 +29,12 @@ const Box = styled.div`
   display: flex;
 `;
 const Attractions = styled.h1`
-  margin-left: 67px;
+  margin-left: 10px;
   font-family: "Domine", serif;
   font-size: 50px;
 `;
 const Added = styled.h1`
-  margin-left: 67px;
+  margin-left: 10px;
   font-family: "Domine", serif;
   font-size: 50px;
 `;
@@ -48,16 +48,22 @@ const Scrolldiv = styled.div`
   height: 400px;
   width: 400px;
   background-color: darkgray;
-  margin-left: 67px;
+
   border-radius: 30px;
 `;
 const Line = styled.div`
-    width: 1px;
-    height: 500px;
-    background-color: black;
-    margin-left: 60px;
-    margin-top: 50px;
-`
+  width: 1px;
+  height: 500px;
+  background-color: black;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 50px;
+`;
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-left: 60px;
+`;
 export function Venues() {
   return (
     <>
@@ -65,15 +71,17 @@ export function Venues() {
       <Navbar></Navbar>
       <Container>
         <Box>
-          <AttBox>
-            <Attractions>Attractions:</Attractions>
-            <Scrolldiv></Scrolldiv>
-          </AttBox>
-          <Line></Line>
-          <AddBox>
-            <Added>Added:</Added>
-            <Scrolldiv></Scrolldiv>
-          </AddBox>
+          <Wrapper>
+            <AttBox>
+              <Attractions>Attractions:</Attractions>
+              <Scrolldiv></Scrolldiv>
+            </AttBox>
+            <Line></Line>
+            <AddBox>
+              <Added>Added:</Added>
+              <Scrolldiv></Scrolldiv>
+            </AddBox>
+          </Wrapper>
         </Box>
       </Container>
     </>

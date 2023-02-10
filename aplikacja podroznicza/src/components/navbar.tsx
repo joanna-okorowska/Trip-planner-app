@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Html = createGlobalStyle`
    body {
@@ -63,6 +64,10 @@ const Logocontainer = styled.div`
 //   width: 100px;
 // `;
 export function Navbar() {
+  const navigate = useNavigate();
+  const navigateToCreate = () => {
+    navigate("/create-new-trip");
+  };
   return (
     <div>
       <Html></Html>
@@ -78,7 +83,7 @@ export function Navbar() {
           </NavItem>
           <NavItem>
             <Icon src="src/assets/Create.png"></Icon>
-            <Txt>Create new trip</Txt>
+            <Txt onClick={() => navigateToCreate()}>Create new trip</Txt>
           </NavItem>
           <NavItem>
             <Icon src="src/assets/Logout.png"></Icon>

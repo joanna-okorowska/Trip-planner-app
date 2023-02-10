@@ -25,14 +25,14 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { UserContext } from "./user-context";
+
+
 export function Login(): JSX.Element {
   const [loginEmail, setLoginEmail] = useState<string>("");
   const [loginPassword, setLoginPassword] = useState<string>("");
-  const [user, setUser] = useState<string>("");
-
-  // onAuthStateChanged(auth, (currentUser) => {
-  //   setUser(currentUser);
-  // });
+  
+  
 
   const login = async (event: React.FormEvent) => {
     event.preventDefault();

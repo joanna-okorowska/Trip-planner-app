@@ -71,7 +71,7 @@ export function Navbar() {
           </NavItem>
           <NavItem>
             <Icon src="src/assets/Create.png"></Icon>
-            <Txt>Create new trip</Txt>
+            <Txt href="/create-new-trip">Create new trip</Txt>
           </NavItem>
         </Nav>
       </Container>

@@ -58,16 +58,12 @@ const Logoimg = styled.img`
 const Logocontainer = styled.div`
   display: flex;
 `
-// const Placeholder = styled.div`
-//   background-color: black;
-//   height: 4000px;
-//   width: 100px;
-// `;
+
 export function Navbar() {
-  const navigate = useNavigate();
-  const navigateToCreate = () => {
-    navigate("/create-new-trip");
-  };
+  // const navigate = useNavigate();
+  // const navigateToCreate = () => {
+  //   navigate("/create-new-trip");
+  // };
   return (
     <div>
       <Html></Html>

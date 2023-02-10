@@ -6,7 +6,6 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { CreateTrip } from "./components/create-trip";
 import { Navbar } from "./components/navbar";
-import { Register } from "./components/register-page";
 import { Venues } from "./components/Venues";
 
 function App() {
@@ -21,6 +20,7 @@ function App() {
         </Routes>
       </div>
     </HashRouter>
+    
   );
 }
 

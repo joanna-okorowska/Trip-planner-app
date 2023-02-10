@@ -44,7 +44,7 @@ export function Login(): JSX.Element {
       );
       console.log("user is logged");
     } catch (error) {
-      console.log("Error accured during login");
+      console.log("Error occured during login");
     }
   };
   const logout = async () => {

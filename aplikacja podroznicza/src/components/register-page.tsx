@@ -25,15 +25,14 @@ export function Register(): JSX.Element {
   const [registerPassword, setRegisterPassword] = useState<string>("");
   const register = async (event: React.FormEvent) => {
     event.preventDefault();
-    try {
+    
       const user = await createUserWithEmailAndPassword(
         auth,
         registerEmail,
         registerPassword
-      );
-    } catch (error) {
-      console.log("Error accured during register");
-    }
+      ).then((response) => console.log(response.user.email))
+      
+   
   };
   return (
     <div>

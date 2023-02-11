@@ -25,13 +25,11 @@ import { useNavigate } from "react-router-dom";
 export function Register(): JSX.Element {
   const [registerEmail, setRegisterEmail] = useState<string>("");
   const [registerPassword, setRegisterPassword] = useState<string>("");
-  const { setUser } = useContext(UserContext);
-  const { use } = useContext(UserContext);
-  const [isLogged, setIsLogged] = useState(false);
-    const navigate = useNavigate();
-    const navigateToNav = () => {
-      navigate("/nav");
-    };
+
+  const navigate = useNavigate();
+  const navigateToNav = () => {
+    navigate("/nav");
+  };
 
   const register = (event: React.FormEvent) => {
     event.preventDefault();
@@ -39,18 +37,20 @@ export function Register(): JSX.Element {
       auth,
       registerEmail,
       registerPassword
-    )
-      .then((response) => {
-        setUser(response.user.email);
-        setIsLogged(true);
-      })
-      .then(() => {
-        
-        console.log(isLogged)
-        
-      });
+    ).then((response) => {
+      localStorage.setItem("info", response.user.email);
+      localStorage.setItem("isLogged", "true");
+      redirect();
+    });
   };
 
+  const redirect = () => {
+    const isLogged = localStorage.getItem("isLogged");
+    if (isLogged == "true") {
+      navigateToNav();
+    }
+  };
+  
   return (
     <div>
       <Global />

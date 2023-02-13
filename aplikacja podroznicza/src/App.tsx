@@ -18,6 +18,7 @@ function App() {
           <Route path="/signIn" element={<Login />} />
           <Route path="/create-new-trip" element={<CreateTrip />} />
           <Route path="/signUp" element={<Register />} />
+          <Route path="/nav" element={<Navbar />} />
         </Routes>
       </div>
     </HashRouter>

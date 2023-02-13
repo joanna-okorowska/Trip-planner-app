@@ -7,6 +7,7 @@ import { Footer } from "./components/Footer";
 import { CreateTrip } from "./components/create-trip";
 import { Navbar } from "./components/navbar";
 import { Venues } from "./components/Venues";
+import { Explore } from "./components/Explore";
 
 function App() {
   return (
@@ -20,7 +21,6 @@ function App() {
         </Routes>
       </div>
     </HashRouter>
-    
   );
 }
 

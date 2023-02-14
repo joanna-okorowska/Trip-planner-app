@@ -25,31 +25,38 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { UserContext } from "./user-context";
+
 export function Login(): JSX.Element {
   const [loginEmail, setLoginEmail] = useState<string>("");
   const [loginPassword, setLoginPassword] = useState<string>("");
-  const [user, setUser] = useState<string>("");
 
-  // onAuthStateChanged(auth, (currentUser) => {
-  //   setUser(currentUser);
-  // });
+  const navigate = useNavigate();
+  const navigateToNav = () => {
+    navigate("/nav");
+  };
 
-  const login = async (event: React.FormEvent) => {
+  const login = (event: React.FormEvent) => {
     event.preventDefault();
-    try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-      console.log("user is logged");
-    } catch (error) {
-      console.log("Error accured during login");
+
+    const user = signInWithEmailAndPassword(
+      auth,
+      loginEmail,
+      loginPassword
+    ).then((response) => {
+      localStorage.setItem("info", response.user.email);
+      localStorage.setItem("isLogged", "true");
+      redirect();
+    });
+  };
+
+  const redirect = () => {
+    const isLogged = localStorage.getItem("isLogged");
+    if (isLogged == "true") {
+      navigateToNav();
     }
   };
-  const logout = async () => {
-    await signOut(auth);
-  };
+  
 
   return (
     <div>
@@ -71,7 +78,8 @@ export function Login(): JSX.Element {
             type={"password"}
             onChange={(event) => {
               setLoginPassword(event.target.value);
-            }}></Field>
+            }}
+          ></Field>
           <br />
           <Button type="submit" value="Sign In" />
         </form>

@@ -7,6 +7,7 @@ import { Footer } from "./components/Footer";
 import { CreateTrip } from "./components/create-trip";
 import { Navbar } from "./components/navbar";
 import { Venues } from "./components/Venues";
+import { Explore } from "./components/Explore";
 import { CityPage } from "./components/city-page";
 
 function App() {
@@ -19,10 +20,10 @@ function App() {
           <Route path="/create-new-trip" element={<CreateTrip />} />
           <Route path="/city-page" element={<CityPage/>}/>
           <Route path="/signUp" element={<Register />} />
+          <Route path="/nav" element={<Navbar />} />
         </Routes>
       </div>
     </HashRouter>
-    
   );
 }
 

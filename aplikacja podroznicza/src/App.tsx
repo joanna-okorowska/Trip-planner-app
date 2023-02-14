@@ -7,6 +7,7 @@ import { Footer } from "./components/Footer";
 import { CreateTrip } from "./components/create-trip";
 import { Navbar } from "./components/navbar";
 import { Venues } from "./components/Venues";
+import { CityPage } from "./components/city-page";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/signIn" element={<Login />} />
           <Route path="/create-new-trip" element={<CreateTrip />} />
+          <Route path="/city-page" element={<CityPage/>}/>
           <Route path="/signUp" element={<Register />} />
         </Routes>
       </div>

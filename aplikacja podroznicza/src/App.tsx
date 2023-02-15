@@ -5,10 +5,10 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { CreateTrip } from "./components/create-trip";
 import { Navbar } from "./components/navbar";
-import { Register } from "./components/register-page";
 import { Venues } from "./components/Venues";
 import { Main } from "./components/main-page";
 import { VideoBackground } from "./components/VideoBackGround";
+import { Explore } from "./components/Explore";
 
 function App() {
   return (
@@ -21,6 +21,8 @@ function App() {
           <Route path="/signUp" element={<Register />} />
           <Route path="/" element={<Main />} />
           <Route path="/video" element={<VideoBackground />} />
+          <Route path="/nav" element={<Navbar />} />
+          <Route path="/explore" element={<Explore />} />
         </Routes>
       </div>
     </HashRouter>

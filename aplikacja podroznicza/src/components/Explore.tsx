@@ -1,4 +1,8 @@
 import { Navbar } from "./navbar";
+import { collection, getDocs } from "firebase/firestore";
+import { useEffect, useState } from "react";
+import { db } from "../firebase-config";
+import { useNavigate } from "react-router-dom";
 import {
   Global,
   Title,
@@ -9,128 +13,61 @@ import {
   CitiesList,
   Bg,
   GhostElement,
-  Barcelona,
-  Berlin,
-  Copenhagen,
-  Funchal,
-  Lisbon,
-  Oslo,
-  Madrid,
-  Paris,
-  Prague,
-  Rome,
-  Vienna,
-  Warsaw,
-  // City,
+  City,
   Name,
 } from "../Styles/explore-styled";
-import { useEffect, useState } from "react";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import { db } from "../firebase-config";
-import { useNavigate } from "react-router-dom";
+
 
 export function Explore() {
-  // const useCollection = (collection: any) => {
-  //   const [city, setCity] = useState([]);
-  //   const documentsCollection = (doc: any) => {
-  //     return { ...doc.data() };
-  //   };
-  //   useEffect(() => {
-  //     const subscribe = collection.onSnapshot((snapshot: any) => {
-  //       const dataFromCollection = snapshot.docs.map(documentsCollection);
-  //       setCity(dataFromCollection);
-  //     });
-  //     return () => subscribe;
-  //   }, [collection]);
-  //   return city;
-  // };
+  const [cities, setCities] = useState<any[]>([]);
+  const [filterList, setFilterList] = useState(cities);
+  const [searchString, setSearchString] = useState("");
 
-  // const citiesCollection = collection(db, "CitiesList");
-  // const cities = useCollection(citiesCollection);
+  const citiesCollectionRef = collection(db, "CitiesList");
+  useEffect(() => {
+    const getCities = async () => {
+      const data = await getDocs(citiesCollectionRef);
+      setCities(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getCities();
+  }, []);
+
+  useEffect(() => {
+    setFilterList(
+      cities.filter((city) =>
+        city.name.toLowerCase().includes(searchString.toLowerCase())
+      )
+    );
+
+  }, [searchString, cities]);
 
   const navigate = useNavigate();
-  const navigateToFunchalPage = () => {
-    navigate("/FunchalPage"); // nazwa ścieżki strony o Funchal
+  const navigateToCityPage = (props: string) => {
+    navigate(`/${props}`);
   };
-  
 
   return (
     <>
-      <Navbar />
+      
       <Global />
+      <Navbar/>
       <Flex>
         <Container>
           <Header>
             <GhostElement />
             <Title>explore</Title>
-            <Search type="text" placeholder="Search" />
+            <Search type="text" placeholder="Search" onChange={(event) => setSearchString(event.target.value)} />
           </Header>
           <CitiesList>
-            {/* <Bg>
-              {cities.map(({ name, photo }) => (
-                <City name={name} photo={photo}  />
-              ))}
-            </Bg> */}
-            <Bg>
-              <Barcelona className="city">
-                <Name className="inner">Barcelona</Name>
-              </Barcelona>
-            </Bg>
-            <Bg>
-              <Berlin className="city">
-                <Name className="inner">Berlin</Name>
-              </Berlin>
-            </Bg>
-            <Bg>
-              <Copenhagen className="city">
-                <Name className="inner">Copenhagen</Name>
-              </Copenhagen>
-            </Bg>
-            <Bg>
-              <Funchal onClick={() => navigateToFunchalPage()} className="city">
-                <Name className="inner">Funchal</Name>
-              </Funchal>
-            </Bg>
-            <Bg>
-              <Lisbon className="city">
-                <Name className="inner">Lisbon</Name>
-              </Lisbon>
-            </Bg>
-            <Bg>
-              <Madrid className="city">
-                <Name className="inner">Madrid</Name>
-              </Madrid>
-            </Bg>
-            <Bg>
-              <Oslo className="city">
-                <Name className="inner">Oslo</Name>
-              </Oslo>
-            </Bg>
-            <Bg>
-              <Paris className="city">
-                <Name className="inner">Paris</Name>
-              </Paris>
-            </Bg>
-            <Bg>
-              <Prague className="city">
-                <Name className="inner">Prague</Name>
-              </Prague>
-            </Bg>
-            <Bg>
-              <Rome className="city">
-                <Name className="inner">Rome</Name>
-              </Rome>
-            </Bg>
-            <Bg>
-              <Vienna className="city">
-                <Name className="inner">Vienna</Name>
-              </Vienna>
-            </Bg>
-            <Bg>
-              <Warsaw className="city">
-                <Name className="inner">Warsaw</Name>
-              </Warsaw>
-            </Bg>
+            {filterList.map((city) => {
+              return (
+                <Bg>
+                  <City photo={city.photo} className="city" onClick={() => navigateToCityPage(city.name)}>
+                    <Name className="inner">{city.name}</Name>
+                  </City>
+                </Bg>
+              );
+            })}
           </CitiesList>
         </Container>
       </Flex>

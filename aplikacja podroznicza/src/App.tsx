@@ -21,6 +21,7 @@ function App() {
           <Route path="/city-page" element={<CityPage/>}/>
           <Route path="/signUp" element={<Register />} />
           <Route path="/nav" element={<Navbar />} />
+          <Route path="/explore" element={<Explore />} />
         </Routes>
       </div>
     </HashRouter>

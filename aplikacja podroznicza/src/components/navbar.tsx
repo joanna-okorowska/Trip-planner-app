@@ -102,7 +102,7 @@ export function Navbar() {
             <Icon src="src/assets/Create.png"></Icon>
             <Txt onClick={() => navigateToCreate()}>Create new trip</Txt>
           </NavItem>
-          {localStorage.getItem("isLogged") === "false" ? (
+          {localStorage.getItem("isLogged") === "true" ? (
             <NavItem>
               <Icon src="src/assets/Logout.png"></Icon>
               <Txt onClick={() => logout()}>SignOut</Txt>

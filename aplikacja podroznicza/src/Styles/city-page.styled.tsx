@@ -44,7 +44,7 @@ export const ImageContainer = styled.img`
     margin-top: 60px;
 `
 
-export const Txt = styled.text`
+export const Txt = styled.span`
     font-size: 50px;
   color: white;
   font-family: "Domine", serif;
@@ -54,7 +54,7 @@ export const Txt = styled.text`
   justify-content: center;  
 
 `
-export const Param = styled.text`
+export const Param = styled.span`
     
     color: #ffffff68;
     font-size: 20px;
@@ -69,6 +69,7 @@ export const TxtContainer = styled.div`
 `
 export const DrpContainer = styled.div`
     margin: 100px 0;
+    
 
 `
 export const Img = styled.img`
@@ -76,13 +77,15 @@ export const Img = styled.img`
     width: 300px;
     border-radius: 7px 7px 0 0;
     border-bottom: 1px solid white;
-
-`
+    
+    `
 export const ImgContainer = styled.div`
     display: flex;
     justify-content: center;
-
-`
+    flex-wrap: wrap;
+    
+    
+    `
 
 export const IslandCnt = styled.div`
     display: flex;
@@ -95,9 +98,9 @@ export const IslandCnt = styled.div`
     margin-bottom: 30px;
     background-color: #ffffff30;
     margin-right: 10px;
-`
+    `
 
-export const TxtIld = styled.text`
+export const TxtIld = styled.span`
     color: white;
     font-size: 20px;
     font-family: "Domine", serif;    
@@ -107,7 +110,7 @@ export const TxtIld = styled.text`
   text-align: center;
   margin-bottom: 7px;
 `
-export const ParamIld = styled.text`
+export const ParamIld = styled.span`
     color: white;
     font-size: 10px;
     max-width: 300px;

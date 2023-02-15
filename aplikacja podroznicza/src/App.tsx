@@ -8,6 +8,7 @@ import { CreateTrip } from "./components/create-trip";
 import { Navbar } from "./components/navbar";
 import { Venues } from "./components/Venues";
 import { Explore } from "./components/Explore";
+import { Mytrippage } from "./components/Mytrippage";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
           <Route path="/create-new-trip" element={<CreateTrip />} />
           <Route path="/signUp" element={<Register />} />
           <Route path="/nav" element={<Navbar />} />
+          <Route path="/veneus" element={<Venues/>}/>
+          <Route path="/explore" element={<Explore/>}/>
+          <Route path="/mytrippage" element={<Mytrippage/>}/>
         </Routes>
       </div>
     </HashRouter>

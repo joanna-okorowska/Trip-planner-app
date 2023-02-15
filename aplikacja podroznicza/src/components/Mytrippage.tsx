@@ -17,7 +17,10 @@ import {
   } from "../Styles/Mytrippage.styled";
   import { CreateTripDay } from "./tripday";
 
-  const navigate=useNavigate();
+  
+  
+  export function Mytrippage() {
+    const navigate=useNavigate();
   const navigatetologin= () => {
     navigate("/Signout");
   };
@@ -25,8 +28,6 @@ import {
     navigate("/create-new-trip");
   };
  
-  
-  export function Mytrippage() {
     return (
       <TripContainer>
         <Boxnavbar>

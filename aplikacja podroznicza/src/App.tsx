@@ -12,20 +12,21 @@ import { Mytrippage } from "./components/Mytrippage";
 
 function App() {
   return (
-    <HashRouter>
+    
       <div className="app">
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+         
           <Route path="/signIn" element={<Login />} />
           <Route path="/create-new-trip" element={<CreateTrip />} />
           <Route path="/signUp" element={<Register />} />
           <Route path="/nav" element={<Navbar />} />
           <Route path="/veneus" element={<Venues/>}/>
           <Route path="/explore" element={<Explore/>}/>
-          <Route path="/mytrippage" element={<Mytrippage/>}/>
+          <Route path="/mytrippage"  element={<Mytrippage/>}/>
+          <Route path="/" element={<LandingPage />} />
         </Routes>
       </div>
-    </HashRouter>
+    
   );
 }
 

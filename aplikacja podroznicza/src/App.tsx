@@ -19,6 +19,7 @@ function App() {
           <Route path="/create-new-trip" element={<CreateTrip />} />
           <Route path="/signUp" element={<Register />} />
           <Route path="/nav" element={<Navbar />} />
+          <Route path="/explore" element={<Explore />} />
         </Routes>
       </div>
     </HashRouter>

@@ -19,7 +19,7 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase-config";
-import { UserContext } from "./user-context";
+
 import { useNavigate } from "react-router-dom";
 
 export function Register(): JSX.Element {
@@ -38,7 +38,7 @@ export function Register(): JSX.Element {
       registerEmail,
       registerPassword
     ).then((response) => {
-      localStorage.setItem("info", response.user.email);
+      localStorage.setItem("info", JSON.stringify(response.user.email));
       localStorage.setItem("isLogged", "true");
       redirect();
     });
@@ -50,7 +50,7 @@ export function Register(): JSX.Element {
       navigateToNav();
     }
   };
-  
+
   return (
     <div>
       <Global />

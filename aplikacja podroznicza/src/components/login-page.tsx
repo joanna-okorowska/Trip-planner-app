@@ -25,15 +25,14 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { UserContext } from "./user-context";
 
 export function Login(): JSX.Element {
   const [loginEmail, setLoginEmail] = useState<string>("");
   const [loginPassword, setLoginPassword] = useState<string>("");
 
   const navigate = useNavigate();
-  const navigateToNav = () => {
-    navigate("/nav");
+  const navigateToMain = () => {
+    navigate("/main");
   };
 
   const login = (event: React.FormEvent) => {
@@ -44,7 +43,7 @@ export function Login(): JSX.Element {
       loginEmail,
       loginPassword
     ).then((response) => {
-      localStorage.setItem("info", response.user.email);
+      localStorage.setItem("info", JSON.stringify(response.user.email));
       localStorage.setItem("isLogged", "true");
       redirect();
     });
@@ -53,10 +52,9 @@ export function Login(): JSX.Element {
   const redirect = () => {
     const isLogged = localStorage.getItem("isLogged");
     if (isLogged == "true") {
-      navigateToNav();
+      navigateToMain();
     }
   };
-  
 
   return (
     <div>
@@ -78,8 +76,7 @@ export function Login(): JSX.Element {
             type={"password"}
             onChange={(event) => {
               setLoginPassword(event.target.value);
-            }}
-          ></Field>
+            }}></Field>
           <br />
           <Button type="submit" value="Sign In" />
         </form>

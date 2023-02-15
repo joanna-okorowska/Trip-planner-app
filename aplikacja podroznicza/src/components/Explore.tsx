@@ -50,9 +50,8 @@ export function Explore() {
     <>
       
       <Global />
-      <Navbar/>
       <Flex>
-        <Container>
+        <Container id='exploreScroll'>
           <Header>
             <GhostElement />
             <Title>explore</Title>

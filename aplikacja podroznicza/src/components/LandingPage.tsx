@@ -12,6 +12,8 @@ import {
   Underlined,
   Line,
 } from "../Styles/landing-page-styled";
+import { Navbar } from "./navbar";
+import { Footer } from "./Footer";
 
 export function LandingPage() {
   const navigate = useNavigate();
@@ -23,6 +25,11 @@ export function LandingPage() {
   };
   return (
     <>
+      {window.location.href === "http://localhost:5174/" ||
+      "http://localhost:5174/signUp" ||
+      "http://localhost:5174/signIn" ? null : (
+        <Navbar />
+      )}
       <Global />
       <Flex>
         <Container>
@@ -42,6 +49,11 @@ export function LandingPage() {
           </Centered>
         </Container>
       </Flex>
+      {window.location.href === "http://localhost:5174/" ||
+      "http://localhost:5174/signUp" ||
+      "http://localhost:5174/signIn" ? null : (
+        <Footer />
+      )}
     </>
   );
 }

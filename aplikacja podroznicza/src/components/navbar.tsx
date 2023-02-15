@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { UserContext } from "./user-context";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase-config";
+import { Login } from "./login-page";
 
 const Html = createGlobalStyle`
    body {
@@ -63,26 +63,26 @@ const Logocontainer = styled.div`
   display: flex;
 `;
 const Usercred = styled.span`
-margin-top: 35px;
-font-family: "Krub", sans-serif;
-color: white;
+  margin-top: 35px;
+  font-family: "Krub", sans-serif;
+  color: white;
 `;
 
 export function Navbar() {
-  const log = localStorage.getItem('info')
+  const log = localStorage.getItem("info");
   const navigate = useNavigate();
   const navigateToCreate = () => {
     navigate("/create-new-trip");
   };
   const navigateToLanding = () => {
-    navigate("/signIn")
-  }
+    // navigate("/signIn");
+    navigate("/");
+  };
   const logout = async () => {
     await signOut(auth);
     localStorage.setItem("isLogged", "false");
-    navigateToLanding()
+    navigateToLanding();
   };
-
 
   return (
     <div>
@@ -92,7 +92,7 @@ export function Navbar() {
           <Logoimg src="src/assets/triptastic.png"></Logoimg>
           <Logo>TripTastic</Logo>
         </Logocontainer>
-        <Usercred>Logged in as:  {log}</Usercred>
+        <Usercred>Logged in as: {log}</Usercred>
         <Nav>
           <NavItem>
             <Icon src="src/assets/Mytrips.png"></Icon>
@@ -102,10 +102,17 @@ export function Navbar() {
             <Icon src="src/assets/Create.png"></Icon>
             <Txt onClick={() => navigateToCreate()}>Create new trip</Txt>
           </NavItem>
-          <NavItem>
-            <Icon src="src/assets/Logout.png"></Icon>
-            <Txt onClick={() => logout()}>SignOut</Txt>
-          </NavItem>
+          {localStorage.getItem("isLogged") === "false" ? (
+            <NavItem>
+              <Icon src="src/assets/Logout.png"></Icon>
+              <Txt onClick={() => logout()}>SignOut</Txt>
+            </NavItem>
+          ) : (
+            <NavItem>
+              <Icon src="src/assets/Logout.png"></Icon>
+              <Txt onClick={() => navigateToLanding()}>SignIn/SignUp</Txt>
+            </NavItem>
+          )}
         </Nav>
       </Container>
     </div>

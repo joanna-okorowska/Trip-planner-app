@@ -8,9 +8,9 @@ body {
     background-position: top center;
     background-repeat: no-repeat;
     color: white;
-    height: 100vh;
+    height: 80vh;
   }
-.city {
+  .city {
 height: 186px;
   width: 260px;
   display: flex;
@@ -35,6 +35,7 @@ export const Search = styled.input`
   background-color: #ffffff6c;
   border-radius: 15px;
   border: none;
+  margin-right: 1em;
   ::placeholder {
     padding-left: 10px;
     font-family: "Krub", sans-serif;
@@ -61,12 +62,11 @@ export const Flex = styled.div`
 export const CitiesList = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   overflow-y: scroll;
   ::-webkit-scrollbar {
     display: none;
   }
-  height: 700px;
+  height: calc(100vh - 250px);
 `;
 
 export const Bg = styled.div`
@@ -74,7 +74,7 @@ export const Bg = styled.div`
   width: 300px;
   background-color: #ffffff6c;
   border-radius: 15px;
-  margin-bottom: 3em;
+  margin: 1em 1em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,131 +84,27 @@ export const GhostElement = styled.div`
   width: 300px;
 `;
 
-// const CityImage = styled.img`
-// height: 186px;
-//   width: 260px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
+type photoProps = {
+  photo: string;
+};
+
+export const City = styled.div<photoProps>`
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(${(props) => props.photo});
+  &:hover {cursor: pointer;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+      url(${(props) => props.photo});}
+  height: 186px;
+  width: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 
-// export const City = ({ name, photo }) => {
-//   return <CityImage src={photo} alt={name} />;
-// };
-
-export const Barcelona = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("src/assets/Barcelona.jpg");
-  &:hover {
-    cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url("src/assets/Barcelona.jpg");
-  }
-`;
-export const Berlin = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("src/assets/Berlin.jpg");
-  &:hover {
-    cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url("src/assets/Berlin.jpg");
-  }
-`;
-export const Copenhagen = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("src/assets/Copenhagen.jpg");
-  &:hover {
-    cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url("src/assets/Copenhagen.jpg");
-  }
-`;
-export const Funchal = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("src/assets/Funchal.jpg");
-  &:hover {
-    cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url("src/assets/Funchal.jpg");
-  }
-`;
-export const Lisbon = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("src/assets/Lisbon.jpg");
-  &:hover {
-    cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url("src/assets/Lisbon.jpg");
-  }
-`;
-export const Oslo = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("src/assets/Oslo.jpg");
-  &:hover {
-    cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url("src/assets/Oslo.jpg");
-  }
-`;
-export const Madrid = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("src/assets/Madrid.jpg");
-  &:hover {
-    cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url("src/assets/Madrid.jpg");
-  }
-`;
-export const Paris = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("src/assets/Paris.jpg");
-  &:hover {
-    cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url("src/assets/Paris.jpg");
-  }
-`;
-export const Prague = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("src/assets/Prague.jpg");
-  &:hover {
-    cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url("src/assets/Prague.jpg");
-  }
-`;
-export const Rome = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("src/assets/Rome.jpg");
-  &:hover {
-    cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url("src/assets/Rome.jpg");
-  }
-`;
-export const Vienna = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("src/assets/Vienna.jpg");
-  &:hover {
-    cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url("src/assets/Vienna.jpg");
-  }
-`;
-export const Warsaw = styled.div`
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("src/assets/Warsaw.jpg");
-  &:hover {
-    cursor: pointer;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url("src/assets/Warsaw.jpg");
-  }
-`;
 export const Name = styled.h2`
   color: white;
   font-family: "Domine", serif;
   font-weight: 200;
-  font-size: 30px;
+  font-size: 35px;
 `;
-

@@ -16,8 +16,11 @@ export const CityPage = styled.div`
 `
 export const PageContainer = styled.div`
     width: 100%;
+    `
+export const TopContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
 `
-
 
 export const Logo = styled.div`
 font-size: 50px;
@@ -36,6 +39,17 @@ export const LogoImg = styled.img`
   height: 90px;
   width: 90px;
   margin-top: 5px;
+`
+export const ButtonTrp = styled.button`
+    border: 1px solid white;
+    border-radius: 7px;
+    height: 40px;
+    width: 200px;
+    background-color: #ffffff2b;
+    margin: 30px 30px 0 0;
+    font-size: 20px;
+    color: white;
+    font-family: "Domine", serif;
 `
 
 export const ImageContainer = styled.img`
@@ -68,7 +82,7 @@ export const TxtContainer = styled.div`
     flex-direction: column;
 `
 export const DrpContainer = styled.div`
-    margin: 100px 0;
+    margin: 100px 0 25px 0;
     
 
 `
@@ -151,4 +165,10 @@ export const AttractionInfo = styled.div`
     justify-content: center;
     flex-direction: column;
     
+`
+export const BottomContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
 `

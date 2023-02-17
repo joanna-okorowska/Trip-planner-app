@@ -13,8 +13,12 @@ import {
   TxtContainer,
   DrpContainer,
   ImgContainer,
+  TopContainer,
+  ButtonTrp,
+  BottomContainer
 } from "../Styles/city-page.styled";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface ICity {
   id: string;
@@ -26,7 +30,8 @@ interface ICityAttraction {
   name: string;
 }
 
-export function CityPage() {
+
+export function CityPage(): JSX.Element {
   let [city, setCity] = useState<ICity | null>(null);
   let [attractions, setAttractions] = useState<ICityAttraction[] | []>([]);
 
@@ -67,10 +72,15 @@ export function CityPage() {
   return (
     <PageContainer>
       <Global />
+      <TopContainer>
       <LogoContainer>
         <LogoImg src="src/assets/triptastic.png"></LogoImg>
         <Logo>TripTastic</Logo>
       </LogoContainer>
+      <Link to="/create-new-trip" relative="path">
+      <ButtonTrp type="button">Let's go!</ButtonTrp>
+      </Link>
+      </TopContainer>
       <ImageContainer src="src/assets/city page/panoramic.jpg"></ImageContainer>
       <TxtContainer>
         <Txt>{city?.name}</Txt>
@@ -116,6 +126,11 @@ export function CityPage() {
           ))}
         </ImgContainer>
       </DrpContainer>
+      <BottomContainer>
+      <Link to="/create-new-trip" relative="path">
+      <ButtonTrp type="button">Let's go!</ButtonTrp>
+      </Link>
+      </BottomContainer>
     </PageContainer>
   );
 }

@@ -17,7 +17,6 @@ import {
   Name,
 } from "../Styles/explore-styled";
 
-
 export function Explore() {
   const [cities, setCities] = useState<any[]>([]);
   const [filterList, setFilterList] = useState(cities);
@@ -38,7 +37,6 @@ export function Explore() {
         city.name.toLowerCase().includes(searchString.toLowerCase())
       )
     );
-
   }, [searchString, cities]);
 
   const navigate = useNavigate();
@@ -48,20 +46,26 @@ export function Explore() {
 
   return (
     <>
-      
       <Global />
       <Flex>
-        <Container id='exploreScroll'>
+        <Container id="exploreScroll">
           <Header>
             <GhostElement />
             <Title>explore</Title>
-            <Search type="text" placeholder="Search" onChange={(event) => setSearchString(event.target.value)} />
+            <Search
+              type="text"
+              placeholder="Search"
+              onChange={(event) => setSearchString(event.target.value)}
+            />
           </Header>
           <CitiesList>
             {filterList.map((city) => {
               return (
                 <Bg>
-                  <City photo={city.photo} className="city" onClick={() => navigateToCityPage(city.name)}>
+                  <City
+                    photo={city.photo}
+                    className="city"
+                    onClick={() => navigateToCityPage(city.name)}>
                     <Name className="inner">{city.name}</Name>
                   </City>
                 </Bg>

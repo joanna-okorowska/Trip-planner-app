@@ -7,13 +7,21 @@ import { Explore } from "./Explore";
 import { Navbar } from "./navbar";
 import { Footer } from "./Footer";
 
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+`;
+
 export function Main() {
   return (
     <div>
-      <Navbar />
-      <VideoBackground />
-      <Explore />
-      <Footer />
+      <MainContainer>
+        <VideoBackground />
+        <Explore />
+      </MainContainer>
     </div>
   );
 }

@@ -23,13 +23,13 @@ export function LandingPage() {
   const navigateToSignUp = () => {
     navigate("/signUp");
   };
+
+  const navigateToMain = () => {
+    navigate("/main");
+  };
+
   return (
     <>
-      {window.location.href === "http://localhost:5174/" ||
-      "http://localhost:5174/signUp" ||
-      "http://localhost:5174/signIn" ? null : (
-        <Navbar />
-      )}
       <Global />
       <Flex>
         <Container>
@@ -45,15 +45,12 @@ export function LandingPage() {
             </div>
             <LowerBtn onClick={() => navigateToSignUp()}>Sign Up</LowerBtn>
             <h3>or</h3>
-            <Underlined>Explore as a guest</Underlined>
+            <Underlined onClick={() => navigateToMain()}>
+              Explore as a guest
+            </Underlined>
           </Centered>
         </Container>
       </Flex>
-      {window.location.href === "http://localhost:5174/" ||
-      "http://localhost:5174/signUp" ||
-      "http://localhost:5174/signIn" ? null : (
-        <Footer />
-      )}
     </>
   );
 }

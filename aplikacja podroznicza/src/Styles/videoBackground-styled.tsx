@@ -1,9 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-
-export const FullGlobal = createGlobalStyle`
-body{
-    margin: 0px;
-}`;
+import { Link } from "react-scroll";
 
 export const VideoContainer = styled.div`
   overflow: hidden;
@@ -20,17 +16,15 @@ export const TextAndButtomOnVideo = styled.div`
   height: 20vh;
   position: absolute;
   top: 50%;
-  left: 10%;
+  left: 30%;
   background-color: transparent;
   backdrop-filter: blur(20px);
   border-radius: 10%;
   z-index: 10;
-
-  /* & > .klasa {
-
-  }  */
 `;
-export const ButtonExplore = styled.button`
+
+// (Link w () bo zaciągamy elementu z HTML tylko z reacta)
+export const ButtonExplore = styled(Link)`
   border-radius: 10%;
   border: none;
   background-color: hotpink;

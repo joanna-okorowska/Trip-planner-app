@@ -70,18 +70,18 @@ color: white;
 
 export function Navbar() {
   const log = localStorage.getItem('info')
-  const navigate = useNavigate();
-  const navigateToCreate = () => {
-    navigate("/create-new-trip");
-  };
-  const navigateToLanding = () => {
-    navigate("/signIn")
-  }
-  const logout = async () => {
-    await signOut(auth);
-    localStorage.setItem("isLogged", "false");
-    navigateToLanding()
-  };
+  // const navigate = useNavigate();
+  // const navigateToCreate = () => {
+  //   navigate("/create-new-trip");
+  // };
+  // const navigateToLanding = () => {
+  //   navigate("/signIn")
+  // }
+  // const logout = async () => {
+  //   await signOut(auth);
+  //   localStorage.setItem("isLogged", "false");
+  //   navigateToLanding()
+  // };
 
 
   return (

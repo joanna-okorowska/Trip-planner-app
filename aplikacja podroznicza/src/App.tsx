@@ -9,19 +9,21 @@ import { Navbar } from "./components/navbar";
 import { Venues } from "./components/Venues";
 import { Explore } from "./components/Explore";
 
+
 function App() {
   return (
-    <HashRouter>
-      <div className="app">
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/signIn" element={<Login />} />
-          <Route path="/create-new-trip" element={<CreateTrip />} />
-          <Route path="/signUp" element={<Register />} />
-          <Route path="/nav" element={<Navbar />} />
-        </Routes>
-      </div>
-    </HashRouter>
+    // <HashRouter>
+    //   <div className="app">
+    //     <Routes>
+    //       <Route path="/" element={<LandingPage />} />
+    //       <Route path="/signIn" element={<Login />} />
+    //       <Route path="/create-new-trip" element={<CreateTrip />} />
+    //       <Route path="/signUp" element={<Register />} />
+    //       <Route path="/nav" element={<Navbar />} />
+    //     </Routes>
+    //   </div>
+    // </HashRouter>
+    <Venues></Venues>
   );
 }
 

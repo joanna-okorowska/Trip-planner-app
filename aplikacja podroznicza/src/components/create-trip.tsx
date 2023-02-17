@@ -5,10 +5,12 @@ import {
   TripContainer,
 } from "../Styles/create-trip.styled";
 import { CreateTripDay } from "./create-trip-day";
+import { Navbar } from "./navbar";
 
 export function CreateTrip() {
   return (
     <TripContainer>
+      <Navbar></Navbar>
       <Global />
       <Title>Madeira trip</Title>      
       <BoxList>

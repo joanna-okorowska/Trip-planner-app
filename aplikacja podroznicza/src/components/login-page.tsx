@@ -4,17 +4,17 @@ import {
   Global,
   Container,
   Logintxt,
-  Name,
+  Fieldset,
   Field,
   Button,
   Separator,
   Line,
   Septxt,
-  Google,
   Gglimg,
-  Txt,
-  Facebook,
   Fbimg,
+  Flex,
+  Facebook,
+  Google
 } from "../Styles/login-and-register-page-styled";
 import React, { useContext, useEffect, useState } from "react";
 import { auth } from "../firebase-config";
@@ -25,7 +25,6 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { UserContext } from "./user-context";
 
 export function Login(): JSX.Element {
   const [loginEmail, setLoginEmail] = useState<string>("");
@@ -62,39 +61,38 @@ export function Login(): JSX.Element {
     <div>
       <Global />
       <Container>
-        <Logintxt>Sign In To TripTastic:</Logintxt>
+        <Logintxt>Sign In</Logintxt>
         <form onSubmit={login}>
-          <Name>e-mail:</Name>
-          <br />
-          <Field
-            onChange={(event) => {
+        <Fieldset>
+            <legend>email:</legend>
+            <Field onChange={(event) => {
               setLoginEmail(event.target.value);
-            }}
-          />
-          <br />
-          <Name>password:</Name>
-          <br />
-          <Field
-            type={"password"}
+            }}/>
+        </Fieldset>
+        <br/>
+        <Fieldset>
+            <legend>password:</legend>
+            <Field type={"password"}
             onChange={(event) => {
               setLoginPassword(event.target.value);
-            }}
-          ></Field>
-          <br />
-          <Button type="submit" value="Sign In" />
+            }}/>
+        </Fieldset>
+        
+        <Button type="submit" value="Sign In" />
         </form>
         <Separator>
           <Line></Line>
-          <Septxt>You Can Also:</Septxt>
+          <Septxt>Quick sign in with:</Septxt>
           <Line></Line>
         </Separator>
-        <Google>
-          <Gglimg src="src/assets/Google.png"></Gglimg>
-          <Txt>Sign In With Google</Txt>
-        </Google>
-        <Facebook>
-          <Fbimg src="src/assets/Facebook.png"></Fbimg>Sign In With Facebook
-        </Facebook>
+          <Flex>
+          <Google>
+          <Gglimg src="src/assets/google-symbol.png"></Gglimg>
+          </Google>
+          <Facebook>
+          <Fbimg src="src/assets/facebookLogo.png"></Fbimg>
+          </Facebook>
+          </Flex>
       </Container>
     </div>
   );

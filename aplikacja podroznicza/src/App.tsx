@@ -8,6 +8,7 @@ import { CreateTrip } from "./components/create-trip";
 import { Navbar } from "./components/navbar";
 import { Venues } from "./components/Venues";
 import { Explore } from "./components/Explore";
+import { CityPage } from "./components/city-page";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/signIn" element={<Login />} />
           <Route path="/create-new-trip" element={<CreateTrip />} />
+          <Route path="/city-page" element={<CityPage/>}/>
           <Route path="/signUp" element={<Register />} />
           <Route path="/nav" element={<Navbar />} />
           <Route path="/explore" element={<Explore />} />

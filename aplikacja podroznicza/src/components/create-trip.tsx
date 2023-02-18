@@ -5,6 +5,7 @@ import {
   TripContainer,
 } from "../Styles/create-trip.styled";
 import { CreateTripDay } from "./create-trip-day";
+import { Navbar } from "./navbar";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -18,6 +19,7 @@ export function CreateTrip() {
   }, []);
   return (
     <TripContainer>
+      <Navbar></Navbar>
       <Global />
       <Title>Madeira trip</Title>
       <BoxList>

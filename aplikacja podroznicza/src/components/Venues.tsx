@@ -55,13 +55,13 @@ export function Venues() {
         <Icon
           src="src/assets/Add.png"
           onClick={() => {
-            let isClicked = false;
-            if (isClicked === true) {
-              console.log("nie");
+            const posts = JSON.stringify(added);
+            const post = JSON.stringify(description);
+            if (posts.includes(post)) {
+              alert("Atrakcja już dodana !");
             } else {
               all = { description, name, photo };
               setAdded((current) => [...current, all]);
-              isClicked = true
             }
           }}
         ></Icon>

@@ -71,6 +71,8 @@ export function Venues() {
     </Item>
   ));
 
+  let remove = null;
+
   const mapAdded = added.map(({ description, name, photo }) => (
     <Item key={name}>
       <Info>
@@ -81,7 +83,15 @@ export function Venues() {
           }}
         ></Photo>
         <Txt>{description}</Txt>
-        <Icon src="src/assets/Remove.png"></Icon>
+        <Icon
+          src="src/assets/Remove.png"
+          onClick={() => {
+            remove = { description, name, photo };
+            setAdded((current) =>
+              current.filter((venue) => venue.name !== name)
+            );
+          }}
+        ></Icon>
       </Info>
       <Readmore>read more...</Readmore>
       <Separator></Separator>

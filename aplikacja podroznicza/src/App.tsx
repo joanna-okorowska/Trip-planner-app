@@ -12,6 +12,7 @@ import { Explore } from "./components/Explore";
 import { Register } from "./components/register-page";
 import { useEffect, useState } from "react";
 import { Wrapper } from "./Styles/App-styled";
+import { CityPage } from "./components/city-page";
 
 function App() {
   return (
@@ -24,6 +25,11 @@ function App() {
           <Route path="/signIn" element={<Login />} />
           <Route path="/main" element={<Main />} />
           <Route path="/create-new-trip" element={<CreateTrip />} />
+          <Route path="/city-page" element={<CityPage/>}/>
+          <Route path="/signUp" element={<Register />} />
+          <Route path="/signIn" element={<Login />} />
+          <Route path="/main" element={<Main />} />
+          <Route path="/create-new-trip" element={<CreateTrip />} />
           {/* <Route path="/video" element={<VideoBackground />} /> */}
           {/* <Route path="/nav" element={<Navbar />} /> */}
           {/* <Route path="/explore" element={<Explore />} /> */}
@@ -31,6 +37,7 @@ function App() {
         <Footer />
       </Wrapper>
     </HashRouter>
+    // <Venues></Venues>
   );
 }
 

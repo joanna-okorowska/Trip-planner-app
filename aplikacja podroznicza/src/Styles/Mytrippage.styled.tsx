@@ -23,45 +23,57 @@ export const Title = styled.h1`
 `;
 
 export const BoxList = styled.div`
-  height: 450px;
+  
   display: flex;
+  
   flex-direction: column;
   align-items: center;
   gap: 5px;
   background-color: #d9d9d949;
   border-radius: 10px;
-  height: auto;
-  width: 50vh;
+  height: 800px;
+  width: 60vh;
   padding: 20px 0;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   justify-content: center;
-  
   margin-bottom: auto;
+  
+  
+  
+  
 `;
 
-export const TripContainer = styled.div``;
+export const TripContainer = styled.div`
+height: 400px;
+`;
 
 export const Box = styled.div`
-  width: 400px;
-  height: 100px;
+  width: 600px;
+  height: 130px;
   background-color: white;
   border-radius: 10px;
   color: #064547;
   padding: 10px 20px 10px 10px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  overflow-y: scroll;
+  
 `;
 
-export const BoxInfo = styled.div``;
+export const BoxInfo = styled.div`
+width:600px;
+
+
+`;
 
 export const BoxTitle = styled.h1`
   font-size: 35px;
   margin: 5px;
   font-family: "Domine", serif;
   font-weight: 400;
+  
 `;
 
 export const BoxSubtitle = styled.h3`
@@ -91,57 +103,171 @@ export const BoxButton = styled.button`
 export const Boxnavbar=styled.div`
     width: 100%;
     height: 70px;
-    
     display:flex;
     justify-content: end;
 `
 export const Navbar=styled.div`
-    width: 700px;
+    width: 600px;
     height: 80px;
     display: flex;
-    justify-content: space-around;
-    border:3px solid green;
+    justify-content: space-between;
+    
 `
 export const Mytrip=styled.div`
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
+    width: 105px;
+    height: 80px;
+    font-size: 14px;
     color:aquamarine;
-    line-height: 70px;
+    margin-left: 10px;
+    line-height: 80px;
+    font-family: "Krub",sans-serif;
     &:hover{
         cursor: pointer;
-        color: blue;
+        color: white;
+        text-decoration: underline;
+        
     }
 `
 export const Createtrip=styled.div`
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
+    width: 105px;
+    height: 80px;
+    font-size: 14px;
     color:aquamarine;
-    line-height: 70px; 
+    line-height: 80px; 
+    font-family: "Krub",sans-serif;
+    margin-left: 10px;
     &:hover{
         cursor: pointer;
-        color: blue;
+        color:white;
+        text-decoration: underline;
+       
     }
 `
 ;
 export const Logout=styled.div`
-    width: 100px;
-    height: 40px;
-    font-size: 15px;
+    width: 105px;
+    height: 80px;
+    font-size: 14px;
     color:aquamarine;
-    line-height: 70px; 
-    &:hover{
+    line-height: 80px;
+    margin-left: 10px;
+    font-family: "Krub",sans-serif;
+     &:hover{
         cursor: pointer;
-        color: blue;
-    }
-
+        color:white;
+        text-decoration: underline;
+        }
 `
-export const Icon=styled.div`
-    
+
+export const Icon=styled.img`
+ height: 35px;
+  width: 35px;
+  margin-top: 25px;
+  
+  
 `
 export const List=styled.ol`
     width: 80px;
     height: 50px;
     border: 2px solid black;
 `
+export const Boxitem=styled.div`
+    width: 150px;
+    height: 80px;
+    margin-left: 30px;
+    
+   display: flex;
+   flex-direction: row;
+   &:hover{
+    text-decoration: underline;
+   }
+`
+export const Info=styled.div`
+    width:300px;
+    height:50px;
+   
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    line-height: 50px;
+    font-size: 30px;
+    font-family:"Domine",sans-serif;
+    font-weight: bolder; 
+    color:lightblue;
+    `
+    export const Buttonedit=styled.button`
+        width: 300px;
+        height:50px;
+        border-radius: 7px;
+        text-align: center;
+        line-height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        color: brown;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 900;
+        font-family: "Domine",sans-serif;
+        margin-top: 10px;
+        &:hover{
+          color:green;
+background-color:lemonchiffon;
+}
+        
+    `
+
+export const TripList = styled.ul`
+  background-color: #ffffff;
+  max-height:400px;
+  margin-bottom: 0;
+  margin-top: 0;
+  overflow-y: auto;
+  scrollbar-width: 0;
+  list-style-type: none;
+  padding-left:0;
+  ::-webkit-scrollbar{
+    display: none;
+  }
+`;
+
+export const TripListItemWrapper = styled.div`
+  display: flex;
+`;
+
+export const TripListItem = styled.div`
+  padding: 10px 20px;
+`;
+
+export const TripListCheckbox = styled.input`
+  &:checked~div span:last-child {
+    display: inline;
+  }
+`;
+
+export const TripListController = styled.label`
+  display: flex;
+  border-bottom: 1px solid #e4e4e4;
+  &:hover{
+    background-color: #dddddd;
+    cursor: pointer;
+  }
+`;
+
+export const TripListDone = styled.span`
+  color: green;
+  margin-left: 20px;
+  display: none;
+  font-weight: 900;
+`;
+ export const Buttongototrip=styled.button`
+  width: 300px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+ `

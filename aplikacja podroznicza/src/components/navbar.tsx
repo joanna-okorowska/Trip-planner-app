@@ -6,6 +6,7 @@ import { UserContext } from "./user-context";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase-config";
 
+
 const Html = createGlobalStyle`
    body {
   margin: 0;

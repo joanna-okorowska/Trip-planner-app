@@ -8,6 +8,7 @@ import { CreateTrip } from "./components/create-trip";
 import { Navbar } from "./components/navbar";
 import { Venues } from "./components/Venues";
 import { Explore } from "./components/Explore";
+import { CityPage } from "./components/city-page";
 import { Mytrippage } from "./components/Mytrippage";
 import { useTrip } from "./components/hooks/useTrip";
 
@@ -20,6 +21,7 @@ function App() {
          
           <Route path="/signIn" element={<Login />} />
           <Route path="/create-new-trip" element={<CreateTrip currentTrip={currentTrip} addToTrip={addToTrip} />} />
+          <Route path="/city-page" element={<CityPage/>}/>
           <Route path="/signUp" element={<Register />} />
           <Route path="/nav" element={<Navbar />} />
           <Route path="/veneus" element={<Venues/>}/>
@@ -29,6 +31,7 @@ function App() {
         </Routes>
       </div>
       </HashRouter>
+    // <Venues></Venues>
   );
 }
 

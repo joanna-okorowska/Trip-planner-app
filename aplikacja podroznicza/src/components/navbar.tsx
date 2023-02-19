@@ -76,7 +76,7 @@ export function Navbar() {
     navigate("/create-new-trip");
   };
   const navigateToLanding = () => {
-    navigate("/signIn")
+    navigate("/")
   }
   const logout = async () => {
     await signOut(auth);

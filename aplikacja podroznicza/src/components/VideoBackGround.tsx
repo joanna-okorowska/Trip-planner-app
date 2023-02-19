@@ -11,6 +11,10 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-scroll";
 
 export const VideoBackground = () => {
+  const navigate = useNavigate();
+  const navigateToCreate = () => {
+    navigate("/create-new-trip");
+  };
   return (
     <div>
       <VideoContainer>
@@ -25,7 +29,7 @@ export const VideoBackground = () => {
             smooth={true}
             offset={50}
             duration={500}>
-            Start Exploring
+            Start Exploring!
           </ButtonExplore>
         </TextAndButtomOnVideo>
         <VideoYouTubeBackground

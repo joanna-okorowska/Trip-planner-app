@@ -4,30 +4,52 @@ import { Link } from "react-scroll";
 export const VideoContainer = styled.div`
   overflow: hidden;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 100px);
   pointer-events: none;
   position: relative;
+  margin: 0;
 `;
 
-export const FirstParagraphOnVideo = styled.p``;
+export const FirstParagraphOnVideo = styled.p`
+  text-align: left;
+  font-family: "Domine", serif;
+  color: black;
+  font-size: 30px;
+  font-weight: 700;
+`;
 
 export const TextAndButtomOnVideo = styled.div`
   width: 20vw;
   height: 20vh;
   position: absolute;
-  top: 50%;
-  left: 30%;
+  top: 65%;
+  left: 5%;
   background-color: transparent;
-  backdrop-filter: blur(20px);
+  /* backdrop-filter: blur(20px); */
   border-radius: 10%;
   z-index: 10;
 `;
 
 // (Link w () bo zaciągamy elementu z HTML tylko z reacta)
 export const ButtonExplore = styled(Link)`
-  border-radius: 10%;
+  pointer-events: auto;
+  display: flex;
+  border-radius: 12px;
   border: none;
-  background-color: hotpink;
+  width: 200px;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  background-color: #618358;
+  &:hover,
+  &:focus {
+    color: palevioletred;
+    text-decoration: underline;
+  }
+  &:active {
+    color: red;
+  }
 `;
 
 export const VideoYouTubeBackground = styled.iframe`

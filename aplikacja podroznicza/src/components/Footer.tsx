@@ -18,11 +18,11 @@ export const Footer = () => {
       <>
         <Container id="footfoot">
           <div>
-            <Icons>
+            {/* <Icons>
               <img src=".\src\assets\logo-fb.png" />
               <img src=".\src\assets\logo-instagram.png" />
               <img src=".\src\assets\logo-twitter.png" />
-            </Icons>
+            </Icons> */}
             <LinksSection>
               <Link>Info</Link>
               <Link>Contact us</Link>

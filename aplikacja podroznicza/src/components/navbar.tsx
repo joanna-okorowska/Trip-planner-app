@@ -78,7 +78,6 @@ export function Navbar() {
     navigate("/create-new-trip");
   };
   const navigateToLanding = () => {
-    // navigate("/signIn");
     navigate("/");
   };
   const logout = async () => {
@@ -98,6 +97,7 @@ export function Navbar() {
             <Logoimg src="src/assets/triptastic.png"></Logoimg>
             <Logo>TripTastic</Logo>
           </Logocontainer>
+
           <Usercred>Logged in as: {log}</Usercred>
           <Nav>
             <NavItem>

@@ -46,6 +46,8 @@ export const TripListItems = ({className, cityId, selectedDay, addToTrip, curren
         }
     }
 
+    
+
     return trips && (
         <TripListWrapper className={className}>
             <TripListHeader>Day selected {selectedDay}</TripListHeader>

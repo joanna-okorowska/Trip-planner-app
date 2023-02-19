@@ -19,7 +19,7 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase-config";
-import { UserContext } from "./user-context";
+
 import { useNavigate } from "react-router-dom";
 
 export function Register(): JSX.Element {

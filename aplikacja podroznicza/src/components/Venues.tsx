@@ -20,9 +20,17 @@ import {
   AddBox,
   Added,
 } from "../Styles/Venues-styled";
-import { doc, getDoc, collection, getDocs } from "firebase/firestore";
+import { doc, getDoc, collection, getDocs, DocumentData } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { useState } from "react";
+import { Interface } from "node:readline/promises";
+
+interface ICity{
+  description: any,
+   name: any,
+    photo: any,
+}
+
 const citiesRef = collection(
   db,
   "CitiesList",
@@ -32,11 +40,11 @@ const citiesRef = collection(
 const docRef = await getDocs(citiesRef);
 
 export function Venues() {
-  let info = [];
+  let info: DocumentData[] = [];
 
-  let all = null;
+  let all: { description: any; name: any; photo: any; }  = {description:null, name:null, photo:null, };
 
-  const [added, setAdded] = useState([]);
+  const [added, setAdded] = useState<ICity[] >([]);
 
   docRef.forEach((doc) => {
     info.push(doc.data());
@@ -88,7 +96,7 @@ export function Venues() {
           onClick={() => {
             remove = { description, name, photo };
             setAdded((current) =>
-              current.filter((venue) => venue.name !== name)
+              current.filter((_venue) => Venues.name !== name)
             );
           }}
         ></Icon>

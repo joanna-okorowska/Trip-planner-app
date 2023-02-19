@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { UserContext } from "./user-context";
+
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase-config";
 

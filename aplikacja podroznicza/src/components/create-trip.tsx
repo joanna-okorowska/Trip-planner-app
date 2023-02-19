@@ -26,20 +26,18 @@ interface CreateTripProps {
 
 export function CreateTrip({addToTrip, currentTrip} : CreateTripProps) {
   const [selectedDay, setSelectedDay] = useState("");
-  const navigateToTrip = useNavigate();
+
+const navigate = useNavigate();
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLogged");
+    console.log(isLoggedIn)
+    if (isLoggedIn !== "true") {
+    //  navigate("/signIn");
+    }
+  }, []);
   useEffect(() => {
     // tutaj wywołać clearCurrentTrip
   },[])
-
-export function CreateTrip() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    const isLoggedIn = localStorage.getItem("isLogged");
-    if (isLoggedIn !== "true") {
-      navigate("/signIn");
-    }
-  }, []);
-
   return (
     <TripContainer>
       <Navbar></Navbar>
@@ -56,33 +54,12 @@ export function CreateTrip() {
             <CreateTripDay dayNo="5" setSelectedDay={setSelectedDay} selectedDay={selectedDay}></CreateTripDay>
             <CreateTripDay dayNo="6" setSelectedDay={setSelectedDay} selectedDay={selectedDay}></CreateTripDay>
           </BoxList>
-          <button className="Buttongototrip" onClick={() => navigateToTrip('/mytrippage')}>Go to Your trip</button>
+          <button className="Buttongototrip" onClick={() => navigate('/mytrippage')}>Go to Your trip</button>
         </div>
         <StyledTripListItems className="" isHidden={selectedDay === ""} cityId={"NI91uSn6mYWB2lAVHkq0"} selectedDay={selectedDay} addToTrip={addToTrip} currentTrip={currentTrip} />
       </TripContent> 
 
-      <Title>Madeira trip</Title>
-      <BoxList>
-        <CreateTripDay dayNo="1" setSelectedDay={function (value: SetStateAction<string>): void {
-          throw new Error("Function not implemented.");
-        } } selectedDay={""}></CreateTripDay>
-        <CreateTripDay dayNo="2" setSelectedDay={function (value: SetStateAction<string>): void {
-          throw new Error("Function not implemented.");
-        } } selectedDay={""}></CreateTripDay>
-        <CreateTripDay dayNo="3" setSelectedDay={function (value: SetStateAction<string>): void {
-          throw new Error("Function not implemented.");
-        } } selectedDay={""}></CreateTripDay>
-        <CreateTripDay dayNo="4"setSelectedDay={function (value: SetStateAction<string>): void {
-          throw new Error("Function not implemented.");
-        } } selectedDay={""}></CreateTripDay>
-        <CreateTripDay dayNo="5"setSelectedDay={function (value: SetStateAction<string>): void {
-          throw new Error("Function not implemented.");
-        } } selectedDay={""}></CreateTripDay>
-        <CreateTripDay dayNo="6" setSelectedDay={function (value: SetStateAction<string>): void {
-          throw new Error("Function not implemented.");
-        } } selectedDay={""}></CreateTripDay>
-      </BoxList>
-
+      
     </TripContainer>
   );
 }

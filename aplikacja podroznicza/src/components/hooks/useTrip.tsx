@@ -10,10 +10,16 @@ interface IItem {
     id: string,
     name: string
 }
+interface ICurrentTrip {
+    day_1:[], day_2: [], day_3: [], day_4: [], day_5: [], day_6: []
+   
+
+}
+
 
 export const useTrip = () => {
 
-    const [currentTrip, setCurrentTrip] = useState({day_1: [], day_2: [], day_3: [], day_4: [], day_5: [], day_6: []});
+    const [currentTrip, setCurrentTrip] = useState<ICurrentTrip>({day_1:[], day_2: [], day_3: [], day_4: [], day_5: [], day_6: []});
 
     const addToTrip = ({dayNumber, data} : {dayNumber: string, data:IItem[] })  => {
         const key = `day_${dayNumber}` as keyof typeof currentTrip;

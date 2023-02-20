@@ -8,10 +8,12 @@ export const Global = createGlobalStyle`
    background-repeat: no-repeat;
    backdrop-filter: blur(5px);
    background-size: cover;
+   background-attachment: fixed;
    display: flex;
    justify-content: center;
    align-items: center;
-   height: 100vh;
+   height: 100%;
+   
   }
 `;
 
@@ -24,19 +26,22 @@ export const Title = styled.h1`
 `;
 
 export const BoxList = styled.div`
-  height: 450px;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
   background-color: #d9d9d949;
   border-radius: 10px;
-  height: auto;
-  width: 50vh;
+  height: 745px;
+  width: 500px;
   padding: 20px 0;
 `;
 
-export const TripContainer = styled.div``;
+export const TripContainer = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center`
 
 export const Box = styled.div`
   width: 400px;

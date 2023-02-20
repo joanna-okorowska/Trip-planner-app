@@ -1,37 +1,30 @@
 import styled from "styled-components";
-import { createGlobalStyle } from "styled-components";
 
-export const Global = createGlobalStyle`
-body {
-    margin: 0;
-    font-family: "Krub", sans-serif;
-    color: white;
-  }
-  .social-media-logo {
-    width: 25px;
-  }
-  .social-media-logo:hover {
-    cursor: pointer;
-    filter: invert(20%);
-  }
-  .copyright {
-    margin: 0;
-  }
 
-  .github-link {
-    margin-left: 10px;
-    text-decoration: none;
-    color:#99b7b7; 
-  }
+export const SocialMediaLogo = styled.img`
+ width: 25px;
+ &:hover {
+      cursor: pointer;
+    filter: invert(20%);}
 `;
+
 export const Container = styled.div`
   background-color: #053737;
-  width: 100%;
-  height: 130px;
+  width: 100vw;
+  height: 110px;
   display: flex;
   justify-content: center;
   position: relative;
+  font-family: "Krub", sans-serif;
+  box-sizing: border-box ;
 `;
+
+export const Authors = styled.a`
+    margin: 0 10px;
+    text-decoration: none;
+    color:#99b7b7; 
+`;
+
 
 export const Icons = styled.div`
   width: 25px;
@@ -56,6 +49,7 @@ export const LinksSection = styled.div`
 export const Link = styled.p`
   font-size: 11px;
   margin: 5px;
+color: white;
   &:hover {
     cursor: pointer;
     color: rgb(213, 213, 213);

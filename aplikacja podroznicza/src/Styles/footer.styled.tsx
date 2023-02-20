@@ -34,17 +34,17 @@ export const Container = styled.div`
 `;
 
 export const Icons = styled.div`
-  width: 200px;
+  width: 25px;
   display: flex;
   justify-content: space-around;
   margin-bottom: 10px;
 `;
 
 export const Flex = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center ;
-margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
 `;
 
 export const LinksSection = styled.div`
@@ -54,12 +54,11 @@ export const LinksSection = styled.div`
 `;
 
 export const Link = styled.p`
-font-size: 11px;
-margin: 5px;
+  font-size: 11px;
+  margin: 5px;
   &:hover {
     cursor: pointer;
     color: rgb(213, 213, 213);
-    
   }
 `;
 
@@ -69,7 +68,7 @@ export const Copyright = styled.div`
   justify-content: space-between;
   color: #99b7b7;
   padding: 8px;
-  background-color: #052f2f; 
+  background-color: #052f2f;
   width: 99%;
   position: absolute;
   bottom: 0;

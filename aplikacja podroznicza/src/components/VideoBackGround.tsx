@@ -12,9 +12,10 @@ import { Link } from "react-scroll";
 
 export const VideoBackground = () => {
   const navigate = useNavigate();
-  const navigateToCreate = () => {
-    navigate("/create-new-trip");
+  const navigateToExplore = () => {
+    navigate("/explore");
   };
+
   return (
     <div>
       <VideoContainer>
@@ -23,12 +24,7 @@ export const VideoBackground = () => {
             Plan your best trip ever. We've got everything you need to go big in
             2023.
           </FirstParagraphOnVideo>
-          <ButtonExplore
-            to="exploreScroll"
-            spy={true}
-            smooth={true}
-            offset={50}
-            duration={500}>
+          <ButtonExplore onClick={navigateToExplore}>
             Start Exploring!
           </ButtonExplore>
         </TextAndButtomOnVideo>

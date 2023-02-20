@@ -7,6 +7,7 @@ import { auth } from "../firebase-config";
 import { Login } from "./login-page";
 import { ButtonExplore } from "../Styles/videoBackground-styled";
 
+
 const Html = createGlobalStyle`
    body {
   margin: 0;

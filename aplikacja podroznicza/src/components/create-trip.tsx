@@ -8,9 +8,11 @@ import {
   TripContent,
   StyledTripListItems,
   
+  
 } from "../Styles/create-trip.styled";
+import { Boxnavbar,Navbar,Boxitem,Icon,Mytrip,Createtrip,Logout } from "../Styles/Mytrippage.styled";
 import { CreateTripDay } from "./create-trip-day";
-import { Navbar } from "./navbar";
+
 
 
 
@@ -38,9 +40,17 @@ const navigate = useNavigate();
   useEffect(() => {
     // tutaj wywołać clearCurrentTrip
   },[])
+  
+  const navigatetologin= () => {
+    navigate("/signIn");
+  };
+  const navigateToCreate = () => {
+    navigate("/create-new-trip");
+  };
+
   return (
     <TripContainer>
-      <Navbar></Navbar>
+      
       <Global />
 
       <Title>Madeira trip</Title>     

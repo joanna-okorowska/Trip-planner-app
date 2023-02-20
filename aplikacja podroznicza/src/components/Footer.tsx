@@ -5,18 +5,18 @@ import {
   LinksSection,
   Copyright,
   Link,
+  Flex
 } from "../Styles/footer.styled";
-// import "./Footer.css";
 
 export const Footer = () => (
   <>
     <Global />
     <Container>
-      <div>
+      <Flex>
         <Icons>
-          <img src=".\src\assets\logo-fb.png" />
-          <img src=".\src\assets\logo-instagram.png" />
-          <img src=".\src\assets\logo-twitter.png" />
+          <img className="social-media-logo" src=".\src\assets\logo-fb.png" />
+          <img className="social-media-logo" src=".\src\assets\logo-instagram.png" />
+          <img className="social-media-logo" src=".\src\assets\logo-twitter.png" />
         </Icons>
         <LinksSection>
           <Link>Info</Link>
@@ -27,10 +27,18 @@ export const Footer = () => (
           <Link>Terms of use</Link>
           <Link>Privacy policy</Link>
         </LinksSection>
+        </Flex>
         <Copyright>
-          <p>Copyright @2023 The Codefathers</p>
+          <p className="copyright">Copyright @2023 The Codefathers</p>
+          <div>
+            <a className="github-link" href="https://github.com/Marty3a">Martyna Abramczyk</a>
+            <a className="github-link" href="https://github.com/JakubDolecki">Jakub Dolecki</a>
+            <a className="github-link" href="https://github.com/sebastian-majda">Sebastian Majda</a>
+            <a className="github-link" href="https://github.com/joanna-okorowska">Joanna Okorowska</a>
+            <a className="github-link" href="https://github.com/Maroe1994">Marek Rogiński</a>
+          </div>
         </Copyright>
-      </div>
+      
     </Container>
   </>
 );

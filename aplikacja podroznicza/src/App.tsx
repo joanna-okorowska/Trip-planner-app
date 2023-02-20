@@ -7,16 +7,20 @@ import { CreateTrip } from "./components/create-trip";
 import { Navbar } from "./components/navbar";
 import { Venues } from "./components/Venues";
 import { Main } from "./components/main-page";
-import { Main2 } from "./components/main-page2";
+
 import { VideoBackground } from "./components/VideoBackGround";
 import { Explore } from "./components/Explore";
 import { Register } from "./components/register-page";
 import { useEffect, useState } from "react";
 import { Wrapper } from "./Styles/App-styled";
 import { CityPage } from "./components/city-page";
+import { Mytrippage } from "./components/Mytrippage";
+import { useTrip } from "./components/hooks/useTrip";
 
 function App() {
+  const { currentTrip, addToTrip } = useTrip();
   return (
+
     <HashRouter>
       <Wrapper>
         <Navbar />
@@ -25,8 +29,12 @@ function App() {
           <Route path="/signUp" element={<Register />} />
           <Route path="/signIn" element={<Login />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/create-new-trip" element={<CreateTrip />} />
+          <Route path="/create-new-trip" element={<CreateTrip currentTrip={currentTrip} addToTrip={addToTrip} />} />
           <Route path="/city-page" element={<CityPage />} />
+          <Route path="/mytrippage"  element={<Mytrippage currentTrip={currentTrip}/>}/>
+          <Route path="/nav" element={<Navbar />} />
+          <Route path="/veneus" element={<Venues/>}/>
+          <Route path="/explore" element={<Explore />}/>
           {/* <Route path="/video" element={<VideoBackground />} /> */}
           {/* <Route path="/nav" element={<Navbar />} /> */}
           {/* <Route path="/explore" element={<Explore />} /> */}
@@ -34,6 +42,7 @@ function App() {
         <Footer />
       </Wrapper>
     </HashRouter>
+
     // <Venues></Venues>
   );
 }

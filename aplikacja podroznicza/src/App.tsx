@@ -7,7 +7,7 @@ import { CreateTrip } from "./components/create-trip";
 import { Navbar } from "./components/navbar";
 import { Venues } from "./components/Venues";
 import { Main } from "./components/main-page";
-import { Main2 } from "./components/main-page2";
+
 import { VideoBackground } from "./components/VideoBackGround";
 import { Explore } from "./components/Explore";
 import { Register } from "./components/register-page";
@@ -27,9 +27,8 @@ function App() {
           <Route path="/main" element={<Main />} />
           <Route path="/create-new-trip" element={<CreateTrip />} />
           <Route path="/city-page" element={<CityPage />} />
-          {/* <Route path="/video" element={<VideoBackground />} /> */}
-          {/* <Route path="/nav" element={<Navbar />} /> */}
-          {/* <Route path="/explore" element={<Explore />} /> */}
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/venues" element={<Venues />} />
         </Routes>
         <Footer />
       </Wrapper>

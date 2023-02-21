@@ -1,6 +1,5 @@
 import { Navbar } from "./navbar";
 import {
-  Global,
   Container,
   Box,
   Wrapper,
@@ -19,6 +18,7 @@ import {
   Line,
   AddBox,
   Added,
+  Background
 } from "../Styles/Venues-styled";
 import { doc, getDoc, collection, getDocs, DocumentData } from "firebase/firestore";
 import { db } from "../firebase-config";
@@ -108,8 +108,7 @@ export function Venues() {
 
   return (
     <>
-      <Global></Global>
-      <Navbar></Navbar>
+      <Background>
       <Container>
         <Box>
           <Wrapper>
@@ -133,6 +132,7 @@ export function Venues() {
           </Wrapper>
         </Box>
       </Container>
+      </Background>
     </>
   );
 }

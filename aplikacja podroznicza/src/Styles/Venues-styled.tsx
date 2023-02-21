@@ -1,31 +1,27 @@
-import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 
-export const Global = createGlobalStyle`
-  html {
-   margin: 0;
-   padding: 0;
+export const Background = styled.div`
    background-image: url("src/assets/VenuesBG.jpg");
    background-repeat: no-repeat;
    backdrop-filter: blur(5px);
    background-size: cover;
    background-attachment: fixed;
    height: 100vh;  
-  }
+   width: 100vw;
 `;
 export const Container = styled.div`
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
+  padding: 30px;
+  box-sizing: border-box;
 `;
 export const Box = styled.div`
-  background-color: white;
-  height: 600px;
-  width: 1200px;
-  margin-top: 80px;
-  margin-bottom: 120px;
-  border-radius: 30px;
+padding: 30px;
+margin: 40px;
+ background-color: #ffffff3c;
+  border-radius: 25px;
   display: flex;
   -webkit-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   -moz-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
@@ -33,11 +29,13 @@ export const Box = styled.div`
 `;
 export const Attractions = styled.h1`
   margin-left: 10px;
+  margin-top: 0;
   font-family: "Domine", serif;
   font-size: 50px;
 `;
 export const Added = styled.h1`
   margin-left: 10px;
+  margin-top: 0;
   font-family: "Domine", serif;
   font-size: 50px;
 `;
@@ -48,11 +46,11 @@ export const AddBox = styled.div`
   margin-top: 20px;
 `;
 export const Scrolldiv = styled.div`
-  height: 400px;
-  width: 500px;
-  background-color: darkgray;
+  height: 100%;
+  width: 100%;
+  background-color: #d9d9d99d;
   position: relative;
-  border-radius: 30px;
+  border-radius: 20px;
   overflow: auto;
 
   &::-webkit-scrollbar {

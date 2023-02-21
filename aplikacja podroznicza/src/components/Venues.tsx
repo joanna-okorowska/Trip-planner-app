@@ -109,7 +109,6 @@ export function Venues() {
   return (
     <>
       <Global></Global>
-      <Navbar></Navbar>
       <Container>
         <Box>
           <Wrapper>

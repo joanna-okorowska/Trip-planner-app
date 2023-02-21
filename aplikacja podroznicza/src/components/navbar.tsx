@@ -8,7 +8,7 @@ import { Login } from "./login-page";
 import { ButtonExplore } from "../Styles/videoBackground-styled";
 
 
-const Html = createGlobalStyle`
+const GlobalStyleWrapper = createGlobalStyle`
    body {
   margin: 0;
 }
@@ -18,7 +18,8 @@ const Container = styled.div`
   width: 100vw;
   height: 100px;
   opacity: 0.7;
-  position: sticky;
+  position: absolute;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
 `;
@@ -92,7 +93,7 @@ export function Navbar() {
   } else {
     return (
       <div>
-        <Html></Html>
+        <GlobalStyleWrapper></GlobalStyleWrapper>
         <Container>
           <Logocontainer>
             <Logoimg src="src/assets/triptastic.png"></Logoimg>

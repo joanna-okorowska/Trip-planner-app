@@ -45,7 +45,7 @@ function App() {
           {/* <Route path="/video" element={<VideoBackground />} /> */}
           {/* <Route path="/nav" element={<Navbar />} /> */}
           <Route path="/myTrips" element={<MyTrips />} />
-          <Route path="/veneus/:tripId/:tripName" element={<Venues />} />
+          <Route path="/veneus" element={<Venues />} />
 
         </Routes>
         <Footer />

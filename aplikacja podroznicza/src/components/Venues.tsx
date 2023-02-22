@@ -78,7 +78,9 @@ export function Venues() {
     navigate("/create-new-trip");
   };
 
-  const mapVenues = info.map(({ description, name, photo }) => (
+  const mapVenues = info.map(({ description, name, photo }) => {
+    
+    return(
     <Item key={name}>
       <Info>
         <TitleContainer>
@@ -105,12 +107,13 @@ export function Venues() {
           }}
         ></Photo>
       </Info>
-    </Item>
-  ));
+    </Item>)
+});
 
   let remove = null;
 
   const mapAdded = added.map(({ name, photo }) => (
+    
     <Item key={name}>
       <AddInfo>
         <IconContainer>

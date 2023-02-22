@@ -45,7 +45,7 @@ export const Tripcollapse = styled.div`
 
 export const Tripname = styled.span`
   font-size: 40px;
-  margin-top: 25px;
+  margin-top: 20px;
   display: inline-block;
   margin-left: 20px;
 `;

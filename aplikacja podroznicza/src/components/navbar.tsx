@@ -7,7 +7,6 @@ import { auth } from "../firebase-config";
 import { Login } from "./login-page";
 import { ButtonExplore } from "../Styles/videoBackground-styled";
 
-
 const GlobalStyleWrapper = createGlobalStyle`
    body {
   margin: 0;
@@ -85,10 +84,16 @@ export function Navbar() {
   const navigateToMyTrips = () => {
     navigate("/myTrips");
   };
+  const navigateToExplore = () => {
+    navigate("/explore");
+  };
   const logout = async () => {
     await signOut(auth);
     localStorage.setItem("isLogged", "false");
     navigateToLanding();
+  };
+  const navigateToMain = () => {
+    navigate("/main");
   };
 
   if (pathname === "/" || pathname === "/signUp" || pathname === "/signIn") {
@@ -100,10 +105,11 @@ export function Navbar() {
         <Container>
           <Logocontainer>
             <Logoimg src="src/assets/triptastic.png"></Logoimg>
-            <Logo>TripTastic</Logo>
+            <Logo onClick={navigateToMain}>TripTastic</Logo>
           </Logocontainer>
-
-          <Usercred>Logged in as: {log}</Usercred>
+          {localStorage.getItem("isLogged") === "true" ? (
+            <Usercred>Logged in as: {log}</Usercred>
+          ) : null}
           <Nav>
             <NavItem>
               <Icon src="src/assets/Mytrips.png"></Icon>
@@ -111,7 +117,7 @@ export function Navbar() {
             </NavItem>
             <NavItem>
               <Icon src="src/assets/Create.png"></Icon>
-              <Txt onClick={() => navigateToCreate()}>Create new trip</Txt>
+              <Txt onClick={() => navigateToExplore()}>Create new trip</Txt>
             </NavItem>
             {localStorage.getItem("isLogged") === "true" ? (
               <NavItem>

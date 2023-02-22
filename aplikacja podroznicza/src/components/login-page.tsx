@@ -45,6 +45,7 @@ export function Login(): JSX.Element {
     ).then((response) => {
       localStorage.setItem("info", JSON.stringify(response.user.email));
       localStorage.setItem("isLogged", "true");
+
       redirect();
     });
   };

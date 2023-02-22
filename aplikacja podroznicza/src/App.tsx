@@ -13,7 +13,7 @@ import { Explore } from "./components/Explore";
 import { Register } from "./components/register-page";
 import { useEffect, useState, useContext } from "react";
 import { Wrapper } from "./Styles/App-styled";
-import { CityPage } from "./components/city-page";
+import { CityPage } from "./components/funchal";
 import { Mytrippage } from "./components/Mytrippage";
 import { useTrip } from "./components/hooks/useTrip";
 import { onAuthStateChanged } from "firebase/auth";
@@ -73,14 +73,15 @@ function App() {
               <CreateTrip currentTrip={currentTrip} addToTrip={addToTrip} />
             }
           />
-          <Route path="/Funchal" element={<CityPage />} />
+          <Route path="/funchal" element={<CityPage/>}/>
           <Route
             path="/mytrippage"
             element={<Mytrippage currentTrip={currentTrip} />}
           />
           <Route path="/nav" element={<Navbar />} />
-          <Route path="/veneus" element={<Venues />} />
-          <Route path="/explore" element={<Explore />} />
+          <Route path="/veneus/:tripId/:tripName" element={<Venues />} />
+          <Route path="/explore" element={<Explore />}/>
+
         </Routes>
         <Footer />
       </Wrapper>

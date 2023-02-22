@@ -69,17 +69,18 @@ function App() {
           <Route path="/signIn" element={<Login />} />
           <Route path="/main" element={<Main />} />
           <Route
-            path="/create-new-trip/${id}/${name}"
+            path="/create-new-trip/:tripId"
             element={
               <CreateTrip currentTrip={currentTrip} addToTrip={addToTrip} />
             }
           />
-          <Route path="/Funchal" element={<CityPage />} />
+          <Route path="/funchal" element={<CityPage />} />
           <Route
-            path="/mytrippage"
+            path="/mytrippage/"
             element={<Mytrippage currentTrip={currentTrip} />}
           />
           <Route path="/nav" element={<Navbar />} />
+          <Route path="/venues/:tripId" element={<Venues />} />
           <Route path="/explore" element={<Explore />} />
         </Routes>
         <Footer />

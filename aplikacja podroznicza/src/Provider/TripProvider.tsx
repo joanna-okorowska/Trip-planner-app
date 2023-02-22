@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 
 export type Trip = {
-  id: number;
+  id: string;
   title: string;
   city: string;
 };

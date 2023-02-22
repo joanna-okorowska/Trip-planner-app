@@ -140,6 +140,7 @@ export function Venues() {
   return (
     <>
       <Background>
+          {tripId}:{tripName}
         <Container>
           <AttractionContainer>
             <AttBox>

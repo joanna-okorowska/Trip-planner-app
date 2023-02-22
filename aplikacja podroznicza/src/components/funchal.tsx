@@ -11,19 +11,31 @@ import {
   ContAll,
 } from "../Styles/funchal.styled";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 
 export function CityPage() {
-  let [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false);
+  const [tripName, setTripName] = useState('');
+  
   const navigate = useNavigate();
+  const handleTripNameChange = (event: FormEvent<HTMLInputElement>) => {
+    setTripName(event.currentTarget.value);
+  }
   const onNavigateToVenues = () => {
-    const name = prompt("Please name your trip");
+    if (tripName?.trim()) {
 
-    if (name?.trim()) {
       const id = uuidv4();
-
-      navigate(`/Venues/${id}/${name}`, { relative: "path" });
+      handleClose();
+      navigate(`/Venues/${id}/${tripName}`, { relative: "path" });
     }
   };
 
@@ -42,7 +54,7 @@ export function CityPage() {
           type="button"
           disabled={!isLoggedIn}
           title={!isLoggedIn ? "You must be logged in!" : undefined}
-          onClick={() => onNavigateToVenues()}
+          onClick={() => handleShow()}
         >
           Create Your Trip
         </ButtonTrp>
@@ -147,6 +159,23 @@ export function CityPage() {
           <ImgF src="src/assets/city page/funchal3.jpg" />
         </ContainerF>
       </ContAll>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>New Trip</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Please name your trip:</p>
+          <input type="text" value={tripName} onChange={handleTripNameChange} />
+          </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={() => onNavigateToVenues()}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </PageContainer>
   );
 }

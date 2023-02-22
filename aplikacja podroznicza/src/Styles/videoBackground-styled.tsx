@@ -16,22 +16,22 @@ export const FirstParagraphOnVideo = styled.p`
   color: black;
   font-size: 30px;
   font-weight: 700;
+  background-color: transparent;
+  backdrop-filter: blur(20px);
+  border-radius: 10%;
 `;
 
 export const TextAndButtomOnVideo = styled.div`
-  width: 20vw;
-  height: 20vh;
+  width: 500px;
+  height: 200px;
   position: absolute;
-  top: 65%;
-  left: 5%;
-  background-color: transparent;
-  /* backdrop-filter: blur(20px); */
-  border-radius: 10%;
+  bottom: 20%;
+  left: 10%;
   z-index: 10;
 `;
 
 // (Link w () bo zaciągamy elementu z HTML tylko z reacta)
-export const ButtonExplore = styled(Link)`
+export const ButtonExplore = styled.button`
   pointer-events: auto;
   display: flex;
   border-radius: 12px;
@@ -42,6 +42,8 @@ export const ButtonExplore = styled(Link)`
   align-items: center;
   font-size: 25px;
   background-color: #618358;
+  box-shadow: 0px 0px 24px 7px rgba(204, 234, 206, 1);
+
   &:hover,
   &:focus {
     color: palevioletred;
@@ -54,11 +56,9 @@ export const ButtonExplore = styled(Link)`
 
 export const VideoYouTubeBackground = styled.iframe`
   position: absolute;
-  top: 50%;
-  left: 50%;
   width: 100vw;
   height: 100vh;
-  transform: translate(-50%, -50%);
+  transform: scale(1.5);
 `;
 
 /* 

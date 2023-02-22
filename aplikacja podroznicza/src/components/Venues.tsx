@@ -29,6 +29,7 @@ import {
   AddTitle,
   AddPhoto,
   AddInfo,
+  Description
 } from "../Styles/Venues-styled";
 import {
   doc,
@@ -76,7 +77,10 @@ export function Venues() {
     navigate("/create-new-trip");
   };
 
-  const mapVenues = info.map(({ description, name, photo }) => (
+
+  const mapVenues = info.map(({ description, name, photo }) => {
+    const [show, setShow] = useState<boolean>(false);
+    return (
     <Item key={name}>
       <Info>
         <TitleContainer>
@@ -87,7 +91,7 @@ export function Venues() {
               const posts = JSON.stringify(added);
               const post = JSON.stringify(description);
               if (posts.includes(post)) {
-                alert("Atrakcja już dodana !");
+                alert("Place already added!");
               } else {
                 all = { description, name, photo };
                 setAdded((current) => [...current, all]);
@@ -95,16 +99,17 @@ export function Venues() {
             }}
           ></Icon>
         </TitleContainer>
-
         <Photo
           src={photo}
           onClick={() => {
             console.log(added, all);
+            setShow(!show)
           }}
         ></Photo>
+        <Description>{show && <div>{description}</div>}</Description>
       </Info>
-    </Item>
-  ));
+    </Item>)
+});
 
   let remove = null;
 

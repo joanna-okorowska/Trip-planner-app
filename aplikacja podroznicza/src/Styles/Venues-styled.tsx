@@ -44,15 +44,16 @@ export const AddContainer = styled.div`
 `;
 
 export const ContinueButton = styled.button`
-margin-top: 20px;
-  width: 100%;
-  height: 50px;
+margin-top: 10%;
+  width: 18vw;
+  height: 7%;
   border-radius: 10px;
   border-style: hidden;
   color: white;
   font-family: "Krub", sans-serif;
   font-size: 20px;
   background-color: #064547;
+ 
   &:hover {
     background-color: #062f30;
     cursor: pointer;
@@ -63,7 +64,7 @@ export const Attractions = styled.h1`
   font-family: "Domine", serif;
   font-size: 50px;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: #032020;
 `;
 export const Added = styled.h1`
@@ -78,12 +79,12 @@ export const AttBox = styled.div`
 `;
 export const AddBox = styled.div`
   margin-top: 20px;
-  height: 90%;
+  height: 85%;
 `;
 export const Scrolldiv = styled.div`
   height: 100%;
-  position: relative;
   overflow: auto;
+  width: 100%;
   &::-webkit-scrollbar {
     width: 1px;
   }
@@ -105,17 +106,15 @@ export const Wrapper = styled.div`
 `;
 export const Item = styled.div`
   height: auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
   background-color: #ffffff96;
   border-radius: 15px;
+  
 `;
 export const ItemwrapperAttr = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  column-gap: 1em;
-  row-gap:0;
+  justify-content: space-evenly;
+  gap: 1.5em;
   
 `;
 
@@ -123,9 +122,8 @@ export const ItemwrapperAdd = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  justify-content: space-between;
-  column-gap: 1em;
-  row-gap:0;
+  justify-content: space-evenly;
+  gap: 1.5em;
 `;
 
 export const Bg = styled.div`
@@ -145,6 +143,7 @@ export const Photo = styled.img`
   height: 170px;
   width: 218px;
   margin-top: 10px;
+  position: relative;
 `;
 
 export const AddPhoto = styled.img`
@@ -210,6 +209,16 @@ export const IconContainer = styled.div`
   width: 109px;
   height: 30px;
 `;
+
+export const Description = styled.div`
+  color: #064547;
+  font-family: "Krub", sans-serif;
+  font-size: 11px;
+  width: 218px;
+  
+  
+`;
+
 
 export const Readmore = styled.span`
   margin-left: 350px;

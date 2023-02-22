@@ -38,14 +38,15 @@ export function CityPage() {
   const [show, setShow] = useState(false);
   const [tripName, setTripName] = useState("");
 
-  const { user, setUser, trips, setTrips } = useContext(TripContext);
+  const { user, setUser, trips, setTrips, setTripsName, tripsName } =
+    useContext(TripContext);
   const docRef = doc(db, "Users", user || "");
   const params = useParams();
-
+  console.log(trips);
+  console.log(user);
   async function SetTitle() {
-    //aktualizacja bazy danych
     const id = uuidv4();
-
+    //aktualizacja bazy danych
     if (tripName?.trim()) {
       try {
         await setDoc(docRef, {
@@ -68,6 +69,7 @@ export function CityPage() {
   const navigate = useNavigate();
   const handleTripNameChange = (event: FormEvent<HTMLInputElement>) => {
     setTripName(event.currentTarget.value);
+    setTripsName(event.currentTarget.value);
   };
 
   useEffect(() => {

@@ -10,7 +10,7 @@ export const SocialMediaLogo = styled.img`
 
 export const Container = styled.div`
   background-color: #053737;
-  width: 100vw;
+  width: 100%;
   height: 110px;
   display: flex;
   justify-content: center;

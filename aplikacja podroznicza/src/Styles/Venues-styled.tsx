@@ -1,91 +1,73 @@
+import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
 
-export const Background = styled.div`
-  background-image: url("src/assets/VenuesBG.jpg");
-  background-repeat: no-repeat;
-  backdrop-filter: blur(5px);
-  background-size: cover;
-  background-attachment: fixed;
-  height: 100vh;
-  width: 100vw;
+export const Global = createGlobalStyle`
+  html {
+   margin: 0;
+   padding: 0;
+   background-image: url("src/assets/VenuesBG.jpg");
+   background-repeat: no-repeat;
+   backdrop-filter: blur(5px);
+   background-size: cover;
+   background-attachment: fixed;
+   height: 100vh;  
+  }
 `;
 export const Container = styled.div`
   width: 100vw;
-  height: 100%;
+  height: 80vh;
   display: flex;
   justify-content: center;
-  padding: 30px;
-  box-sizing: border-box;
 `;
-export const AttractionContainer = styled.div`
-  padding: 10px 20px 20px 20px;
-  margin: 20px;
-  background-color: #ffffff3c;
-  border-radius: 25px;
-  width: 80%;
+export const Box = styled.div`
+  background-color: white;
+  height: 600px;
+  width: 1200px;
+  margin-top: 80px;
+  margin-bottom: 120px;
+  border-radius: 30px;
   display: flex;
-  
   -webkit-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   -moz-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
 `;
-export const AddContainer = styled.div`
-  padding: 10px 20px 20px 20px;
-  margin: 20px;
-  background-color: #ffffff3c;
-  border-radius: 25px;
-  width: 20%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  -webkit-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
-  -moz-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
-  box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
-`;
-
-export const ContinueButton = styled.button`
-margin-top: 20px;
-  width: 100%;
-  height: 50px;
-  border-radius: 10px;
-  border-style: hidden;
-  color: white;
-  font-family: "Krub", sans-serif;
-  font-size: 20px;
-  background-color: #064547;
-  &:hover {
-    background-color: #062f30;
-    cursor: pointer;
-  }`;
-
 export const Attractions = styled.h1`
-  margin: 0;
+  margin-left: 10px;
   font-family: "Domine", serif;
   font-size: 50px;
-  text-align: center;
-  margin-bottom: 10px;
-  color: #032020;
 `;
 export const Added = styled.h1`
-  margin: 0;
+  margin-left: 10px;
   font-family: "Domine", serif;
   font-size: 50px;
-  margin-bottom: 10px;
-  color: #032020;
 `;
 export const AttBox = styled.div`
   margin-top: 20px;
 `;
 export const AddBox = styled.div`
   margin-top: 20px;
-  height: 90%;
 `;
 export const Scrolldiv = styled.div`
-  height: 100%;
+  height: 400px;
+  width: 500px;
+  background-color: darkgray;
   position: relative;
+  border-radius: 30px;
   overflow: auto;
+
   &::-webkit-scrollbar {
-    width: 1px;
+    background-color: darkgray;
+    width: 10px;
+    height: 100px;
+    border-radius: 30px;
+  }
+  ::-webkit-scrollbar-track {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #5e5d5d;
+    border-radius: 5px;
   }
 `;
 export const Line = styled.div`
@@ -97,44 +79,30 @@ export const Line = styled.div`
   margin-top: 50px;
 `;
 export const Wrapper = styled.div`
-  /* display: flex; */
-  /* justify-content: space-around; */
+  display: flex;
+  justify-content: space-around;
   margin-left: 50px;
   font-family: "Krub", sans-serif;
   font-size: 13px;
 `;
 export const Item = styled.div`
+  width: 430px;
   height: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #ffffff96;
-  border-radius: 15px;
 `;
-export const ItemwrapperAttr = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  column-gap: 1em;
-  row-gap:0;
-  
-`;
+export const Itemwrapper = styled.div`
+  margin-left: 40px;
 
-export const ItemwrapperAdd = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: space-between;
-  column-gap: 1em;
-  row-gap:0;
+  position: absolute;
 `;
-
-export const Bg = styled.div`
-  position: relative;
-  text-align: center;
-`;
-
 export const Scrollfix = styled.div`
-  height: 90%;
+  height: 400px;
+  width: 510px;
+  background-color: darkgray;
+
+  border-radius: 30px;
+  overflow: auto;
 `;
 export const Separator = styled.div`
   height: 1px;
@@ -142,75 +110,17 @@ export const Separator = styled.div`
   background-color: black;
 `;
 export const Photo = styled.img`
-  height: 170px;
-  width: 218px;
-  margin-top: 10px;
+  height: 70px;
+  width: 90px;
 `;
-
-export const AddPhoto = styled.img`
-  height: 85px;
-  width: 109px;
-  margin-top: 5px;
-  filter: brightness(50%);
-`;
-
 export const Info = styled.div`
-  padding: 10px;
-  /* display: flex; */
-  /* flex-direction: column; */
+  width: 350px;
+  display: flex;
+  align-items: center;
 `;
-
-export const AddInfo = styled.div`
-  padding: 5px;
-  /* display: flex;
-  flex-direction: column; */
-`;
-
 export const Txt = styled.span`
   margin-left: 10px;
 `;
-
-export const Title = styled.h3`
-  color: #064547;
-  font-family: "Krub", sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  margin: 0;
-  width: 150px;
-`;
-
-export const AddTitle = styled.h3`
-  color: white;
-  font-family: "Krub", sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90%;
-`;
-
-export const TitleContainer = styled.div`
-  color: #064547;
-  font-family: "Krub", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 218px;
-  height: 30px;
-`;
-
-export const IconContainer = styled.div`
-  color: #064547;
-  font-family: "Krub", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 109px;
-  height: 30px;
-`;
-
 export const Readmore = styled.span`
   margin-left: 350px;
   color: #064547;
@@ -221,6 +131,8 @@ export const Readmore = styled.span`
 `;
 export const Icon = styled.img`
   height: 30px;
+  position: relative;
+  left: 60px;
   &:hover {
     cursor: pointer;
   }

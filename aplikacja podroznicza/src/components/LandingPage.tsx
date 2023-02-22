@@ -12,8 +12,6 @@ import {
   Underlined,
   Line,
 } from "../Styles/landing-page-styled";
-import { Navbar } from "./navbar";
-import { Footer } from "./Footer";
 
 export function LandingPage() {
   const navigate = useNavigate();
@@ -23,11 +21,6 @@ export function LandingPage() {
   const navigateToSignUp = () => {
     navigate("/signUp");
   };
-
-  const navigateToMain = () => {
-    navigate("/main");
-  };
-
   return (
     <>
       <Global />
@@ -45,9 +38,7 @@ export function LandingPage() {
             </div>
             <LowerBtn onClick={() => navigateToSignUp()}>Sign Up</LowerBtn>
             <h3>or</h3>
-            <Underlined onClick={() => navigateToMain()}>
-              Explore as a guest
-            </Underlined>
+            <Underlined>Explore as a guest</Underlined>
           </Centered>
         </Container>
       </Flex>

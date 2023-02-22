@@ -1,11 +1,14 @@
 import { Navbar } from "./navbar";
 import {
+  Global,
   Container,
+  Box,
   Wrapper,
   AttBox,
   Attractions,
   Scrollfix,
   Scrolldiv,
+  Itemwrapper,
   Item,
   Info,
   Photo,
@@ -16,39 +19,10 @@ import {
   Line,
   AddBox,
   Added,
-  Background,
-  Title,
-  TitleContainer,
-  AttractionContainer,
-  AddContainer,
-  ContinueButton,
-  ItemwrapperAttr,
-  ItemwrapperAdd,
-  Bg,
-  IconContainer,
-  AddTitle,
-  AddPhoto,
-  AddInfo,
 } from "../Styles/Venues-styled";
-import {
-  doc,
-  getDoc,
-  collection,
-  getDocs,
-  DocumentData,
-} from "firebase/firestore";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { useState } from "react";
-import { Interface } from "node:readline/promises";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
-
-interface ICity {
-  description: any;
-  name: any;
-  photo: any;
-}
-
 const citiesRef = collection(
   db,
   "CitiesList",
@@ -58,118 +32,99 @@ const citiesRef = collection(
 const docRef = await getDocs(citiesRef);
 
 export function Venues() {
-  let info: DocumentData[] = [];
-  let {tripId, tripName} = useParams();
+  let info = [];
 
-  let all: { description: any; name: any; photo: any } = {
-    description: null,
-    name: null,
-    photo: null,
-  };
+  let all = null;
 
-  const [added, setAdded] = useState<ICity[]>([]);
+  const [added, setAdded] = useState([]);
 
   docRef.forEach((doc) => {
     info.push(doc.data());
   });
 
-  const navigate = useNavigate();
-  const navigateToCreateTrip = () => {
-    navigate("/create-new-trip");
-  };
-
-  const mapVenues = info.map(({ description, name, photo }) => {
-    
-    return(
+  const mapVenues = info.map(({ description, name, photo }) => (
     <Item key={name}>
       <Info>
-        <TitleContainer>
-          <Title>{name}</Title>
-          <Icon
-            src="src/assets/Add.png"
-            onClick={() => {
-              const posts = JSON.stringify(added);
-              const post = JSON.stringify(description);
-              if (posts.includes(post)) {
-                alert("Atrakcja już dodana !");
-              } else {
-                all = { description, name, photo };
-                setAdded((current) => [...current, all]);
-              }
-            }}
-          ></Icon>
-        </TitleContainer>
-
         <Photo
           src={photo}
           onClick={() => {
             console.log(added, all);
           }}
         ></Photo>
+        <Txt>{description}</Txt>
+        <Icon
+          src="src/assets/Add.png"
+          onClick={() => {
+            const posts = JSON.stringify(added);
+            const post = JSON.stringify(description);
+            if (posts.includes(post)) {
+              alert("Atrakcja już dodana !");
+            } else {
+              all = { description, name, photo };
+              setAdded((current) => [...current, all]);
+            }
+          }}
+        ></Icon>
       </Info>
-    </Item>)
-});
+      <Readmore>read more...</Readmore>
+      <Separator></Separator>
+    </Item>
+  ));
 
   let remove = null;
 
-  const mapAdded = added.map(({ name, photo }) => (
-    
+  const mapAdded = added.map(({ description, name, photo }) => (
     <Item key={name}>
-      <AddInfo>
-        <IconContainer>
-          <Icon
-            src="src/assets/Remove.png"
-            onClick={() => {
-              remove = { name, photo };
-              setAdded((current) =>
-                current.filter((venue) => venue.name !== name)
-              );
-            }}
-          ></Icon>
-        </IconContainer>
-        <Bg>
-          <AddPhoto
-            src={photo}
-            onClick={() => {
-              console.log(added);
-            }}
-          ></AddPhoto>
-          <AddTitle>{name}</AddTitle>
-        </Bg>
-      </AddInfo>
+      <Info>
+        <Photo
+          src={photo}
+          onClick={() => {
+            console.log(added);
+          }}
+        ></Photo>
+        <Txt>{description}</Txt>
+        <Icon
+          src="src/assets/Remove.png"
+          onClick={() => {
+            remove = { description, name, photo };
+            setAdded((current) =>
+              current.filter((venue) => venue.name !== name)
+            );
+          }}
+        ></Icon>
+      </Info>
+      <Readmore>read more...</Readmore>
+      <Separator></Separator>
     </Item>
   ));
 
   return (
     <>
-      <Background>
-          {tripId}:{tripName}
-        <Container>
-          <AttractionContainer>
+      <Global></Global>
+      <Navbar></Navbar>
+      <Container>
+        <Box>
+          <Wrapper>
             <AttBox>
-              <Attractions>Attractions</Attractions>
+              <Attractions>Attractions:</Attractions>
               <Scrollfix>
                 <Scrolldiv>
-                  <ItemwrapperAttr>{mapVenues}</ItemwrapperAttr>
+                  <Itemwrapper>{mapVenues}</Itemwrapper>
                 </Scrolldiv>
               </Scrollfix>
             </AttBox>
-          </AttractionContainer>
-          <AddContainer>
+            <Line></Line>
             <AddBox>
-              <Added>Added</Added>
+              <Added>Added:</Added>
               <Scrollfix>
                 <Scrolldiv>
-                  <ItemwrapperAdd>{mapAdded}</ItemwrapperAdd>
+                  <Itemwrapper>{mapAdded}</Itemwrapper>
                 </Scrolldiv>
               </Scrollfix>
-              <ContinueButton onClick={() => navigateToCreateTrip()}>
-                Continue
-              </ContinueButton>
             </AddBox>
-          </AddContainer>
-        </Container>
-      </Background>
+          </Wrapper>
+        </Box>
+      </Container>
     </>
   );
 }

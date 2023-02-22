@@ -41,8 +41,8 @@ function App() {
           />
           <Route path="/nav" element={<Navbar />} />
           <Route path="/veneus/:tripId/:tripName" element={<Venues />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/Venues/:tripId/:tripName" element={<Venues />} />
+          <Route path="/explore" element={<Explore />}/>
+
         </Routes>
         <Footer />
       </Wrapper>

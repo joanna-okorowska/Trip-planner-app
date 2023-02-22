@@ -8,17 +8,18 @@ import { Login } from "./login-page";
 import { ButtonExplore } from "../Styles/videoBackground-styled";
 
 
-const Html = createGlobalStyle`
+const GlobalStyleWrapper = createGlobalStyle`
    body {
   margin: 0;
 }
 `;
 const Container = styled.div`
   background-color: black;
-  width: 100vw;
+  width: 100%;
   height: 100px;
   opacity: 0.7;
-  position: sticky;
+  position: absolute;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
 `;
@@ -81,6 +82,9 @@ export function Navbar() {
   const navigateToLanding = () => {
     navigate("/");
   };
+  const navigateToMyTrips = () => {
+    navigate("/myTrips");
+  };
   const logout = async () => {
     await signOut(auth);
     localStorage.setItem("isLogged", "false");
@@ -92,7 +96,7 @@ export function Navbar() {
   } else {
     return (
       <div>
-        <Html></Html>
+        <GlobalStyleWrapper></GlobalStyleWrapper>
         <Container>
           <Logocontainer>
             <Logoimg src="src/assets/triptastic.png"></Logoimg>
@@ -103,7 +107,7 @@ export function Navbar() {
           <Nav>
             <NavItem>
               <Icon src="src/assets/Mytrips.png"></Icon>
-              <Txt>My trips</Txt>
+              <Txt onClick={() => navigateToMyTrips()}>My trips</Txt>
             </NavItem>
             <NavItem>
               <Icon src="src/assets/Create.png"></Icon>

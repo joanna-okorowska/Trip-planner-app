@@ -20,7 +20,9 @@ export const Container = styled.div`
   width: 500px;
   background-color: white;
   border-radius: 30px;
-  box-shadow: 0px 0px 31px 22px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 1px 3px 24px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 1px 3px 24px 0px rgba(66, 68, 90, 1);
+  box-shadow: 1px 3px 24px 0px rgba(66, 68, 90, 1);
 `;
 export const Logintxt = styled.span`
   font-family: "Domine", serif;
@@ -29,7 +31,7 @@ export const Logintxt = styled.span`
   margin-left: 70px;
   margin-right: 30px;
   display: block;
-  color: black
+  color: black;
 `;
 export const Field = styled.input`
   margin-left: 70px;
@@ -52,7 +54,7 @@ export const Name = styled.label`
   margin-bottom: -12px;
   display: block;
   margin-top: 30px;
-  color: black
+  color: black;
 `;
 export const Button = styled.input`
   margin-top: 50px;
@@ -87,7 +89,7 @@ export const Separator = styled.div`
 `;
 export const Septxt = styled.span`
   font-family: "Domine", serif;
-  color: black
+  color: black;
 `;
 export const Google = styled.button`
   display: block;
@@ -137,11 +139,9 @@ export const Gglimg = styled.img`
   margin-right: 20px;
   margin-left: -20px;
 `;
-export const Txt = styled.a`
-
-`;
+export const Txt = styled.a``;
 export const Fbimg = styled.img`
   height: 30px;
   width: 30px;
   margin-right: 20px;
-`
+`;

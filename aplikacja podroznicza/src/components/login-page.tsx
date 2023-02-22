@@ -12,7 +12,7 @@ import {
   Septxt,
   Gglimg,
   Fbimg,
-  Flex,
+  QuickSignIn,
   Facebook,
   Google
 } from "../Styles/login-and-register-page-styled";
@@ -85,14 +85,14 @@ export function Login(): JSX.Element {
           <Septxt>Quick sign in with:</Septxt>
           <Line></Line>
         </Separator>
-          <Flex>
+          <QuickSignIn>
           <Google>
-          <Gglimg src="src/assets/google-symbol.png"></Gglimg>
+          <Gglimg src="src/assets/Google.png"></Gglimg>
           </Google>
           <Facebook>
-          <Fbimg src="src/assets/facebookLogo.png"></Fbimg>
+          <Fbimg src="src/assets/Facebook.png"></Fbimg>
           </Facebook>
-          </Flex>
+          </QuickSignIn>
       </Container>
     </div>
   );

@@ -22,7 +22,7 @@ export const Global = createGlobalStyle`
   }
 `;
 export const Container = styled.div`
-  height: 460px;
+  height: 550px;
   width: 380px;
   background-color: white;
   border-radius: 20px;
@@ -91,9 +91,9 @@ export const Separator = styled.div`
   align-items: center;
 `;
 
-export const Flex = styled.div`
-  display: flex;
+export const QuickSignIn = styled.div`
   margin-top: 10px;
+  width: 320px;
 `
 
 
@@ -104,31 +104,47 @@ export const Septxt = styled.span`
   font-size: 13px;
 `;
 export const Google = styled.button`
-  width: 30px;
-  height: 30px;
-  background-color:transparent;
-  border: none;
-  margin-right: 15px;
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-style: hidden;
+  background: #b62525;
+  border-radius: 10px;
+  margin-top: 10px;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
+    background-color:  #991616;
     cursor: pointer;
   }
 `;
 export const Facebook = styled.button`
-  width: 30px;
-  height: 30px;
-  background-color:transparent;
-  border: none;
-  margin-left: 15px;
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-style: hidden;
+  background: #253791;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:hover {
+    background-color: #162575;
     cursor: pointer;
   }
 `;
 export const Gglimg = styled.img`
   height: 30px;
   width: 30px;
+  
 `;
-export const Txt = styled.a``;
 export const Fbimg = styled.img`
   height: 30px;
-  width: 17px;
+  width: 30px;
 `;

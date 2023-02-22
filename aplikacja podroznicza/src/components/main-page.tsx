@@ -6,6 +6,7 @@ import { VideoBackground } from "./VideoBackGround";
 import { Explore } from "./Explore";
 import { Navbar } from "./navbar";
 import { Footer } from "./Footer";
+import { Infographic } from "./infographic";
 
 const MainContainer = styled.div`
   display: flex;
@@ -20,7 +21,7 @@ export function Main() {
     <div>
       <MainContainer>
         <VideoBackground />
-        <Explore />
+        <Infographic />
       </MainContainer>
     </div>
   );

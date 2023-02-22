@@ -41,6 +41,7 @@ import { db } from "../firebase-config";
 import { useState } from "react";
 import { Interface } from "node:readline/promises";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 interface ICity {
   description: any;
@@ -58,6 +59,7 @@ const docRef = await getDocs(citiesRef);
 
 export function Venues() {
   let info: DocumentData[] = [];
+  let {tripId, tripName} = useParams();
 
   let all: { description: any; name: any; photo: any } = {
     description: null,
@@ -138,6 +140,7 @@ export function Venues() {
   return (
     <>
       <Background>
+          {tripId}:{tripName}
         <Container>
           <AttractionContainer>
             <AttBox>

@@ -13,7 +13,7 @@ import { Explore } from "./components/Explore";
 import { Register } from "./components/register-page";
 import { useEffect, useState } from "react";
 import { Wrapper } from "./Styles/App-styled";
-import { CityPage } from "./components/city-page";
+import { CityPage } from "./components/funchal";
 import { Mytrippage } from "./components/Mytrippage";
 import { useTrip } from "./components/hooks/useTrip";
 import { MyTrips } from "./components/myTrips";
@@ -35,18 +35,18 @@ function App() {
               <CreateTrip currentTrip={currentTrip} addToTrip={addToTrip} />
             }
           />
-          <Route path="/Funchal" element={<CityPage />} />
+          <Route path="/funchal" element={<CityPage/>}/>
           <Route
             path="/mytrippage"
             element={<Mytrippage currentTrip={currentTrip} />}
           />
           <Route path="/nav" element={<Navbar />} />
-          <Route path="/veneus" element={<Venues />} />
           <Route path="/explore" element={<Explore />} />
           {/* <Route path="/video" element={<VideoBackground />} /> */}
           {/* <Route path="/nav" element={<Navbar />} /> */}
-          {/* <Route path="/explore" element={<Explore />} /> */}
           <Route path="/myTrips" element={<MyTrips />} />
+          <Route path="/veneus/:tripId/:tripName" element={<Venues />} />
+
         </Routes>
         <Footer />
       </Wrapper>

@@ -15,7 +15,7 @@ const GlobalStyleWrapper = createGlobalStyle`
 `;
 const Container = styled.div`
   background-color: black;
-  width: 100vw;
+  width: 100%;
   height: 100px;
   opacity: 0.7;
   position: absolute;

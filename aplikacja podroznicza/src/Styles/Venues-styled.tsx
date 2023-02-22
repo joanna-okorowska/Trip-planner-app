@@ -18,49 +18,55 @@ export const Container = styled.div`
   box-sizing: border-box;
 `;
 export const AttractionContainer = styled.div`
-  padding: 30px;
-  margin: 40px;
+  padding: 20px;
+  margin: 20px;
   background-color: #ffffff3c;
   border-radius: 25px;
   width: 80%;
   display: flex;
+  
   -webkit-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   -moz-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
 `;
 export const AddContainer = styled.div`
-  padding: 30px;
-  margin: 40px;
+  padding: 20px;
+  margin: 20px;
   background-color: #ffffff3c;
   border-radius: 25px;
   width: 20%;
   display: flex;
+  justify-content: center;
+  text-align: center;
   -webkit-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   -moz-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
 `;
 
+export const ContinueButton = styled.button``;
+
 export const Attractions = styled.h1`
   margin: 0;
   font-family: "Domine", serif;
   font-size: 50px;
+  text-align: center;
+  margin-bottom: 10px;
 `;
 export const Added = styled.h1`
-  margin-left: 10px;
-  margin-top: 0;
+  margin: 0;
   font-family: "Domine", serif;
   font-size: 50px;
+  margin-bottom: 10px;
 `;
 export const AttBox = styled.div`
   margin-top: 20px;
 `;
 export const AddBox = styled.div`
   margin-top: 20px;
+  height: 90%;
 `;
 export const Scrolldiv = styled.div`
   height: 100%;
-  width: 100%;
-
   position: relative;
   border-radius: 20px;
   overflow: auto;
@@ -99,21 +105,33 @@ export const Item = styled.div`
   background-color: #ffffff96;
   border-radius: 15px;
 `;
-export const Itemwrapper = styled.div`
+export const ItemwrapperAttr = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1em;
+`;
+
+export const ItemwrapperAdd = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-between;
-  gap: 12px;
-  margin: 0;
+  justify-content:center;
+  gap: 1em;
 `;
+
+export const Bg = styled.div`
+  position: relative;
+  text-align: center;
+`;
+
 export const Scrollfix = styled.div`
   height: 90%;
-  width: 100%;
   /* background-color: darkgray; */
 
   border-radius: 30px;
-  overflow: auto;
+  /* overflow: auto; */
 `;
 export const Separator = styled.div`
   height: 1px;
@@ -125,11 +143,26 @@ export const Photo = styled.img`
   width: 218px;
   margin-top: 10px;
 `;
+
+export const AddPhoto = styled.img`
+  height: 85px;
+  width: 109px;
+  margin-top: 5px;
+  filter: brightness(50%);
+`;
+
 export const Info = styled.div`
   padding: 10px;
   display: flex;
   flex-direction: column;
 `;
+
+export const AddInfo = styled.div`
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Txt = styled.span`
   margin-left: 10px;
 `;
@@ -143,6 +176,18 @@ export const Title = styled.h3`
   width: 150px;
 `;
 
+export const AddTitle = styled.h3`
+  color: white;
+  font-family: "Krub", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+`;
+
 export const TitleContainer = styled.div`
   color: #064547;
   font-family: "Krub", sans-serif;
@@ -150,6 +195,16 @@ export const TitleContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 218px;
+  height: 30px;
+`;
+
+export const IconContainer = styled.div`
+  color: #064547;
+  font-family: "Krub", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 109px;
   height: 30px;
 `;
 

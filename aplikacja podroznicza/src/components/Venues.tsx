@@ -6,7 +6,6 @@ import {
   Attractions,
   Scrollfix,
   Scrolldiv,
-  Itemwrapper,
   Item,
   Info,
   Photo,
@@ -22,6 +21,14 @@ import {
   TitleContainer,
   AttractionContainer,
   AddContainer,
+  ContinueButton,
+  ItemwrapperAttr,
+  ItemwrapperAdd,
+  Bg,
+  IconContainer,
+  AddTitle,
+  AddPhoto,
+  AddInfo,
 } from "../Styles/Venues-styled";
 import {
   doc,
@@ -97,23 +104,28 @@ export function Venues() {
 
   const mapAdded = added.map(({ name, photo }) => (
     <Item key={name}>
-      <Info>
-        <Photo
-          src={photo}
-          onClick={() => {
-            console.log(added);
-          }}
-        ></Photo>
-        <Icon
-          src="src/assets/Remove.png"
-          onClick={() => {
-            remove = { name, photo };
-            setAdded((current) =>
-              current.filter((venue) => venue.name !== name)
-            );
-          }}
-        ></Icon>
-      </Info>
+      <AddInfo>
+        <IconContainer>
+          <Icon
+            src="src/assets/Remove.png"
+            onClick={() => {
+              remove = { name, photo };
+              setAdded((current) =>
+                current.filter((venue) => venue.name !== name)
+              );
+            }}
+          ></Icon>
+        </IconContainer>
+        <Bg>
+          <AddPhoto
+            src={photo}
+            onClick={() => {
+              console.log(added);
+            }}
+          ></AddPhoto>
+          <AddTitle>{name}</AddTitle>
+        </Bg>
+      </AddInfo>
     </Item>
   ));
 
@@ -123,22 +135,23 @@ export function Venues() {
         <Container>
           <AttractionContainer>
             <AttBox>
-              <Attractions>Attractions:</Attractions>
+              <Attractions>Attractions</Attractions>
               <Scrollfix>
                 <Scrolldiv>
-                  <Itemwrapper>{mapVenues}</Itemwrapper>
+                  <ItemwrapperAttr>{mapVenues}</ItemwrapperAttr>
                 </Scrolldiv>
               </Scrollfix>
             </AttBox>
           </AttractionContainer>
           <AddContainer>
             <AddBox>
-              <Added>Added:</Added>
+              <Added>Added</Added>
               <Scrollfix>
                 <Scrolldiv>
-                  <Itemwrapper>{mapAdded}</Itemwrapper>
+                  <ItemwrapperAdd>{mapAdded}</ItemwrapperAdd>
                 </Scrolldiv>
               </Scrollfix>
+              <ContinueButton />
             </AddBox>
           </AddContainer>
         </Container>

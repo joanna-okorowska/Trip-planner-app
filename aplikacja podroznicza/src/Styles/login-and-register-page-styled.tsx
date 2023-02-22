@@ -29,7 +29,7 @@ export const Logintxt = styled.span`
   margin-left: 70px;
   margin-right: 30px;
   display: block;
-  color: black
+  color: black;
 `;
 export const Field = styled.input`
   margin-left: 70px;
@@ -52,7 +52,7 @@ export const Name = styled.label`
   margin-bottom: -12px;
   display: block;
   margin-top: 30px;
-  color: black
+  color: black;
 `;
 export const Button = styled.input`
   margin-top: 50px;
@@ -87,7 +87,7 @@ export const Separator = styled.div`
 `;
 export const Septxt = styled.span`
   font-family: "Domine", serif;
-  color: black
+  color: black;
 `;
 export const Google = styled.button`
   display: block;

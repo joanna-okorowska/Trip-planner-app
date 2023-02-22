@@ -3,13 +3,13 @@ import {
   InfographicImage,
 } from "../Styles/infographic-styled";
 import React from "react";
-import InfographicIMG from "../assets/INFO.jpeg";
+import Imginfographic from "../assets/infographicaNormalSIZE1.png";
 
 export const Infographic = () => {
   return (
     <div>
       <InfographicContainer>
-        <InfographicImage src={InfographicIMG} alt="Infographic" />
+        <InfographicImage src={Imginfographic} alt="Infographic" />
       </InfographicContainer>
     </div>
   );

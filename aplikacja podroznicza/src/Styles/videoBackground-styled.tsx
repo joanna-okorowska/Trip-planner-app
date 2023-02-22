@@ -37,21 +37,22 @@ export const ButtonExplore = styled.button`
   border-radius: 12px;
   border: none;
   width: 200px;
-  height: 100px;
+  height: 60px;
   justify-content: center;
   align-items: center;
   font-size: 25px;
-  background-color: #618358;
-  box-shadow: 0px 0px 24px 7px rgba(204, 234, 206, 1);
+  background-color: #c4566e;
+  color: white;
+  /* box-shadow: 0px 0px 16px 4px #d33131; */
 
   &:hover,
   &:focus {
-    color: palevioletred;
+    color: black;
     text-decoration: underline;
   }
-  &:active {
+  /* &:active {
     color: red;
-  }
+  } */
 `;
 
 export const VideoYouTubeBackground = styled.iframe`

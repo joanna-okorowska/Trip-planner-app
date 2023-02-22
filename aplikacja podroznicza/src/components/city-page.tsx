@@ -1,4 +1,13 @@
-import { collection, getDocs, limit, query, where } from "firebase/firestore";
+import {
+  collection,
+  updateDoc,
+  getDocs,
+  setDoc,
+  doc,
+  limit,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../firebase-config";
 import { CityPageAtr } from "./attractions";
 import {
@@ -15,11 +24,13 @@ import {
   ImgContainer,
   TopContainer,
   ButtonTrp,
-  BottomContainer
+  BottomContainer,
 } from "../Styles/city-page.styled";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { v4 as uuidv4 } from "uuid";
+import { useContext } from "react";
+import { TripContext } from "../Provider/TripProvider";
 interface ICity {
   id: string;
   name: string;
@@ -30,10 +41,27 @@ interface ICityAttraction {
   name: string;
 }
 
-
 export function CityPage(): JSX.Element {
-  let [city, setCity] = useState<ICity | null>(null);
-  let [attractions, setAttractions] = useState<ICityAttraction[] | []>([]);
+  const [city, setCity] = useState<ICity | null>(null);
+  const [attractions, setAttractions] = useState<ICityAttraction[] | []>([]);
+
+  const { user, setUser, trips, setTrips } = useContext(TripContext);
+  console.log(trips);
+  const userEmail = localStorage.getItem("info");
+
+  const docRef = doc(db, "Users", user || "");
+
+  // TODOS: implement trips
+  async function SetTitle() {
+    await setDoc(docRef, {
+      Trips: [...trips, {}],
+      // id: id,
+    });
+    setTrips([
+      ...trips,
+      { title: "MojaWycieczka", city: "Funcial", id: 12345677 },
+    ]);
+  }
 
   useEffect(() => {
     async function getCity() {
@@ -73,13 +101,13 @@ export function CityPage(): JSX.Element {
     <PageContainer>
       <Global />
       <TopContainer>
-      <LogoContainer>
-        <LogoImg src="src/assets/triptastic.png"></LogoImg>
-        <Logo>TripTastic</Logo>
-      </LogoContainer>
-      <Link to="/create-new-trip" relative="path">
-      <ButtonTrp type="button">Let's go!</ButtonTrp>
-      </Link>
+        <LogoContainer>
+          <LogoImg src="src/assets/triptastic.png"></LogoImg>
+          <Logo>TripTastic</Logo>
+        </LogoContainer>
+        <Link to="/create-new-trip" relative="path">
+          <ButtonTrp type="button">Let's go!</ButtonTrp>
+        </Link>
       </TopContainer>
       <ImageContainer src="src/assets/city page/panoramic.jpg"></ImageContainer>
       <TxtContainer>
@@ -127,9 +155,9 @@ export function CityPage(): JSX.Element {
         </ImgContainer>
       </DrpContainer>
       <BottomContainer>
-      <Link to="/create-new-trip" relative="path">
-      <ButtonTrp type="button">Let's go!</ButtonTrp>
-      </Link>
+        <Link to="/create-new-trip" onClick={SetTitle} relative="path">
+          <ButtonTrp type="button">Let's go!</ButtonTrp>
+        </Link>
       </BottomContainer>
     </PageContainer>
   );

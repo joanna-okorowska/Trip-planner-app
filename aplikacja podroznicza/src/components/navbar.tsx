@@ -82,6 +82,9 @@ export function Navbar() {
   const navigateToLanding = () => {
     navigate("/");
   };
+  const navigateToMyTrips = () => {
+    navigate("/myTrips");
+  };
   const logout = async () => {
     await signOut(auth);
     localStorage.setItem("isLogged", "false");
@@ -104,7 +107,7 @@ export function Navbar() {
           <Nav>
             <NavItem>
               <Icon src="src/assets/Mytrips.png"></Icon>
-              <Txt>My trips</Txt>
+              <Txt onClick={() => navigateToMyTrips()}>My trips</Txt>
             </NavItem>
             <NavItem>
               <Icon src="src/assets/Create.png"></Icon>

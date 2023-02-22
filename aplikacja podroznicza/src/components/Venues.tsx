@@ -40,6 +40,7 @@ import {
 import { db } from "../firebase-config";
 import { useState } from "react";
 import { Interface } from "node:readline/promises";
+import { useNavigate } from "react-router-dom";
 
 interface ICity {
   description: any;
@@ -69,6 +70,11 @@ export function Venues() {
   docRef.forEach((doc) => {
     info.push(doc.data());
   });
+
+  const navigate = useNavigate();
+  const navigateToCreateTrip = () => {
+    navigate("/create-new-trip");
+  };
 
   const mapVenues = info.map(({ description, name, photo }) => (
     <Item key={name}>
@@ -151,7 +157,9 @@ export function Venues() {
                   <ItemwrapperAdd>{mapAdded}</ItemwrapperAdd>
                 </Scrolldiv>
               </Scrollfix>
-              <ContinueButton />
+              <ContinueButton onClick={() => navigateToCreateTrip()}>
+                Continue
+              </ContinueButton>
             </AddBox>
           </AddContainer>
         </Container>

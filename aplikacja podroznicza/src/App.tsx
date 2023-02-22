@@ -35,6 +35,8 @@ function App() {
           <Route path="/nav" element={<Navbar />} />
           <Route path="/venues" element={<Venues/>}/>
           <Route path="/explore" element={<Explore />}/>
+
+          
           {/* <Route path="/video" element={<VideoBackground />} /> */}
           {/* <Route path="/nav" element={<Navbar />} /> */}
           {/* <Route path="/explore" element={<Explore />} /> */}

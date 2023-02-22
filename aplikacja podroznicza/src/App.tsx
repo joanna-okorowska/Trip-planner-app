@@ -40,9 +40,9 @@ function App() {
             element={<Mytrippage currentTrip={currentTrip} />}
           />
           <Route path="/nav" element={<Navbar />} />
-          <Route path="/veneus" element={<Venues />} />
+          <Route path="/veneus/:tripId/:tripName" element={<Venues />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="/Venues" element={<Venues />} />
+          <Route path="/Venues/:tripId/:tripName" element={<Venues />} />
         </Routes>
         <Footer />
       </Wrapper>

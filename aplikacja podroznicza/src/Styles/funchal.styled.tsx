@@ -4,11 +4,6 @@ export const Global = createGlobalStyle`
   body {
    margin: 0;
    padding: 0;
-   background: linear-gradient(
-    to right,
-    rgb(6,69,71) 0% 50%, 
-    rgba(6, 69, 71, 0.719) 50% 100%
-  );
    background-repeat: no-repeat;
    background-size: cover;
   }
@@ -16,6 +11,7 @@ export const Global = createGlobalStyle`
 
 export const PageContainer = styled.div`
   width: 100%;
+  background: linear-gradient(90deg, rgba(6,105,113,1) 51%, rgba(80,166,153,1) 100%);
 `;
 
 export const ButtonTrp = styled.button`

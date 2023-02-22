@@ -10,11 +10,22 @@ import {
   ContainerF,
   ContAll,
 } from "../Styles/funchal.styled";
-import { Link, useNavigate } from "react-router-dom";
-import{ useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 export function CityPage() {
   let [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const onNavigateToVenues = () => {
+    const name = prompt("Please name your trip");
+
+    if (name?.trim()) {
+      const id = uuidv4();
+
+      navigate(`/Venues/${id}/${name}`, { relative: "path" });
+    }
+  };
 
   useEffect(() => {
     const isLogged = localStorage.getItem("isLogged") === "true";
@@ -26,19 +37,15 @@ export function CityPage() {
       <Global />
       <ImageContainer src="src/assets/city page/panoramic.jpg"></ImageContainer>
       <ContAll>
-        <Link
+        <ButtonTrp
           style={{ position: "sticky", top: "20px", alignSelf: "flex-end" }}
-          to="/Venues"
-          relative="path"
+          type="button"
+          disabled={!isLoggedIn}
+          title={!isLoggedIn ? "You must be logged in!" : undefined}
+          onClick={() => onNavigateToVenues()}
         >
-          <ButtonTrp
-            type="button"
-            disabled={!isLoggedIn}
-            title={!isLoggedIn ? "You must be logged in!" : undefined}
-          >
-            Create Your Trip
-          </ButtonTrp>
-        </Link>
+          Create Your Trip
+        </ButtonTrp>
         <TxtContainer>
           <Txt>FUNCHAL - EUROPE'S MOST PICTURESQUE AND CLEANEST CAPITAL</Txt>
           <Param>

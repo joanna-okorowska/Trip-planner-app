@@ -59,10 +59,9 @@ export const Fieldset = styled.fieldset`
   border-radius: 5px;
   font-family: "Krub", sans-serif;
   width: 100%;
-  color: #064547;
+  color: #478587;
   box-sizing: border-box;
   font-size: 13px;
- 
 `;
 
 
@@ -128,11 +127,8 @@ export const Gglimg = styled.img`
   height: 30px;
   width: 30px;
 `;
-export const Txt = styled.a`
-
-`;
+export const Txt = styled.a``;
 export const Fbimg = styled.img`
   height: 30px;
   width: 17px;
-
-`
+`;

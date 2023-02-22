@@ -31,8 +31,8 @@ export function Login(): JSX.Element {
   const [loginPassword, setLoginPassword] = useState<string>("");
 
   const navigate = useNavigate();
-  const navigateToNav = () => {
-    navigate("/nav");
+  const navigateToMain = () => {
+    navigate("/main");
   };
 
   const login = (event: React.FormEvent) => {
@@ -43,8 +43,9 @@ export function Login(): JSX.Element {
       loginEmail,
       loginPassword
     ).then((response) => {
-      localStorage.setItem("info", response.user.email);
+      localStorage.setItem("info", JSON.stringify(response.user.email));
       localStorage.setItem("isLogged", "true");
+
       redirect();
     });
   };
@@ -52,10 +53,9 @@ export function Login(): JSX.Element {
   const redirect = () => {
     const isLogged = localStorage.getItem("isLogged");
     if (isLogged == "true") {
-      navigateToNav();
+      navigateToMain();
     }
   };
-  
 
   return (
     <div>

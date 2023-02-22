@@ -16,6 +16,7 @@ import { Wrapper } from "./Styles/App-styled";
 import { CityPage } from "./components/funchal";
 import { Mytrippage } from "./components/Mytrippage";
 import { useTrip } from "./components/hooks/useTrip";
+import { MyTrips } from "./components/myTrips";
 
 function App() {
   const { currentTrip, addToTrip } = useTrip();
@@ -40,15 +41,16 @@ function App() {
             element={<Mytrippage currentTrip={currentTrip} />}
           />
           <Route path="/nav" element={<Navbar />} />
-          <Route path="/veneus/:tripId/:tripName" element={<Venues />} />
-          <Route path="/explore" element={<Explore />}/>
+          <Route path="/explore" element={<Explore />} />
+          {/* <Route path="/video" element={<VideoBackground />} /> */}
+          {/* <Route path="/nav" element={<Navbar />} /> */}
+          <Route path="/myTrips" element={<MyTrips />} />
+          <Route path="/veneus" element={<Venues />} />
 
         </Routes>
         <Footer />
       </Wrapper>
     </HashRouter>
-
-    // <Venues></Venues>
   );
 }
 

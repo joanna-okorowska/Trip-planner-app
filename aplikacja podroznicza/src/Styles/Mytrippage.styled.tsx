@@ -9,8 +9,6 @@ export const Global = createGlobalStyle`
    backdrop-filter: blur(5px);
    background-size: cover;
    
-   height: 100vh;
-   
   }
 `;
 
@@ -31,7 +29,6 @@ export const BoxList = styled.div`
   gap: 5px;
   background-color: #d9d9d949;
   border-radius: 10px;
-  height: 800px;
   width: 60vh;
   padding: 20px 0;
   margin-left: auto;
@@ -46,25 +43,27 @@ export const BoxList = styled.div`
 `;
 
 export const TripContainer = styled.div`
-height: 400px;
+  min-height: 100vh;
 `;
 
 export const Box = styled.div`
-  width: 600px;
-  height: 130px;
+  width: 400px;
+  height: 100px;
   background-color: white;
   border-radius: 10px;
   color: #064547;
   padding: 10px 20px 10px 10px;
   display: flex;
   justify-content: space-between;
-  overflow-y: scroll;
+  align-items: center;
   
 `;
 
-export const BoxInfo = styled.div`
-width:600px;
-
+export const BoxInfo = styled.h3`
+  padding: 0 10px 10px;
+  font-family: "Krub", serif;
+  font-size: 17px;
+  font-weight: 400;
 
 `;
 
@@ -184,20 +183,11 @@ export const Boxitem=styled.div`
     text-decoration: underline;
    }
 `
-export const Info=styled.div`
-    width:300px;
-    height:50px;
-   
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    line-height: 50px;
-    font-size: 30px;
-    font-family:"Domine",sans-serif;
-    font-weight: bolder; 
-    color:lightblue;
+export const Info=styled.h3`
+    padding: 0 10px 10px;
+    font-family: "Krub", serif;
+    font-size: 17px;
+    font-weight: 400;
     `
     export const Buttonedit=styled.button`
         width: 300px;

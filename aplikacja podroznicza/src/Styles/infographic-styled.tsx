@@ -3,7 +3,6 @@ import { Link } from "react-scroll";
 
 export const InfographicContainer = styled.div`
   width: 100vw;
-
   margin: 0;
 `;
 export const InfographicImage = styled.img`

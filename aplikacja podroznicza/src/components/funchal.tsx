@@ -10,8 +10,8 @@ import {
   ContainerF,
   ContAll,
 } from "../Styles/funchal.styled";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState, useContext } from "react";
+import { useNavigate, Link, useParams } from "react-router-dom";
+import { FormEvent, useEffect, useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../firebase-config";
 import {
@@ -27,9 +27,19 @@ export function CityPage() {
   const navigate = useNavigate();
   const handleCloseTripModal = () => setShowTripModal(false);
   const handleShowTripModal = () => setShowTripModal(true);
-  const { user, trips, setTrips } = useContext(TripContext);
 
+  const { user, setUser, trips, setTrips, setTripsName, tripsName } =
+    useContext(TripContext);
+
+  const docRef = doc(db, "Users", user || "");
+  const params = useParams();
+
+  console.log(trips);
+  console.log(user);
+
+  
   const handleSaveTripModal = async (tripName: string) => {
+    const id = uuidv4();
     //aktualizacja bazy danych
     if (tripName?.trim()) {
       const id = uuidv4();
@@ -37,12 +47,17 @@ export function CityPage() {
 
       try {
         await setDoc(docRef, {
-          Trips: [...trips, { title: tripName, city: "Funchal", id: id || "" }],
+          Trips: [
+            ...trips,
+            { title: tripName, city: "Funcial", id: id || "", attractions: [] },
+          ],
+          
         });
         //aktualizacja contextu
         setTrips([
           ...trips,
-          { title: tripName, city: "Funchal", id: id || "" },
+          { title: tripName, city: "Funcial", id: id || "", attractions: [] },
+          
         ]);
 
         handleCloseTripModal();
@@ -52,6 +67,10 @@ export function CityPage() {
       }
     }
   }
+
+  const handleTripNameChange = (event: FormEvent<HTMLInputElement>) => {
+    setTripsName(event.currentTarget.value);
+  };
 
   useEffect(() => {
     const isLogged = localStorage.getItem("isLogged") === "true";

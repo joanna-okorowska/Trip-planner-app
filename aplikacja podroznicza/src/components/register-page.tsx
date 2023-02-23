@@ -4,17 +4,17 @@ import {
   Global,
   Container,
   Logintxt,
-  Fieldset,
+  Name,
   Field,
   Button,
   Separator,
   Line,
   Septxt,
+  Google,
   Gglimg,
-  Fbimg,
-  QuickSignIn,
+  Txt,
   Facebook,
-  Google
+  Fbimg,
 } from "../Styles/login-and-register-page-styled";
 import React, { useContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -55,40 +55,40 @@ export function Register(): JSX.Element {
     <div>
       <Global />
       <Container>
-        <Logintxt>Sign Up</Logintxt>
+        <Logintxt>Sign Up To TripTastic:</Logintxt>
         <form onSubmit={register}>
-        <Fieldset>
-            <legend>email:</legend>
-            <Field onChange={(event) => {
+          <Name>e-mail:</Name>
+          <br />
+          <Field
+            onChange={(event) => {
               setRegisterEmail(event.target.value);
-            }}/>
-        </Fieldset>
-        <br/>
-        <Fieldset>
-            <legend>password:</legend>
-            <Field type={"password"}
+            }}
+          />
+          <br />
+          <Name>password:</Name>
+          <br />
+          <Field
+            type={"password"}
             onChange={(event) => {
               setRegisterPassword(event.target.value);
-            }}/>
-        </Fieldset>
-        
-        <Button type="submit" value="Sign Up" />
+            }}
+          />
+          <br />
+          <Button type="submit" value="Sign Up" />
         </form>
         <Separator>
           <Line></Line>
-          <Septxt>Quick sign in with:</Septxt>
+          <Septxt>You Can Also:</Septxt>
           <Line></Line>
         </Separator>
-          <QuickSignIn>
-          <Google>
+        <Google>
           <Gglimg src="src/assets/Google.png"></Gglimg>
-          </Google>
-          <Facebook>
-          <Fbimg src="src/assets/Facebook.png"></Fbimg>
-          </Facebook>
-          </QuickSignIn>
+          <Txt>Sign Up With Google</Txt>
+        </Google>
+        <Facebook>
+          <Fbimg src="src/assets/Facebook.png"></Fbimg>Sign Up With Facebook
+        </Facebook>
       </Container>
     </div>
   );
 }
-

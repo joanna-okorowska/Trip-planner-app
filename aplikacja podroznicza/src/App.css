@@ -22,4 +22,9 @@
 color:green;
 background-color:lemonchiffon;
 }
-
+.Addnextday:single-button
+{
+  width: 100px;
+  height: 20px;
+  
+}

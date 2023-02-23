@@ -14,7 +14,7 @@ interface VenuesModalProps {
   name: string;
   photo: string;
   description: string;
-  duration: string;
+  duration: number;
   isOpen: boolean;
   setShow: (show:boolean) => void;
 }
@@ -41,7 +41,7 @@ const ModalStyles = {
           <Description>
             {description}
           </Description>
-          <Duration>Duration: {duration}</Duration>
+          <Duration>Duration: {duration} h</Duration>
         </TextArea>
       </Container>
     </Modal>

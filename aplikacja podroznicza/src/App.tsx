@@ -79,7 +79,7 @@ function App() {
             element={<Mytrippage currentTrip={currentTrip} />}
           />
           <Route path="/nav" element={<Navbar />} />
-          <Route path="/venues/:tripId" element={<Venues />} />
+          <Route path="/venues" element={<Venues />} />
           <Route path="/explore" element={<Explore />} />
         </Routes>
         <Footer />

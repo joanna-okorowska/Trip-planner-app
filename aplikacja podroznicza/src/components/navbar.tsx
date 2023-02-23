@@ -73,6 +73,9 @@ const Logoimg = styled.img`
   height: 90px;
   width: 90px;
   margin-top: 5px;
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: 1120px) {
     height: 70px;
     width: 70px;
@@ -99,6 +102,9 @@ const Burger = styled.img`
   width: 50px;
   margin-top: 25px;
   margin-right: 10px;
+  &:hover {
+    cursor: pointer;
+  }
   @media (max-width: 1120px) {
     display: block;
   }

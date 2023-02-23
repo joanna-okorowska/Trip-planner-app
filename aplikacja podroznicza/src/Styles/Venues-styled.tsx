@@ -7,7 +7,7 @@ export const Background = styled.div`
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 `;
 export const Container = styled.div`
   width: 100vw;
@@ -19,19 +19,19 @@ export const Container = styled.div`
 `;
 export const AttractionContainer = styled.div`
   padding: 10px 20px 20px 20px;
-  margin: 20px;
+  margin: 80px 20px 20px 20px;
   background-color: #ffffff3c;
   border-radius: 25px;
   width: 80%;
   display: flex;
-  
+
   -webkit-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   -moz-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
 `;
 export const AddContainer = styled.div`
   padding: 10px 20px 20px 20px;
-  margin: 20px;
+  margin: 80px 20px 20px 20px;
   background-color: #ffffff3c;
   border-radius: 25px;
   width: 20%;
@@ -44,7 +44,7 @@ export const AddContainer = styled.div`
 `;
 
 export const ContinueButton = styled.button`
-margin-top: 10%;
+  margin-top: 10%;
   width: 18vw;
   height: 7%;
   border-radius: 10px;
@@ -53,11 +53,12 @@ margin-top: 10%;
   font-family: "Krub", sans-serif;
   font-size: 20px;
   background-color: #064547;
- 
+
   &:hover {
     background-color: #062f30;
     cursor: pointer;
-  }`;
+  }
+`;
 
 export const Attractions = styled.h1`
   margin: 0;
@@ -108,14 +109,12 @@ export const Item = styled.div`
   height: auto;
   background-color: #ffffff96;
   border-radius: 15px;
-  
 `;
 export const ItemwrapperAttr = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 1.5em;
-  
 `;
 
 export const ItemwrapperAdd = styled.div`
@@ -215,10 +214,7 @@ export const Description = styled.div`
   font-family: "Krub", sans-serif;
   font-size: 11px;
   width: 218px;
-  
-  
 `;
-
 
 export const Readmore = styled.span`
   margin-left: 350px;

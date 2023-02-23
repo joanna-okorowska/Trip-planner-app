@@ -1,4 +1,4 @@
-import { Navbar } from "./navbar";
+import { VenuesModal } from "./VenuesModal";
 import {
   Container,
   Wrapper,
@@ -29,7 +29,7 @@ import {
   AddTitle,
   AddPhoto,
   AddInfo,
-  Description
+  Description,
 } from "../Styles/Venues-styled";
 import {
   doc,
@@ -60,7 +60,7 @@ const docRef = await getDocs(citiesRef);
 
 export function Venues() {
   let info: DocumentData[] = [];
-  let {tripId, tripName} = useParams();
+  let { tripId, tripName } = useParams();
 
   let all: { description: any; name: any; photo: any } = {
     description: null,
@@ -79,44 +79,42 @@ export function Venues() {
     navigate("/create-new-trip");
   };
 
-
   const mapVenues = info.map(({ description, name, photo }) => {
     const [show, setShow] = useState<boolean>(false);
     return (
-    <Item key={name}>
-      <Info>
-        <TitleContainer>
-          <Title>{name}</Title>
-          <Icon
-            src="src/assets/Add.png"
+      <Item key={name}>
+        <Info>
+          <TitleContainer>
+            <Title>{name}</Title>
+            <Icon
+              src="src/assets/Add.png"
+              onClick={() => {
+                const posts = JSON.stringify(added);
+                const post = JSON.stringify(description);
+                if (posts.includes(post)) {
+                  alert("Place already added!");
+                } else {
+                  all = { description, name, photo };
+                  setAdded((current) => [...current, all]);
+                }
+              }}
+            ></Icon>
+          </TitleContainer>
+          <Photo
+            src={photo}
             onClick={() => {
-              const posts = JSON.stringify(added);
-              const post = JSON.stringify(description);
-              if (posts.includes(post)) {
-                alert("Place already added!");
-              } else {
-                all = { description, name, photo };
-                setAdded((current) => [...current, all]);
-              }
+              console.log(added, all);
+              setShow(!show);
             }}
-          ></Icon>
-        </TitleContainer>
-        <Photo
-          src={photo}
-          onClick={() => {
-            console.log(added, all);
-            setShow(!show)
-          }}
-        ></Photo>
-        <Description>{show && <div>{description}</div>}</Description>
-      </Info>
-    </Item>)
-});
+          ></Photo>
+        </Info>
+      </Item>
+    );
+  });
 
   let remove = null;
 
   const mapAdded = added.map(({ name, photo }) => (
-    
     <Item key={name}>
       <AddInfo>
         <IconContainer>
@@ -146,7 +144,8 @@ export function Venues() {
   return (
     <>
       <Background>
-          {tripId}:{tripName}
+        {show && <VenuesModal />}
+        {tripId}:{tripName}
         <Container>
           <AttractionContainer>
             <AttBox>

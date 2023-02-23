@@ -15,23 +15,18 @@ import { FormEvent, useEffect, useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../firebase-config";
 import {
-  collection,
-  updateDoc,
-  getDocs,
   setDoc,
   doc,
-  limit,
-  query,
-  where,
 } from "firebase/firestore";
 import { TripContext } from "../Provider/TripProvider";
+import { NameTripModal } from "./NameTripModal";
 
 export function CityPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [show, setShow] = useState(false);
-  const [tripName, setTripName] = useState("");
+  const [showTripModal, setShowTripModal] = useState(false);
+  const navigate = useNavigate();
+  const handleCloseTripModal = () => setShowTripModal(false);
+  const handleShowTripModal = () => setShowTripModal(true);
 
   const { user, setUser, trips, setTrips, setTripsName, tripsName } =
     useContext(TripContext);
@@ -42,24 +37,30 @@ export function CityPage() {
   console.log(trips);
   console.log(user);
 
-  async function SetTitle() {
+  
+  const handleSaveTripModal = async (tripName: string) => {
     const id = uuidv4();
     //aktualizacja bazy danych
     if (tripName?.trim()) {
+      const id = uuidv4();
+      const docRef = doc(db, "Users", user || "");
+
       try {
         await setDoc(docRef, {
           Trips: [
             ...trips,
             { title: tripName, city: "Funcial", id: id || "", attractions: [] },
           ],
+          
         });
         //aktualizacja contextu
         setTrips([
           ...trips,
           { title: tripName, city: "Funcial", id: id || "", attractions: [] },
+          
         ]);
 
-        handleClose();
+        handleCloseTripModal();
         navigate(`/venues/${id}`, { relative: "path" });
       } catch (error) {
         console.log(error);
@@ -67,9 +68,7 @@ export function CityPage() {
     }
   }
 
-  const navigate = useNavigate();
   const handleTripNameChange = (event: FormEvent<HTMLInputElement>) => {
-    setTripName(event.currentTarget.value);
     setTripsName(event.currentTarget.value);
   };
 
@@ -88,7 +87,7 @@ export function CityPage() {
           type="button"
           disabled={!isLoggedIn}
           title={!isLoggedIn ? "You must be logged in!" : undefined}
-          onClick={() => handleShow()}>
+          onClick={() => handleShowTripModal()}>
           Create Your Trip
         </ButtonTrp>
         <TxtContainer>
@@ -192,6 +191,7 @@ export function CityPage() {
           <ImgF src="src/assets/city page/funchal3.jpg" />
         </ContainerF>
       </ContAll>
+      <NameTripModal show={showTripModal} handleClose={handleCloseTripModal} handleSave={handleSaveTripModal} />
     </PageContainer>
   );
 }

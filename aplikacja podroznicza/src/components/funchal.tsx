@@ -10,12 +10,9 @@ import {
   ContainerF,
   ContAll,
 } from "../Styles/funchal.styled";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link, useParams} from "react-router-dom";
 import { FormEvent, useEffect, useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { db } from "../firebase-config";
 import {
   collection,
@@ -27,8 +24,6 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import { TripContext } from "../Provider/TripProvider";
 
 export function CityPage() {
@@ -194,23 +189,6 @@ export function CityPage() {
           <ImgF src="src/assets/city page/funchal3.jpg" />
         </ContainerF>
       </ContAll>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>New Trip</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Please name your trip:</p>
-          <input type="text" value={tripName} onChange={handleTripNameChange} />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={() => SetTitle()}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </PageContainer>
   );
 }

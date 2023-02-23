@@ -46,7 +46,6 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { TripContext } from "../Provider/TripProvider";
 // import { trips } from "./funchal";
-import Modal from 'react-modal';
 
 interface ICity {
   description: any;

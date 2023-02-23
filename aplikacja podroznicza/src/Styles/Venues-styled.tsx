@@ -143,6 +143,9 @@ export const Photo = styled.img`
   width: 218px;
   margin-top: 10px;
   position: relative;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const AddPhoto = styled.img`

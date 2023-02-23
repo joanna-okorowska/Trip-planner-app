@@ -1,30 +1,49 @@
 import {
-  Background,
   Photo,
   Title,
   Description,
   Container,
   TextArea,
   Duration,
+  X
 } from "../Styles/VenuesModal-styled";
+import Modal from 'react-modal';
 
-export function VenuesModal() {
+
+interface VenuesModalProps {
+  name: string;
+  photo: string;
+  description: string;
+  duration: string;
+  isOpen: boolean;
+  setShow: (show:boolean) => void;
+}
+
+export function VenuesModal({name, photo, description, duration, isOpen, setShow}:VenuesModalProps) {
+
+const ModalStyles = {
+  content: {
+    overflow: "hidden",
+    background: "transparent"
+  }
+}
+
   return (
-    <Background>
+    <Modal
+    isOpen={isOpen}
+    style={ModalStyles}
+   >
       <Container>
-        <Photo />
+      <X onClick={()=>setShow(false)}>X</X>
+        <Photo src={photo}></Photo>
         <TextArea>
-          <Title>Pico do Ariero</Title>
+          <Title>{name}</Title>
           <Description>
-            Pico do Arieiro is the 3rd highest peak in Madeira at 1,818m above
-            sea level, and Pico Ruivo is a whopping 1,862m high and is the
-            highest peak on the island. This hike offers insane views of
-            Madeira’s beautiful mountains and rocky volcanic landscape along the
-            whole trail.
+            {description}
           </Description>
-          <Duration>Duration: 7h</Duration>
+          <Duration>Duration: {duration}</Duration>
         </TextArea>
       </Container>
-    </Background>
+    </Modal>
   );
 }

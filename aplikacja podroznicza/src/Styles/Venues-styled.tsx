@@ -19,7 +19,7 @@ export const Container = styled.div`
 `;
 export const AttractionContainer = styled.div`
   padding: 10px 20px 20px 20px;
-  margin: 80px 20px 20px 20px;
+  margin: 120px 20px 20px 20px;
   background-color: #ffffff3c;
   border-radius: 25px;
   width: 80%;
@@ -31,7 +31,7 @@ export const AttractionContainer = styled.div`
 `;
 export const AddContainer = styled.div`
   padding: 10px 20px 20px 20px;
-  margin: 80px 20px 20px 20px;
+  margin: 120px 20px 20px 20px;
   background-color: #ffffff3c;
   border-radius: 25px;
   width: 20%;

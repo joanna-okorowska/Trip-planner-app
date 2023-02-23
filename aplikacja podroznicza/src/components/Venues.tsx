@@ -43,6 +43,7 @@ import { useState } from "react";
 import { Interface } from "node:readline/promises";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import Modal from 'react-modal';
 
 interface ICity {
   description: any;
@@ -69,6 +70,8 @@ export function Venues() {
   };
 
   const [added, setAdded] = useState<ICity[]>([]);
+  const [show, setShow] = useState<boolean>(false);
+  const [attraction, setAttraction] = useState<DocumentData | null>(null);
 
   docRef.forEach((doc) => {
     info.push(doc.data());
@@ -79,9 +82,9 @@ export function Venues() {
     navigate("/create-new-trip");
   };
 
-  const mapVenues = info.map(({ description, name, photo }) => {
-    const [show, setShow] = useState<boolean>(false);
+  const mapVenues = info.map(({ description, name, photo, duration }) => {
     return (
+      <>
       <Item key={name}>
         <Info>
           <TitleContainer>
@@ -105,10 +108,13 @@ export function Venues() {
             onClick={() => {
               console.log(added, all);
               setShow(!show);
+              setAttraction({name, photo, description, duration});
             }}
           ></Photo>
         </Info>
       </Item>
+      
+      </>
     );
   });
 
@@ -144,7 +150,7 @@ export function Venues() {
   return (
     <>
       <Background>
-        {show && <VenuesModal />}
+      {attraction && <VenuesModal name={attraction.name} photo={attraction.photo} description={attraction.description} duration={attraction.duration} isOpen={show} setShow={setShow}/>}
         {tripId}:{tripName}
         <Container>
           <AttractionContainer>

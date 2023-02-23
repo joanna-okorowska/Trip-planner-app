@@ -46,7 +46,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { TripContext } from "../Provider/TripProvider";
 // import { trips } from "./funchal";
-import Modal from 'react-modal';
+
 
 interface ICity {
   description: any;
@@ -64,9 +64,9 @@ const docRef = await getDocs(citiesRef);
 
 export function Venues() {
   let info: DocumentData[] = [];
-  let {  tripId, tripName  } = useParams();
+  let { tripId, tripName } = useParams();
   const [attractions, setAttractions] = useState<any[]>([]);
-
+  const id = tripId;
   let all: { description: any; name: any; photo: any } = {
     description: null,
     name: null,
@@ -84,7 +84,8 @@ export function Venues() {
   const navigate = useNavigate();
   const navigateToCreateTrip = () => {
     SentAttractionsToFire();
-    navigate("/create-new-trip/:tripId");
+    navigate(`/create-new-trip/${id}`, { relative: "path" });
+
     console.log(attractions);
     setAttractions([]);
   };
@@ -123,43 +124,42 @@ export function Venues() {
   const mapVenues = info.map(({ description, name, photo, duration }) => {
     return (
       <>
-      <Item key={name}>
-        <Info>
-          <TitleContainer>
-            <Title>{name}</Title>
-            <Icon
-              src="src/assets/Add.png"
+        <Item key={name}>
+          <Info>
+            <TitleContainer>
+              <Title>{name}</Title>
+              <Icon
+                src="src/assets/Add.png"
+                onClick={() => {
+                  const posts = JSON.stringify(added);
+                  const post = JSON.stringify(description);
+                  setAttractions([
+                    ...attractions,
+                    {
+                      description: description,
+                      name: name,
+                      photo: photo,
+                    },
+                  ]);
+                  if (posts.includes(post)) {
+                    alert("Place already added!");
+                  } else {
+                    all = { description, name, photo };
+                    setAdded((current) => [...current, all]);
+                  }
+                }}
+              ></Icon>
+            </TitleContainer>
+            <Photo
+              src={photo}
               onClick={() => {
-                const posts = JSON.stringify(added);
-                const post = JSON.stringify(description);
-                setAttractions([
-                  ...attractions,
-                  {
-                    description: description,
-                    name: name,
-                    photo: photo,
-                  },
-                ]);
-                if (posts.includes(post)) {
-                  alert("Place already added!");
-                } else {
-                  all = { description, name, photo };
-                  setAdded((current) => [...current, all]);
-                }
+                console.log(added, all);
+                setShow(!show);
+                setAttraction({ name, photo, description, duration });
               }}
-            ></Icon>
-          </TitleContainer>
-          <Photo
-            src={photo}
-            onClick={() => {
-              console.log(added, all);
-              setShow(!show);
-              setAttraction({name, photo, description, duration});
-            }}
-          ></Photo>
-        </Info>
-      </Item>
-      
+            ></Photo>
+          </Info>
+        </Item>
       </>
     );
   });
@@ -177,14 +177,16 @@ export function Venues() {
               setAdded((current) =>
                 current.filter((venue) => venue.name !== name)
               );
-            }}></Icon>
+            }}
+          ></Icon>
         </IconContainer>
         <Bg>
           <AddPhoto
             src={photo}
             onClick={() => {
               console.log(added);
-            }}></AddPhoto>
+            }}
+          ></AddPhoto>
           <AddTitle>{name}</AddTitle>
         </Bg>
       </AddInfo>
@@ -194,7 +196,16 @@ export function Venues() {
   return (
     <>
       <Background>
-      {attraction && <VenuesModal name={attraction.name} photo={attraction.photo} description={attraction.description} duration={attraction.duration} isOpen={show} setShow={setShow}/>}
+        {attraction && (
+          <VenuesModal
+            name={attraction.name}
+            photo={attraction.photo}
+            description={attraction.description}
+            duration={attraction.duration}
+            isOpen={show}
+            setShow={setShow}
+          />
+        )}
         {tripId}:{tripName}
         <Container>
           <AttractionContainer>

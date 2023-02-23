@@ -1,35 +1,48 @@
 
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase-config";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState, ChangeEvent } from "react";
+import { Outlet, useNavigate, useParams  } from "react-router-dom";
 import {
     BoxList,
     Global,
     Title,
     TripContainer,
-    Boxnavbar,
-    Navbar,
-    Mytrip,
-    Createtrip,
-    Logout,
-    Icon,
-    Boxitem,
-    Buttonedit
-    
-    
+    BoxButton,
+    AddTripsContainer,
+    TripListController,
+    TripListCheckbox,
+    TripListWrapper,
+    TripListItem,
+    TripList,
+    TripListItemWrapper,
+    ModalContent
   } from "../Styles/Mytrippage.styled";
   import { TripDay } from "./tripday";
+  import { Modal } from './Modal';
+import { Dispatch } from "react";
+import { SetStateAction } from "react";
 
   interface IMytrippage {
-    currentTrip: {day_1: [], day_2: [], day_3: [], day_4: [], day_5: [], day_6: []}
+    currentTrip: IItem[][],
+    setCurrentTrip: Dispatch<SetStateAction<IItem[][]>>
+  }
+
+  interface IItem {
+    id: string,
+    name: string,
+    selected: boolean
+  }
+
+  interface IAddTrips {
+    items: IItem[],
+    currentTrip: IItem[][],
+    setCurrentTrip: Dispatch<SetStateAction<IItem[][]>>
   }
   
-  
-  export function Mytrippage({currentTrip} : IMytrippage) {
+  export function Mytrippage({currentTrip, setCurrentTrip} : IMytrippage) {
     const [selectedDay, setSelectedDay] = useState("");
-    const [daysListNumber, setDaysListNumber] = useState<number[]>([1]);
-    let [daysCount, setDaysCount] = useState(1);
+
     const navigate = useNavigate();
   const navigatetologin= () => {
     navigate("/signIn");
@@ -38,22 +51,13 @@ import {
     navigate("/create-new-trip");
   };
 
-  const dayNumberList = () => {
-    const list =[];
-    for(let i = 1; i <= daysCount; i++){
-      list.push(i);
-    }
-    return [...list];
-  }
-
   const handleIncreaseDays = () => {
-    daysListNumber.push(daysListNumber.length + 1);
-    setDaysListNumber([...daysListNumber]);
+    currentTrip.push([]);
+    setCurrentTrip([...currentTrip]);
   }
 
-  const handleDecreaseDays = () => {
-    daysListNumber.pop();
-    setDaysListNumber([...daysListNumber]);
+  const handleDelete = (dayIndex: number) => {
+    setCurrentTrip(currentTrip.filter((item, index) => index !== dayIndex));
   }
 
     return (
@@ -62,18 +66,117 @@ import {
         <Global />
           <Title>Plan my trip</Title>
         <BoxList>
-          {daysListNumber.map(number => {
+          {currentTrip.map((items, index) => {
               return (
-                <TripDay key={number} dayNo={number.toString()} selectedDay={selectedDay} setSelectedDay={setSelectedDay} items={[]}>
-                    
+                <TripDay key={index + 1} 
+                        dayNo={(index + 1).toString()} 
+                        selectedDay={selectedDay} 
+                        setSelectedDay={setSelectedDay} 
+                        items={items} 
+                        onDelete={() => handleDelete(index)}
+                        deleteDisabled={currentTrip.length === 1}
+                >
                 </TripDay>
               )
           })}
             <div>
-              <button onClick={handleIncreaseDays}>+</button>
-              {daysListNumber.length > 1 && <button onClick={handleDecreaseDays}>-</button>}
+             <BoxButton onClick={handleIncreaseDays}>+</BoxButton>
             </div>
         </BoxList>
+        <Outlet />
       </TripContainer>
     );
+  }
+
+  export const AddTrips = ({items, currentTrip, setCurrentTrip}:IAddTrips) => {
+    const [selectedTrips, setSelectedTrips] = useState<IItem[]>([]);
+    const navigate = useNavigate();
+    let { day } = useParams();
+
+    const handleChange = (e : ChangeEvent<HTMLInputElement>, item : IItem) => {
+      const value = e.target.checked;
+      item.selected = value;
+      if(value === true){
+          const _selectedTrips = [
+              ...selectedTrips,
+              item
+          ]
+          setSelectedTrips(_selectedTrips);
+      }else{
+          const _selectedTrips = selectedTrips.filter(tripToRemove => tripToRemove.id !== item.id);
+          setSelectedTrips(_selectedTrips);
+      }
+  }
+
+
+
+  const handleBack = () => {
+    navigate('/creator');
+  }
+
+  const handleAddTo = () => {
+    let reg = /^\d+$/;
+    day = day || '';
+    if(reg.test(day)){
+      currentTrip[parseInt(day) - 1] = selectedTrips;
+      setCurrentTrip([...currentTrip]);
+    }
+    navigate('/creator');
+  }
+
+  const getDayNumber = () => {
+    let reg = /^\d+$/;
+    day = day || '';
+    return parseInt(day);
+  }
+
+  const processItems = () => {
+    items.forEach(item => {
+      const selectedTrip = selectedTrips.find(trip => trip.id === item.id);
+      if(selectedTrip){
+        item.selected = selectedTrip.selected;
+      }
+    });
+    return items;
+  }
+
+  useEffect(() => {
+    setSelectedTrips([...currentTrip[getDayNumber() - 1]]);
+  }, [])
+
+  console.log(processItems())
+
+    return (
+      <Modal className="portal" element="div">
+        <AddTripsContainer>
+          <h3>Add trips</h3>
+          <ModalContent>
+          <TripList>
+              {items && processItems().map(item => {
+                const { id, name, selected } = item;
+                return (
+                  <li key={id}>
+                  <TripListController>
+                      <TripListCheckbox type="checkbox" checked={selected} onChange={(e) => handleChange(e, item)}></TripListCheckbox>
+                      <TripListItem>
+                          <span>{name}</span>
+                      </TripListItem>
+                  </TripListController>
+              </li>
+                )
+              })}
+            </TripList>
+            <div>
+              <button onClick={handleBack}>
+                  Back
+              </button>
+              <button onClick={handleAddTo}>
+                  Add to 
+              </button>
+            </div>
+          </ModalContent>
+        
+        </AddTripsContainer>
+      </Modal>
+    )
   }

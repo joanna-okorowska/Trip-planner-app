@@ -17,9 +17,14 @@ import { CityPage } from "./components/funchal";
 import { Mytrippage } from "./components/Mytrippage";
 import { useTrip } from "./components/hooks/useTrip";
 import { MyTrips } from "./components/myTrips";
+import { AddTrips } from "./components/Mytrippage";
 
 function App() {
-  const { currentTrip, addToTrip } = useTrip();
+  const { currentTrip, setCurrentTrip } = useTrip();
+  const fakeItems = [
+    {id: '1', name: 'Trip example'},
+    {id: '2', name: 'Trip example'},
+  ]
   return (
     <HashRouter>
       <Wrapper>
@@ -29,17 +34,13 @@ function App() {
           <Route path="/signUp" element={<Register />} />
           <Route path="/signIn" element={<Login />} />
           <Route path="/main" element={<Main />} />
-          <Route
-            path="/create-new-trip"
-            element={
-              <CreateTrip currentTrip={currentTrip} addToTrip={addToTrip} />
-            }
-          />
           <Route path="/funchal" element={<CityPage/>}/>
           <Route
-            path="/mytrippage"
-            element={<Mytrippage currentTrip={currentTrip} />}
-          />
+            path="/creator"
+            element={<Mytrippage currentTrip={currentTrip} setCurrentTrip={setCurrentTrip}/>}
+            >
+                <Route path=":day/add-trips" element={<AddTrips items={fakeItems} currentTrip={currentTrip} setCurrentTrip={setCurrentTrip}/>} />
+            </Route>
           <Route path="/nav" element={<Navbar />} />
           <Route path="/explore" element={<Explore />} />
           {/* <Route path="/video" element={<VideoBackground />} /> */}

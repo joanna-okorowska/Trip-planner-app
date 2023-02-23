@@ -19,7 +19,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-export function CityPage() {
+export function CityPage(): JSX.Element {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);

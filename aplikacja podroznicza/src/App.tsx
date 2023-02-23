@@ -28,6 +28,7 @@ import {
 } from "firebase/firestore";
 import { TripContext } from "./Provider/TripProvider";
 import { MyTrips } from "./components/myTrips";
+import { AddTrips } from "./components/Mytrippage";
 
 function App() {
   const { currentTrip, addToTrip } = useTrip();
@@ -57,6 +58,11 @@ function App() {
     });
   }, [setUser, setTrips]);
 
+ 
+  const fakeItems = [
+    {id: '1', name: 'Trip example'},
+    {id: '2', name: 'Trip example'},
+  ]
   return (
     <HashRouter>
       <Wrapper>
@@ -75,9 +81,11 @@ function App() {
           <Route path="/myTrips" element={<MyTrips />} />
           <Route path="/funchal" element={<CityPage />} />
           <Route
-            path="/mytrippage"
-            element={<Mytrippage currentTrip={currentTrip} />}
-          />
+            path="/creator"
+            element={<Mytrippage currentTrip={currentTrip} setCurrentTrip={setCurrentTrip}/>}
+            >
+                <Route path=":day/add-trips" element={<AddTrips items={fakeItems} currentTrip={currentTrip} setCurrentTrip={setCurrentTrip}/>} />
+            </Route>
           <Route path="/nav" element={<Navbar />} />
           <Route path="/venues/:tripId" element={<Venues />} />
           <Route path="/explore" element={<Explore />} />

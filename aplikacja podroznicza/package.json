@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gaearon/react-collapsed": "^3.3.0-patched-react-18",
     "@types/uuid": "^9.0.1",
     "firebase": "^9.17.1",
     "react": "^18.2.0",

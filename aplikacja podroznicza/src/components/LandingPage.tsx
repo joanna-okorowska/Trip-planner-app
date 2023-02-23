@@ -26,6 +26,7 @@ export function LandingPage() {
 
   const navigateToMain = () => {
     navigate("/main");
+    localStorage.setItem("isLogged", "false");
   };
 
   return (

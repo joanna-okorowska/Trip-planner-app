@@ -72,6 +72,7 @@ function App() {
               <CreateTrip currentTrip={currentTrip} addToTrip={addToTrip} />
             }
           />
+          <Route path="/myTrips" element={<MyTrips />} />
           <Route path="/funchal" element={<CityPage />} />
           <Route
             path="/mytrippage"

@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
 body {
-    background-image: url("src/assets/Background2.jpg");
+    /* background-image: url("src/assets/Background2.jpg"); */
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
@@ -91,16 +91,17 @@ type photoProps = {
 export const City = styled.div<photoProps>`
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(${(props) => props.photo});
-  &:hover {cursor: pointer;
+  &:hover {
+    cursor: pointer;
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-      url(${(props) => props.photo});}
+      url(${(props) => props.photo});
+  }
   height: 186px;
   width: 260px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-
 
 export const Name = styled.h2`
   color: white;

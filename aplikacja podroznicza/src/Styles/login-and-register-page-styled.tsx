@@ -14,137 +14,134 @@ export const Global = createGlobalStyle`
    align-items: center;
    height: 100vh;
   }
-
-  form {
-    display: flex;
-    flex-direction:column;
-    width: 320px;
-  }
 `;
 export const Container = styled.div`
-  height: 550px;
-  width: 380px;
+  height: 700px;
+  width: 500px;
   background-color: white;
-  border-radius: 20px;
-  box-shadow: 0px 0px 31px 22px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
+  border-radius: 30px;
+  -webkit-box-shadow: 1px 3px 24px 0px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 1px 3px 24px 0px rgba(66, 68, 90, 1);
+  box-shadow: 1px 3px 24px 0px rgba(66, 68, 90, 1);
 `;
 export const Logintxt = styled.span`
   font-family: "Domine", serif;
-  font-size: 30px;
-  margin-bottom: 20px;
-  margin-top: 40px;
+  font-size: 35px;
+  padding-top: 50px;
+  margin-left: 70px;
+  margin-right: 30px;
   display: block;
-  color: #064547;
-  text-align: center;
+  color: black;
 `;
 export const Field = styled.input`
-  width: 100%;
-  height: 100%;
-  background-color: white;
+  margin-left: 70px;
+  width: 350px;
+  height: 50px;
+  background-color: #9e9e9e;
   border-radius: 10px;
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
   border-bottom-style: hidden;
-  color: #064547;
+  color: white;
   font-family: "Krub", sans-serif;
-  font-size: 16px;
+  font-size: 20px;
 `;
-
-export const Fieldset = styled.fieldset`
-  border-radius: 5px;
+export const Name = styled.label`
+  margin-left: 80px;
   font-family: "Krub", sans-serif;
-  width: 100%;
-  color: #478587;
-  box-sizing: border-box;
-  font-size: 13px;
+  font-size: 20px;
+  margin-bottom: -12px;
+  display: block;
+  margin-top: 30px;
+  color: black;
 `;
-
-
 export const Button = styled.input`
-  width: 100%;
+  margin-top: 50px;
+  margin-left: 70px;
+  width: 355px;
   height: 50px;
-  margin: 30px 0;
   background-color: #9e9e9e;
   border-radius: 10px;
   border-style: hidden;
   color: white;
   font-family: "Krub", sans-serif;
-  font-size: 15px;
+  font-size: 20px;
   background-color: #064547;
+  box-shadow: 0px 0px 24px 8px rgba(0, 0, 0, 0.42);
   &:hover {
     background-color: #062f30;
     cursor: pointer;
   }
 `;
 export const Line = styled.div`
-  background-color: #062f30;
-  height: 0.5px;
+  background-color: black;
+  height: 1px;
   width: 100px;
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 `;
 export const Separator = styled.div`
+  margin-top: 50px;
+  margin-left: 55px;
   display: flex;
-  align-items: center;
 `;
-
-export const QuickSignIn = styled.div`
-  margin-top: 10px;
-  width: 320px;
-`
-
-
 export const Septxt = styled.span`
   font-family: "Domine", serif;
-  color:#062f30;
-  margin: 10px 5px;
-  font-size: 13px;
+  color: black;
 `;
 export const Google = styled.button`
   display: block;
-  width: 100%;
+  width: 355px;
   height: 50px;
+  left: 542px;
+  top: 556px;
   border-style: hidden;
-  background: #b62525;
+  background: #b60000;
   border-radius: 10px;
-  margin-top: 10px;
+  margin-left: 70px;
+  margin-top: 30px;
   color: white;
   font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   &:hover {
-    background-color:  #991616;
+    background-color: #670000;
     cursor: pointer;
   }
 `;
 export const Facebook = styled.button`
-  margin-top: 20px;
+  margin-top: 30px;
   display: block;
-  width: 100%;
+  width: 355px;
   height: 50px;
+  left: 542px;
+  top: 556px;
   border-style: hidden;
-  background: #253791;
+  background: #0125a8;
   border-radius: 10px;
+  margin-left: 70px;
   color: white;
   font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   &:hover {
-    background-color: #162575;
+    background-color: #001049;
     cursor: pointer;
   }
 `;
 export const Gglimg = styled.img`
   height: 30px;
   width: 30px;
-  
+  margin-right: 20px;
+  margin-left: -20px;
 `;
+export const Txt = styled.a``;
 export const Fbimg = styled.img`
   height: 30px;
   width: 30px;
+  margin-right: 20px;
 `;

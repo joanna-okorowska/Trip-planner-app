@@ -4,17 +4,17 @@ import {
   Global,
   Container,
   Logintxt,
-  Fieldset,
+  Name,
   Field,
   Button,
   Separator,
   Line,
   Septxt,
+  Google,
   Gglimg,
-  Fbimg,
-  QuickSignIn,
+  Txt,
   Facebook,
-  Google
+  Fbimg,
 } from "../Styles/login-and-register-page-styled";
 import React, { useContext, useEffect, useState } from "react";
 import { auth } from "../firebase-config";
@@ -61,38 +61,38 @@ export function Login(): JSX.Element {
     <div>
       <Global />
       <Container>
-        <Logintxt>Sign In</Logintxt>
+        <Logintxt>Sign In To TripTastic:</Logintxt>
         <form onSubmit={login}>
-        <Fieldset>
-            <legend>email:</legend>
-            <Field onChange={(event) => {
+          <Name>e-mail:</Name>
+          <br />
+          <Field
+            onChange={(event) => {
               setLoginEmail(event.target.value);
-            }}/>
-        </Fieldset>
-        <br/>
-        <Fieldset>
-            <legend>password:</legend>
-            <Field type={"password"}
+            }}
+          />
+          <br />
+          <Name>password:</Name>
+          <br />
+          <Field
+            type={"password"}
             onChange={(event) => {
               setLoginPassword(event.target.value);
-            }}/>
-        </Fieldset>
-        
-        <Button type="submit" value="Sign In" />
+            }}></Field>
+          <br />
+          <Button type="submit" value="Sign In" />
         </form>
         <Separator>
           <Line></Line>
-          <Septxt>Quick sign in with:</Septxt>
+          <Septxt>You Can Also:</Septxt>
           <Line></Line>
         </Separator>
-          <QuickSignIn>
-          <Google>
+        <Google>
           <Gglimg src="src/assets/Google.png"></Gglimg>
-          </Google>
-          <Facebook>
-          <Fbimg src="src/assets/Facebook.png"></Fbimg>
-          </Facebook>
-          </QuickSignIn>
+          <Txt>Sign In With Google</Txt>
+        </Google>
+        <Facebook>
+          <Fbimg src="src/assets/Facebook.png"></Fbimg>Sign In With Facebook
+        </Facebook>
       </Container>
     </div>
   );

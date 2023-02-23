@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
 body {
-    /* background-image: url("src/assets/Background2.jpg"); */
+    background-image: url("src/assets/Background2.jpg");
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;

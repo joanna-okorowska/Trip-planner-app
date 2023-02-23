@@ -87,33 +87,3 @@ export const VideoYouTubeBackground = styled.iframe`
   height: 100vh;
   transform: scale(1.5);
 `;
-
-/* 
-@media (min-aspect-ratio: 16/9) {
-    :root {
-        --video-height: 56.25vw;
-    }
-}
-
-@media (max-aspect-ratio: 16/9) {
-    :root {
-        --video-width: 177.78vh;
-    }
-} */
-
-// .youtube-container {
-// 	overflow: hidden;
-// 	width: 100%;
-// 	/* Keep it the right aspect-ratio */
-// 	aspect-ratio: 16/9;
-// 	/* No clicking/hover effects */
-// 	pointer-events: none;
-
-// 	iframe {
-// 		/* Extend it beyond the viewport... */
-// 		width: 300%;
-// 		height: 100%;
-// 		/* ...and bring it back again */
-// 		margin-left: -100%;
-// 	}
-// }

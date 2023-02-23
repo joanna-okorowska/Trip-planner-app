@@ -39,7 +39,7 @@ import {
   DocumentData,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Interface } from "node:readline/promises";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -79,7 +79,7 @@ export function Venues() {
   //wywoluje funkcje SentAttractionsToFire-----
   const navigate = useNavigate();
   const navigateToCreateTrip = () => {
-    // SentAttractionsToFire();
+    SentAttractionsToFire();
     navigate("/create-new-trip/:tripId");
     console.log(attractions);
     setAttractions([]);
@@ -89,29 +89,32 @@ export function Venues() {
   const { user, setUser, trips, setTrips, tripsName, setTripsName } =
     useContext(TripContext);
   console.log(user);
-  const docRefi = doc(db, "Users", user || "");
-  getDoc(docRefi);
 
-  // const params = useParams();
-  // console.log(trips);
-  // console.log(user);
-  // async function SentAttractionsToFire() {
-  //   //aktualizacja bazy danych
-  //   if (attractions) {
-  //     const index = trips.findIndex((i) => i.id === params.tripId);
-  //     if (trips[index].attractions.length > 0) {
-  //       trips[index].attractions.push(attractions);
-  //     }
-  //     trips[index].attractions = attractions;
-  //     try {
-  //       await setDoc(docRefi, {
-  //         Trips: trips,
-  //       });
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  // }
+  // useEffect(() => {
+  //   const docRefi = doc(db, "Users", user || "");
+  //   const result = getDoc(docRefi);
+  // }, []);
+
+  const params = useParams();
+  async function SentAttractionsToFire() {
+    const docRefi = doc(db, "Users", user || "");
+    //aktualizacja bazy danych
+    if (attractions) {
+      const index = trips.findIndex((i) => i.id === params.tripId);
+      if (trips[index].attractions?.length > 0) {
+        trips[index].attractions.push(attractions);
+      }
+      trips[index].attractions = attractions;
+      console.log(trips);
+      try {
+        await setDoc(docRefi, {
+          Trips: trips,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
   const mapVenues = info.map(({ description, name, photo }) => {
     return (

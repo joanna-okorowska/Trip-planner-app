@@ -57,12 +57,24 @@ const navigate = useNavigate();
       <TripContent>
         <div>
           <BoxList>
-            <CreateTripDay dayNo="1" setSelectedDay={setSelectedDay} selectedDay={selectedDay}></CreateTripDay>
-            <CreateTripDay dayNo="2" setSelectedDay={setSelectedDay} selectedDay={selectedDay}></CreateTripDay>
-            <CreateTripDay dayNo="3" setSelectedDay={setSelectedDay} selectedDay={selectedDay}></CreateTripDay>
-            <CreateTripDay dayNo="4" setSelectedDay={setSelectedDay} selectedDay={selectedDay}></CreateTripDay>
-            <CreateTripDay dayNo="5" setSelectedDay={setSelectedDay} selectedDay={selectedDay}></CreateTripDay>
-            <CreateTripDay dayNo="6" setSelectedDay={setSelectedDay} selectedDay={selectedDay}></CreateTripDay>
+            <CreateTripDay dayNo="1" setSelectedDay={setSelectedDay} selectedDay={selectedDay}>
+                rgr
+            </CreateTripDay>
+            <CreateTripDay dayNo="2" setSelectedDay={setSelectedDay} selectedDay={selectedDay}>
+
+            </CreateTripDay>
+            <CreateTripDay dayNo="3" setSelectedDay={setSelectedDay} selectedDay={selectedDay}>
+
+            </CreateTripDay>
+            <CreateTripDay dayNo="4" setSelectedDay={setSelectedDay} selectedDay={selectedDay}>
+
+            </CreateTripDay>
+            <CreateTripDay dayNo="5" setSelectedDay={setSelectedDay} selectedDay={selectedDay}>
+
+            </CreateTripDay>
+            <CreateTripDay dayNo="6" setSelectedDay={setSelectedDay} selectedDay={selectedDay}>
+
+            </CreateTripDay>
           </BoxList>
           <button className="Buttongototrip" onClick={() => navigate('/mytrippage')}>Go to Your trip</button>
         </div>

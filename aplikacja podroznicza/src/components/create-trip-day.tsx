@@ -8,7 +8,14 @@ import {
 import { Dispatch, SetStateAction } from "react";
 
 
-export function CreateTripDay({ dayNo, setSelectedDay, selectedDay }: { dayNo: string, setSelectedDay: Dispatch<SetStateAction<string>>, selectedDay: string }) {
+interface ICreateTripDay{
+  dayNo: string,
+  setSelectedDay: Dispatch<SetStateAction<string>>,
+  selectedDay: string,
+  children: React.ReactNode
+}
+
+export function CreateTripDay({ dayNo, setSelectedDay, selectedDay, children }: ICreateTripDay) {
 
   const handleClick = () => {
     selectedDay === dayNo ? setSelectedDay("") : setSelectedDay(dayNo);
@@ -20,7 +27,7 @@ export function CreateTripDay({ dayNo, setSelectedDay, selectedDay }: { dayNo: s
         <BoxTitle>{`Day ${dayNo}`}</BoxTitle>
         <BoxSubtitle>What are we doing today?</BoxSubtitle>
       </BoxInfo>
-      <BoxButton onClick={handleClick}>+</BoxButton>
+      {children}
     </Box>
   );
 }

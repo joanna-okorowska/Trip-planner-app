@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import useCollapse from "react-collapsed";
+import useCollapse from "@gaearon/react-collapsed";
 import { useState } from "react";
 import {
   Wrapper,

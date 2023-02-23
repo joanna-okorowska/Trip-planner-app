@@ -74,14 +74,11 @@ function App() {
           />
           <Route path="/myTrips" element={<MyTrips />} />
           <Route path="/funchal" element={<CityPage />} />
-          <Route path="/funchal" element={<CityPage />} />
           <Route
-            path="/mytrippage/"
+            path="/mytrippage"
             element={<Mytrippage currentTrip={currentTrip} />}
           />
           <Route path="/nav" element={<Navbar />} />
-          <Route path="/venues/:tripId" element={<Venues />} />
-          <Route path="/explore" element={<Explore />} />
           <Route path="/venues/:tripId" element={<Venues />} />
           <Route path="/explore" element={<Explore />} />
         </Routes>

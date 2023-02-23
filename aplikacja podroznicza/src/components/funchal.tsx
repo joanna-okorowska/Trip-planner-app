@@ -10,7 +10,7 @@ import {
   ContainerF,
   ContAll,
 } from "../Styles/funchal.styled";
-import { useNavigate, Link, useParams} from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import { FormEvent, useEffect, useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../firebase-config";
@@ -33,23 +33,30 @@ export function CityPage() {
   const [show, setShow] = useState(false);
   const [tripName, setTripName] = useState("");
 
-  const { user, setUser, trips, setTrips } = useContext(TripContext);
+  const { user, setUser, trips, setTrips, setTripsName, tripsName } =
+    useContext(TripContext);
+
   const docRef = doc(db, "Users", user || "");
   const params = useParams();
 
-  async function SetTitle() {
-    //aktualizacja bazy danych
-    const id = uuidv4();
+  console.log(trips);
+  console.log(user);
 
+  async function SetTitle() {
+    const id = uuidv4();
+    //aktualizacja bazy danych
     if (tripName?.trim()) {
       try {
         await setDoc(docRef, {
-          Trips: [...trips, { title: tripName, city: "Funcial", id: id || "" }],
+          Trips: [
+            ...trips,
+            { title: tripName, city: "Funcial", id: id || "", attractions: [] },
+          ],
         });
         //aktualizacja contextu
         setTrips([
           ...trips,
-          { title: tripName, city: "Funcial", id: id || "" },
+          { title: tripName, city: "Funcial", id: id || "", attractions: [] },
         ]);
 
         handleClose();
@@ -63,6 +70,7 @@ export function CityPage() {
   const navigate = useNavigate();
   const handleTripNameChange = (event: FormEvent<HTMLInputElement>) => {
     setTripName(event.currentTarget.value);
+    setTripsName(event.currentTarget.value);
   };
 
   useEffect(() => {

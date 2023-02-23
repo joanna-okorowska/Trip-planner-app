@@ -19,6 +19,14 @@ export const FirstParagraphOnVideo = styled.p`
   background-color: transparent;
   backdrop-filter: blur(20px);
   border-radius: 10%;
+  @media (max-width: 1000px) {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  @media (max-width: 450px) {
+    font-size: 14px;
+    font-weight: 600;
+  }
 `;
 
 export const TextAndButtomOnVideo = styled.div`
@@ -28,6 +36,14 @@ export const TextAndButtomOnVideo = styled.div`
   bottom: 20%;
   left: 10%;
   z-index: 10;
+  @media (max-width: 1000px) {
+    width: 300px;
+    height: 170px;
+  }
+  @media (max-width: 450px) {
+    width: 200px;
+    height: 140px;
+  }
 `;
 
 // (Link w () bo zaciągamy elementu z HTML tylko z reacta)
@@ -53,6 +69,16 @@ export const ButtonExplore = styled.button`
   /* &:active {
     color: red;
   } */
+  @media (max-width: 1000px) {
+    width: 160px;
+    height: 50px;
+    font-size: 22px;
+  }
+  @media (max-width: 450px) {
+    width: 130px;
+    height: 45px;
+    font-size: 17px;
+  }
 `;
 
 export const VideoYouTubeBackground = styled.iframe`
@@ -61,33 +87,3 @@ export const VideoYouTubeBackground = styled.iframe`
   height: 100vh;
   transform: scale(1.5);
 `;
-
-/* 
-@media (min-aspect-ratio: 16/9) {
-    :root {
-        --video-height: 56.25vw;
-    }
-}
-
-@media (max-aspect-ratio: 16/9) {
-    :root {
-        --video-width: 177.78vh;
-    }
-} */
-
-// .youtube-container {
-// 	overflow: hidden;
-// 	width: 100%;
-// 	/* Keep it the right aspect-ratio */
-// 	aspect-ratio: 16/9;
-// 	/* No clicking/hover effects */
-// 	pointer-events: none;
-
-// 	iframe {
-// 		/* Extend it beyond the viewport... */
-// 		width: 300%;
-// 		height: 100%;
-// 		/* ...and bring it back again */
-// 		margin-left: -100%;
-// 	}
-// }

@@ -34,15 +34,18 @@ import {
 import {
   doc,
   getDoc,
+  setDoc,
   collection,
   getDocs,
   DocumentData,
 } from "firebase/firestore";
 import { db } from "../firebase-config";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Interface } from "node:readline/promises";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { TripContext } from "../Provider/TripProvider";
+// import { trips } from "./funchal";
 import Modal from 'react-modal';
 
 interface ICity {
@@ -61,7 +64,8 @@ const docRef = await getDocs(citiesRef);
 
 export function Venues() {
   let info: DocumentData[] = [];
-  let { tripId, tripName } = useParams();
+  let {  tripId, tripName  } = useParams();
+  const [attractions, setAttractions] = useState<any[]>([]);
 
   let all: { description: any; name: any; photo: any } = {
     description: null,
@@ -76,11 +80,45 @@ export function Venues() {
   docRef.forEach((doc) => {
     info.push(doc.data());
   });
-
+  //wywoluje funkcje SentAttractionsToFire-----
   const navigate = useNavigate();
   const navigateToCreateTrip = () => {
-    navigate("/create-new-trip");
+    SentAttractionsToFire();
+    navigate("/create-new-trip/:tripId");
+    console.log(attractions);
+    setAttractions([]);
   };
+
+  // //MOJA CZESC-----------------------
+  const { user, setUser, trips, setTrips, tripsName, setTripsName } =
+    useContext(TripContext);
+  console.log(user);
+
+  // useEffect(() => {
+  //   const docRefi = doc(db, "Users", user || "");
+  //   const result = getDoc(docRefi);
+  // }, []);
+
+  const params = useParams();
+  async function SentAttractionsToFire() {
+    const docRefi = doc(db, "Users", user || "");
+    //aktualizacja bazy danych
+    if (attractions) {
+      const index = trips.findIndex((i) => i.id === params.tripId);
+      if (trips[index].attractions?.length > 0) {
+        trips[index].attractions.push(attractions);
+      }
+      trips[index].attractions = attractions;
+      console.log(trips);
+      try {
+        await setDoc(docRefi, {
+          Trips: trips,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 
   const mapVenues = info.map(({ description, name, photo, duration }) => {
     return (
@@ -94,6 +132,14 @@ export function Venues() {
               onClick={() => {
                 const posts = JSON.stringify(added);
                 const post = JSON.stringify(description);
+                setAttractions([
+                  ...attractions,
+                  {
+                    description: description,
+                    name: name,
+                    photo: photo,
+                  },
+                ]);
                 if (posts.includes(post)) {
                   alert("Place already added!");
                 } else {
@@ -131,16 +177,14 @@ export function Venues() {
               setAdded((current) =>
                 current.filter((venue) => venue.name !== name)
               );
-            }}
-          ></Icon>
+            }}></Icon>
         </IconContainer>
         <Bg>
           <AddPhoto
             src={photo}
             onClick={() => {
               console.log(added);
-            }}
-          ></AddPhoto>
+            }}></AddPhoto>
           <AddTitle>{name}</AddTitle>
         </Bg>
       </AddInfo>

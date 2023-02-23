@@ -10,33 +10,59 @@ import {
   ContainerF,
   ContAll,
 } from "../Styles/funchal.styled";
-import { useNavigate } from "react-router-dom";
-import { FormEvent, useEffect, useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-
+import { useNavigate, Link, useParams} from "react-router-dom";
+import { FormEvent, useEffect, useState, useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { db } from "../firebase-config";
+import {
+  collection,
+  updateDoc,
+  getDocs,
+  setDoc,
+  doc,
+  limit,
+  query,
+  where,
+} from "firebase/firestore";
+import { TripContext } from "../Provider/TripProvider";
 
 export function CityPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [show, setShow] = useState(false);
-  const [tripName, setTripName] = useState('');
-  
+  const [tripName, setTripName] = useState("");
+
+  const { user, setUser, trips, setTrips } = useContext(TripContext);
+  const docRef = doc(db, "Users", user || "");
+  const params = useParams();
+
+  async function SetTitle() {
+    //aktualizacja bazy danych
+    const id = uuidv4();
+
+    if (tripName?.trim()) {
+      try {
+        await setDoc(docRef, {
+          Trips: [...trips, { title: tripName, city: "Funcial", id: id || "" }],
+        });
+        //aktualizacja contextu
+        setTrips([
+          ...trips,
+          { title: tripName, city: "Funcial", id: id || "" },
+        ]);
+
+        handleClose();
+        navigate(`/venues/${id}`, { relative: "path" });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
   const navigate = useNavigate();
   const handleTripNameChange = (event: FormEvent<HTMLInputElement>) => {
     setTripName(event.currentTarget.value);
-  }
-  const onNavigateToVenues = () => {
-    if (tripName?.trim()) {
-
-      const id = uuidv4();
-      handleClose();
-      navigate(`/Venues/${id}/${tripName}`, { relative: "path" });
-    }
   };
 
   useEffect(() => {
@@ -54,8 +80,7 @@ export function CityPage() {
           type="button"
           disabled={!isLoggedIn}
           title={!isLoggedIn ? "You must be logged in!" : undefined}
-          onClick={() => handleShow()}
-        >
+          onClick={() => handleShow()}>
           Create Your Trip
         </ButtonTrp>
         <TxtContainer>
@@ -159,23 +184,6 @@ export function CityPage() {
           <ImgF src="src/assets/city page/funchal3.jpg" />
         </ContainerF>
       </ContAll>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>New Trip</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Please name your trip:</p>
-          <input type="text" value={tripName} onChange={handleTripNameChange} />
-          </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={() => onNavigateToVenues()}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </PageContainer>
   );
 }

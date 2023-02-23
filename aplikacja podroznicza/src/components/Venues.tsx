@@ -44,6 +44,7 @@ import { Interface } from "node:readline/promises";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { TripContext } from "../Provider/TripProvider";
+// import { trips } from "./funchal";
 
 interface ICity {
   description: any;
@@ -78,30 +79,39 @@ export function Venues() {
   //wywoluje funkcje SentAttractionsToFire-----
   const navigate = useNavigate();
   const navigateToCreateTrip = () => {
-    SentAttractionsToFire();
+    // SentAttractionsToFire();
     navigate("/create-new-trip/:tripId");
     console.log(attractions);
     setAttractions([]);
   };
 
-  //MOJA CZESC-----------------------
+  // //MOJA CZESC-----------------------
   const { user, setUser, trips, setTrips, tripsName, setTripsName } =
     useContext(TripContext);
+  console.log(user);
   const docRefi = doc(db, "Users", user || "");
-  const params = useParams();
-  console.log(trips);
-  async function SentAttractionsToFire() {
-    //aktualizacja bazy danych
-    if (attractions) {
-      try {
-        await setDoc(docRefi, {
-          Trips: [...attractions],
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
+  getDoc(docRefi);
+
+  // const params = useParams();
+  // console.log(trips);
+  // console.log(user);
+  // async function SentAttractionsToFire() {
+  //   //aktualizacja bazy danych
+  //   if (attractions) {
+  //     const index = trips.findIndex((i) => i.id === params.tripId);
+  //     if (trips[index].attractions.length > 0) {
+  //       trips[index].attractions.push(attractions);
+  //     }
+  //     trips[index].attractions = attractions;
+  //     try {
+  //       await setDoc(docRefi, {
+  //         Trips: trips,
+  //       });
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // }
 
   const mapVenues = info.map(({ description, name, photo }) => {
     return (
@@ -120,7 +130,6 @@ export function Venues() {
                     description: description,
                     name: name,
                     photo: photo,
-                    tripsName: tripsName,
                   },
                 ]);
                 if (posts.includes(post)) {

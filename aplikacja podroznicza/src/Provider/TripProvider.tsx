@@ -4,6 +4,7 @@ export type Trip = {
   id: string;
   title: string;
   city: string;
+  attractions: any[];
 };
 
 type TripContextState = {

@@ -10,7 +10,7 @@ import {
   ContainerF,
   ContAll,
 } from "../Styles/funchal.styled";
-import { useNavigate, Link, useParams} from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
 import { FormEvent, useEffect, useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../firebase-config";
@@ -48,12 +48,15 @@ export function CityPage() {
     if (tripName?.trim()) {
       try {
         await setDoc(docRef, {
-          Trips: [...trips, { title: tripName, city: "Funcial", id: id || "" }],
+          Trips: [
+            ...trips,
+            { title: tripName, city: "Funcial", id: id || "", attractions: [] },
+          ],
         });
         //aktualizacja contextu
         setTrips([
           ...trips,
-          { title: tripName, city: "Funcial", id: id || "" },
+          { title: tripName, city: "Funcial", id: id || "", attractions: [] },
         ]);
 
         handleClose();

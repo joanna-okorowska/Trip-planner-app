@@ -79,7 +79,7 @@ export function Venues() {
   const navigate = useNavigate();
   const navigateToCreateTrip = () => {
     SentAttractionsToFire();
-    navigate("/create-new-trip");
+    navigate("/create-new-trip/:tripId");
     console.log(attractions);
     setAttractions([]);
   };

@@ -74,7 +74,7 @@ function App() {
           />
           <Route path="/funchal" element={<CityPage />} />
           <Route
-            path="/mytrippage/"
+            path="/mytrippage"
             element={<Mytrippage currentTrip={currentTrip} />}
           />
           <Route path="/nav" element={<Navbar />} />

@@ -1,4 +1,4 @@
-import { Navbar } from "./navbar";
+import { VenuesModal } from "./VenuesModal";
 import {
   Container,
   Wrapper,
@@ -29,6 +29,7 @@ import {
   AddTitle,
   AddPhoto,
   AddInfo,
+  Description,
 } from "../Styles/Venues-styled";
 import {
   doc,
@@ -45,6 +46,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { TripContext } from "../Provider/TripProvider";
 // import { trips } from "./funchal";
+import Modal from 'react-modal';
 
 interface ICity {
   description: any;
@@ -62,7 +64,7 @@ const docRef = await getDocs(citiesRef);
 
 export function Venues() {
   let info: DocumentData[] = [];
-  let { tripId, tripName } = useParams();
+  let {  tripId, tripName  } = useParams();
   const [attractions, setAttractions] = useState<any[]>([]);
 
   let all: { description: any; name: any; photo: any } = {
@@ -72,6 +74,8 @@ export function Venues() {
   };
 
   const [added, setAdded] = useState<ICity[]>([]);
+  const [show, setShow] = useState<boolean>(false);
+  const [attraction, setAttraction] = useState<DocumentData | null>(null);
 
   docRef.forEach((doc) => {
     info.push(doc.data());
@@ -116,8 +120,9 @@ export function Venues() {
     }
   }
 
-  const mapVenues = info.map(({ description, name, photo }) => {
+  const mapVenues = info.map(({ description, name, photo, duration }) => {
     return (
+      <>
       <Item key={name}>
         <Info>
           <TitleContainer>
@@ -136,21 +141,26 @@ export function Venues() {
                   },
                 ]);
                 if (posts.includes(post)) {
-                  alert("Atrakcja już dodana !");
+                  alert("Place already added!");
                 } else {
                   all = { description, name, photo };
                   setAdded((current) => [...current, all]);
                 }
-              }}></Icon>
+              }}
+            ></Icon>
           </TitleContainer>
-
           <Photo
             src={photo}
             onClick={() => {
               console.log(added, all);
-            }}></Photo>
+              setShow(!show);
+              setAttraction({name, photo, description, duration});
+            }}
+          ></Photo>
         </Info>
       </Item>
+      
+      </>
     );
   });
 
@@ -184,6 +194,7 @@ export function Venues() {
   return (
     <>
       <Background>
+      {attraction && <VenuesModal name={attraction.name} photo={attraction.photo} description={attraction.description} duration={attraction.duration} isOpen={show} setShow={setShow}/>}
         {tripId}:{tripName}
         <Container>
           <AttractionContainer>

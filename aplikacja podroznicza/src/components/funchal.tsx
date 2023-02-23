@@ -40,10 +40,13 @@ export function CityPage() {
 
   const { user, setUser, trips, setTrips, setTripsName, tripsName } =
     useContext(TripContext);
+
   const docRef = doc(db, "Users", user || "");
   const params = useParams();
+
   console.log(trips);
   console.log(user);
+
   async function SetTitle() {
     const id = uuidv4();
     //aktualizacja bazy danych

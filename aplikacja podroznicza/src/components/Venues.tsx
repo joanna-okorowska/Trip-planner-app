@@ -75,7 +75,7 @@ export function Venues() {
   docRef.forEach((doc) => {
     info.push(doc.data());
   });
-
+  //wywoluje funkcje SentAttractionsToFire-----
   const navigate = useNavigate();
   const navigateToCreateTrip = () => {
     SentAttractionsToFire();
@@ -84,7 +84,7 @@ export function Venues() {
     setAttractions([]);
   };
 
-  //MOJA CZESC
+  //MOJA CZESC-----------------------
   const { user, setUser, trips, setTrips, tripsName, setTripsName } =
     useContext(TripContext);
   const docRefi = doc(db, "Users", user || "");

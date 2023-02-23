@@ -8,7 +8,7 @@ body {
     background-position: top center;
     background-repeat: no-repeat;
     color: white;
-    height: 80vh;
+    height: 100vh;
   }
   .city {
 height: 186px;
@@ -53,10 +53,13 @@ export const Header = styled.div`
 
 export const Container = styled.div`
   width: 1000px;
+  margin-top: 100px;
+  height: 100vh - 110px;
 `;
 export const Flex = styled.div`
   display: flex;
   justify-content: center;
+  height: 100vh - 110px;
 `;
 
 export const CitiesList = styled.div`

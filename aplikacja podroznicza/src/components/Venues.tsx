@@ -138,6 +138,7 @@ export function Venues() {
                       description: description,
                       name: name,
                       photo: photo,
+                      duration: duration,
                     },
                   ]);
                   if (posts.includes(post)) {

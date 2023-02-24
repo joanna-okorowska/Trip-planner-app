@@ -41,6 +41,9 @@ export const Search = styled.input`
     font-family: "Krub", sans-serif;
     font-size: 15px;
   }
+  @media (max-width: 500px) {
+    margin-right:0;
+  }
 `;
 
 export const Header = styled.div`
@@ -49,6 +52,10 @@ export const Header = styled.div`
   align-items: center;
   margin-bottom: 20px;
   margin-top: 10px;
+  @media (max-width: 920px) {
+   flex-direction: column;
+  
+  }
 `;
 
 export const Container = styled.div`
@@ -66,10 +73,17 @@ export const CitiesList = styled.div`
   display: flex;
   flex-wrap: wrap;
   overflow-y: scroll;
+  justify-content: center;
+  
   ::-webkit-scrollbar {
     display: none;
   }
   height: calc(100vh - 250px);
+
+  @media (max-width: 500px) {
+    margin-left:50vw;
+    margin-right:50vw
+  }
 `;
 
 export const Bg = styled.div`

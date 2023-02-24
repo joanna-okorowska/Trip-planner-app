@@ -19,6 +19,7 @@ export const Title = styled.h1`
   font-size: 40px;
   font-weight: 400;
   padding-top: 120px;
+  margin-top: 0;
 `;
 
 export const BoxList = styled.div`
@@ -30,8 +31,8 @@ export const BoxList = styled.div`
   gap: 5px;
   background-color: #d9d9d949;
   border-radius: 10px;
-  width: 60vh;
-  padding: 20px 0;
+  width: fit-content;
+  padding: 20px ;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -62,6 +63,7 @@ export const BoxInfo = styled.h3`
   font-family: "Krub", serif;
   font-size: 17px;
   font-weight: 400;
+  
 
 `;
 
@@ -272,6 +274,7 @@ export const TripListItem = styled.div`
   font-size: 12px;
   position: absolute;
   bottom: 14px;
+  
 
   span:first-child {
     border-top-left-radius: 5px;
@@ -325,3 +328,18 @@ export const ModalContent = styled.div`
   justify-content: space-between;
   height: 460px;
 `;
+export const Buttonswrapper=styled.div`
+  width:300px;
+  height: 50px;
+  
+  display: flex;
+  justify-content: space-between;
+
+`
+export const Headermodal=styled.div`
+width: 300px;
+height: 40px;
+font-family: "Domine",sans-serif;
+text-align: center;
+font-size: 15px;
+`

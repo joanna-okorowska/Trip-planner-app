@@ -16,7 +16,9 @@ import {
     TripListItem,
     TripList,
     TripListItemWrapper,
-    ModalContent
+    ModalContent,
+    Buttonswrapper,
+    Headermodal
   } from "../Styles/Mytrippage.styled";
   import { TripDay } from "./tripday";
   import { Modal } from './Modal';
@@ -25,7 +27,8 @@ import { SetStateAction } from "react";
 
   interface IMytrippage {
     currentTrip: IItem[][],
-    setCurrentTrip: Dispatch<SetStateAction<IItem[][]>>
+    setCurrentTrip: Dispatch<SetStateAction<IItem[][]>>,
+   
   }
 
   interface IItem {
@@ -149,7 +152,7 @@ import { SetStateAction } from "react";
     return (
       <Modal className="portal" element="div">
         <AddTripsContainer>
-          <h3>Add trips</h3>
+        <Headermodal><h3>Add trips</h3></Headermodal>  
           <ModalContent>
           <TripList>
               {items && processItems().map(item => {
@@ -166,14 +169,14 @@ import { SetStateAction } from "react";
                 )
               })}
             </TripList>
-            <div>
-              <button onClick={handleBack}>
+            <Buttonswrapper>
+              <button className="btnback" onClick={handleBack}>
                   Back
               </button>
-              <button onClick={handleAddTo}>
+              <button className="btnaddto" onClick={handleAddTo}>
                   Add to 
               </button>
-            </div>
+              </Buttonswrapper>
           </ModalContent>
         
         </AddTripsContainer>

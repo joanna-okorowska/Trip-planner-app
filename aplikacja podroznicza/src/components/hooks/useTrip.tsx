@@ -9,6 +9,7 @@ interface ITrip {
 interface IItem {
     id: string,
     name: string
+    selected: boolean
 }
 interface ICurrentTrip {
     day_1:[], day_2: [], day_3: [], day_4: [], day_5: [], day_6: []

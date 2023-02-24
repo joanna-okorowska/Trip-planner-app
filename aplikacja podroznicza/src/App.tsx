@@ -31,7 +31,7 @@ import { MyTrips } from "./components/myTrips";
 import { AddTrips } from "./components/Mytrippage";
 
 function App() {
-  const { currentTrip, addToTrip } = useTrip();
+  const { currentTrip, setCurrentTrip } = useTrip();
 
   const { user, setUser, trips, setTrips } = useContext(TripContext);
   useEffect((): void => {
@@ -59,10 +59,8 @@ function App() {
   }, [setUser, setTrips]);
 
  
-  const fakeItems = [
-    {id: '1', name: 'Trip example'},
-    {id: '2', name: 'Trip example'},
-  ]
+  
+  
   return (
     <HashRouter>
       <Wrapper>
@@ -72,21 +70,6 @@ function App() {
           <Route path="/signUp" element={<Register />} />
           <Route path="/signIn" element={<Login />} />
           <Route path="/main" element={<Main />} />
-          <Route
-            path="/create-new-trip/:tripId"
-            element={
-              <CreateTrip currentTrip={currentTrip} addToTrip={addToTrip} />
-            }
-          />
-          <Route path="/funchal" element={<CityPage/>}/>
-          <Route
-            path="/creator"
-            element={<Mytrippage currentTrip={currentTrip} setCurrentTrip={setCurrentTrip}/>}
-            >
-                <Route path=":day/add-trips" element={<AddTrips items={fakeItems} currentTrip={currentTrip} setCurrentTrip={setCurrentTrip}/>} />
-            </Route>
-          <Route path="/nav" element={<Navbar />} />
-          <Route path="/explore" element={<Explore />} />
           {/* <Route path="/video" element={<VideoBackground />} /> */}
           {/* <Route path="/nav" element={<Navbar />} /> */}
           <Route path="/myTrips" element={<MyTrips />} />
@@ -95,7 +78,7 @@ function App() {
             path="/creator"
             element={<Mytrippage currentTrip={currentTrip} setCurrentTrip={setCurrentTrip}/>}
             >
-                <Route path=":day/add-trips" element={<AddTrips items={fakeItems} currentTrip={currentTrip} setCurrentTrip={setCurrentTrip}/>} />
+                <Route path=":day/add-trips" element={<AddTrips items={[]} currentTrip={currentTrip} setCurrentTrip={setCurrentTrip}/>} />
             </Route>
           <Route path="/nav" element={<Navbar />} />
           <Route path="/venues/:tripId" element={<Venues />} />

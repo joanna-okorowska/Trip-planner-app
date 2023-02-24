@@ -6,7 +6,7 @@ import {
   Title,
   TripContainer,
   TripContent,
-  StyledTripListItems,
+  
   
   
 } from "../Styles/create-trip.styled";

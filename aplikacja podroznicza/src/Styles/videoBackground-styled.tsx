@@ -1,5 +1,4 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { Link } from "react-scroll";
 
 export const VideoContainer = styled.div`
   overflow: hidden;
@@ -19,6 +18,7 @@ export const FirstParagraphOnVideo = styled.p`
   background-color: transparent;
   backdrop-filter: blur(20px);
   border-radius: 10%;
+  padding: 20px;
   @media (max-width: 1000px) {
     font-size: 22px;
     font-weight: 600;

@@ -83,13 +83,13 @@ const List = styled.div`
 const Record = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 export function Mytrippage({ currentTrip }: IMytrippage) {
   const [myStyle, setMyStyle] = useState({});
   const docRef = doc(db, "Users", tst);
   const [dayNumber, setDayNumber] = useState(1);
   const { user } = useContext(TripContext);
-  const [selectedDay, setSelectedDay] = useState("");
+  const [selectedDay, setSelectedDay] = useState(1);
   const [daysListNumber, setDaysListNumber] = useState([]);
   let [daysCount, setDaysCount] = useState(1);
   const navigate = useNavigate();
@@ -119,8 +119,14 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
     console.log(daysListNumber);
   };
   const handleDecreaseDays = () => {
+    const day = dayNumber
+    setDayNumber(dayNumber - 1);
     daysListNumber.pop();
-    setDaysListNumber([...daysListNumber]);
+    setDaysListNumber(
+      daysListNumber.filter((object) => {
+        return object.day !== day;
+      })
+    );
     console.log(daysListNumber);
   };
 
@@ -138,21 +144,26 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
       <BoxList>
         {daysListNumber.map(({ attractions, day, children }) => {
           let isVisible = false;
-          
-          
+
           return (
             <Row key={day}>
               <Box>
                 <BoxInfo>
                   <BoxTitle>{`Day ${day}`}</BoxTitle>
-                  <Info>What are we doing today?</Info>
+                  <Info>{attractions.map(({name, duration}) => {
+                    return (
+                      <span>{name}</span>
+                    )
+                  })}</Info>
                   <Add
                     onClick={() => {
                       handleClick(day);
-                      console.log(attractions)
                       console.log(daysListNumber);
+                     
                     }}
-                  ></Add>
+                  >
+                    Venues
+                  </Add>
                 </BoxInfo>
                 {children}
               </Box>
@@ -166,12 +177,23 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
               >
                 {list.map(({ name, duration }) => {
                   const handleClick = () => {
-                    attractions.push({name, duration})
-                  }
+                    attractions.push({ name, duration });
+                    setDaysCount(daysCount + 1)
+                  };
 
                   return (
                     <List>
-                      <Record><span>{name}</span><span>duration: {duration}h</span><button onClick={() => {handleClick()}}>add</button></Record>
+                      <Record>
+                        <span>{name}</span>
+                        <span>duration: {duration}h</span>
+                        <button
+                          onClick={() => {
+                            handleClick();
+                          }}
+                        >
+                          add
+                        </button>
+                      </Record>
                     </List>
                   );
                 })}
@@ -181,7 +203,7 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
         })}
         <div>
           <button onClick={handleIncreaseDays}>+</button>
-          {daysListNumber.length > 1 && (
+          {daysListNumber.length > 0 && (
             <button onClick={handleDecreaseDays}>-</button>
           )}
         </div>

@@ -63,6 +63,7 @@ const Add = styled.button`
 
 const Row = styled.div`
   display: flex;
+  flex-direction: column;
 `;
 
 const Thisday = styled.div`
@@ -97,6 +98,9 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
   const [number, setValue] = useState(0);
   const { tripId } = useParams();
   const id = tripId;
+  const navigateToMyTrips = () => {
+    navigate("/myTrips");
+  };
 
   const data = ary.data();
   const neww = data.Trips;
@@ -137,19 +141,19 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
       [day]: !prevState[day],
     }));
   };
-  
+
   const handleSave = async () => {
     const snapshot = ary.data();
-  const records = snapshot.Trips;
-  const obj = {};
-  const key = localStorage.getItem("title");
-  obj[key] = daysListNumber;
-  records.push(obj);
-  const Trips = records.filter((itm) => {
-    return !Object.keys(itm).includes("id");
-  });
-
-    await setDoc(docRef, { Trips });
+    const records = snapshot.Trips;
+    const obj = {};
+    const key = localStorage.getItem("title");
+    obj[key] = daysListNumber;
+    records.push(obj);
+    const Trips = records.filter((itm) => {
+      return !Object.keys(itm).includes("id");
+    });
+    console.log({ info: key, days: Trips[0][key] });
+    await setDoc(docRef, { info: key, days: Trips[0][key] });
   };
 
   return (
@@ -173,7 +177,6 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
                   <Add
                     onClick={() => {
                       handleClick(day);
-                      
                     }}
                   >
                     Venues
@@ -186,7 +189,12 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
                   display: myStyle[`${day}`] ? "block" : "none",
                   backgroundColor: "white",
                   height: "500px",
-                  width: "500px",
+                  width: "400px",
+                  marginTop: "20px",
+                  padding: "10px",
+                  marginLeft: "5px",
+                  borderRadius: "15px",
+                  fontFamily: "Krub",
                 }}
               >
                 {list.map(({ name, duration }) => {
@@ -198,11 +206,29 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
                   return (
                     <List>
                       <Record>
-                        <span>{name}</span>
-                        <span>duration: {duration}h</span>
+                        <span
+                          style={{
+                            marginTop: "7px",
+                          }}
+                        >
+                          {name}
+                        </span>
+                        <span
+                          style={{
+                            marginTop: "7px",
+                          }}
+                        >
+                          duration: {duration}h
+                        </span>
                         <button
                           onClick={() => {
                             handleClick();
+                          }}
+                          style={{
+                            borderRadius: "15px",
+                            border: "none",
+                            fontFamily: "Krub",
+                            marginTop: "10px",
                           }}
                         >
                           add
@@ -216,16 +242,45 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
           );
         })}
         <div>
-          <button onClick={handleIncreaseDays}>+</button>
+          <button
+            style={{
+              borderRadius: "15px",
+              border: "none",
+              fontFamily: "Krub",
+              marginTop: "10px",
+            }}
+            onClick={handleIncreaseDays}
+          >
+            +
+          </button>
           {daysListNumber.length > 0 && (
-            <button onClick={handleDecreaseDays}>-</button>
+            <button
+              style={{
+                borderRadius: "15px",
+                border: "none",
+                fontFamily: "Krub",
+                marginTop: "10px",
+                marginLeft: "10px"
+              }}
+              onClick={handleDecreaseDays}
+            >
+              -
+            </button>
           )}
           <button
+            style={{
+              borderRadius: "15px",
+              border: "none",
+              fontFamily: "Krub",
+              marginTop: "10px",
+              marginLeft: "10px"
+            }}
             onClick={() => {
               handleSave();
+              navigateToMyTrips();
             }}
           >
-            save
+            SAVE
           </button>
         </div>
       </BoxList>

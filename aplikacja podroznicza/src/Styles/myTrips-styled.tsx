@@ -72,8 +72,8 @@ export const Day = styled.div`
   display: flex;
   overflow: auto;
   margin-bottom: 10px;
-  margin-right: 15px;
-  margin-left: 15px;
+  margin-right: 0px;
+  /* margin-left: 15px; */
 
   &::-webkit-scrollbar {
     background-color: transparent;

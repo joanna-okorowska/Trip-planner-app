@@ -28,6 +28,10 @@ export const AttractionContainer = styled.div`
   -webkit-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   -moz-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
+  @media (max-width: 600px) {
+    padding: 10px 10px 10px 10px;
+    margin: 120px 10px 20px 10px;
+  }
 `;
 export const AddContainer = styled.div`
   padding: 10px 20px 20px 20px;
@@ -41,6 +45,9 @@ export const AddContainer = styled.div`
   -webkit-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   -moz-box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
   box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
+  @media (max-width: 600px) {
+    margin: 120px 10px 20px 10px;
+  }
 `;
 
 export const ContinueButton = styled.button`
@@ -58,6 +65,10 @@ export const ContinueButton = styled.button`
     background-color: #062f30;
     cursor: pointer;
   }
+  @media (max-width: 600px) {
+    font-size: 15px;
+    margin-top: 50%;
+  }
 `;
 
 export const Attractions = styled.h1`
@@ -67,13 +78,19 @@ export const Attractions = styled.h1`
   text-align: center;
   margin-bottom: 20px;
   color: #032020;
+  @media (max-width: 600px) {
+    font-size: 35px;
+  }
 `;
 export const Added = styled.h1`
   margin: 0;
   font-family: "Domine", serif;
   font-size: 50px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: #032020;
+  @media (max-width: 600px) {
+    font-size: 35px;
+  }
 `;
 export const AttBox = styled.div`
   margin-top: 20px;
@@ -115,6 +132,9 @@ export const ItemwrapperAttr = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 1.5em;
+  @media (max-width: 600px) {
+    gap: .5em;
+  }
 `;
 
 export const ItemwrapperAdd = styled.div`
@@ -123,6 +143,9 @@ export const ItemwrapperAdd = styled.div`
   width: 100%;
   justify-content: space-evenly;
   gap: 1.5em;
+  @media (max-width: 600px) {
+    gap: .5em;
+  }
 `;
 
 export const Bg = styled.div`
@@ -178,6 +201,7 @@ export const Title = styled.h3`
   font-size: 14px;
   margin: 0;
   width: 150px;
+
 `;
 
 export const AddTitle = styled.h3`

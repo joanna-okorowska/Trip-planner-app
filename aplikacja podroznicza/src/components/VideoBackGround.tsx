@@ -8,7 +8,6 @@ import {
   ButtonExplore,
 } from "../Styles/videoBackground-styled";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-scroll";
 
 export const VideoBackground = () => {
   const navigate = useNavigate();

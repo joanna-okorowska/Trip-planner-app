@@ -44,9 +44,9 @@ export function CityPage() {
     //aktualizacja bazy danych
     if (tripName?.trim()) {
       const id = uuidv4();
-      const docRef = doc(db, "Users", user || "");
 
       try {
+        const docRef = doc(db, "Users", user || "");
         await setDoc(docRef, {
           Trips: [
             { title: tripName, city: "Funcial", id: id || "", attractions: [] },

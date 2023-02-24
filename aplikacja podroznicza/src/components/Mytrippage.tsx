@@ -32,8 +32,9 @@ import { useParams } from "react-router-dom";
 import { db } from "../firebase-config";
 import { doc } from "firebase/firestore";
 import { TripContext } from "../Provider/TripProvider";
-import { getDocs, collection, getDoc } from "firebase/firestore";
+import { getDocs, collection, getDoc, setDoc } from "firebase/firestore";
 import styled from "styled-components";
+import { Trip } from "../Styles/myTrips-styled";
 
 interface IItem {
   id: string;
@@ -88,7 +89,7 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
   const [myStyle, setMyStyle] = useState({});
   const docRef = doc(db, "Users", tst);
   const [dayNumber, setDayNumber] = useState(1);
-  const { user } = useContext(TripContext);
+  const { user, tripsName } = useContext(TripContext);
   const [selectedDay, setSelectedDay] = useState(1);
   const [daysListNumber, setDaysListNumber] = useState([]);
   let [daysCount, setDaysCount] = useState(1);
@@ -109,7 +110,7 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
   //   }
   //   return [...list];
   // };
-
+  const title = tripsName;
   console.log(list);
   const handleIncreaseDays = () => {
     setDayNumber(dayNumber + 1);
@@ -119,7 +120,7 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
     console.log(daysListNumber);
   };
   const handleDecreaseDays = () => {
-    const day = dayNumber
+    const day = dayNumber;
     setDayNumber(dayNumber - 1);
     daysListNumber.pop();
     setDaysListNumber(
@@ -136,6 +137,20 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
       [day]: !prevState[day],
     }));
   };
+  
+  const handleSave = async () => {
+    const snapshot = ary.data();
+  const records = snapshot.Trips;
+  const obj = {};
+  const key = localStorage.getItem("title");
+  obj[key] = daysListNumber;
+  records.push(obj);
+  const Trips = records.filter((itm) => {
+    return !Object.keys(itm).includes("id");
+  });
+
+    await setDoc(docRef, { Trips });
+  };
 
   return (
     <TripContainer>
@@ -150,16 +165,15 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
               <Box>
                 <BoxInfo>
                   <BoxTitle>{`Day ${day}`}</BoxTitle>
-                  <Info>{attractions.map(({name, duration}) => {
-                    return (
-                      <span>{name}</span>
-                    )
-                  })}</Info>
+                  <Info>
+                    {attractions.map(({ name, duration }) => {
+                      return <span>{name}</span>;
+                    })}
+                  </Info>
                   <Add
                     onClick={() => {
                       handleClick(day);
-                      console.log(daysListNumber);
-                     
+                      
                     }}
                   >
                     Venues
@@ -178,7 +192,7 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
                 {list.map(({ name, duration }) => {
                   const handleClick = () => {
                     attractions.push({ name, duration });
-                    setDaysCount(daysCount + 1)
+                    setDaysCount(daysCount + 1);
                   };
 
                   return (
@@ -206,6 +220,13 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
           {daysListNumber.length > 0 && (
             <button onClick={handleDecreaseDays}>-</button>
           )}
+          <button
+            onClick={() => {
+              handleSave();
+            }}
+          >
+            save
+          </button>
         </div>
       </BoxList>
     </TripContainer>

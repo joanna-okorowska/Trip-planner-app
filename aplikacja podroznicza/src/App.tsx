@@ -60,7 +60,7 @@ function App() {
   return (
     <HashRouter>
       <Wrapper>
-        {/* <Navbar /> */}
+        <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signUp" element={<Register />} />

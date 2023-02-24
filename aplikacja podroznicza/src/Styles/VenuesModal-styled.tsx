@@ -30,6 +30,11 @@ export const Container = styled.div`
   border-radius: 25px;
   display: flex;
   box-shadow: -1px 4px 62px -7px rgba(0, 0, 0, 1);
+  @media (max-width: 600px) {
+    width: 300px;
+  height: 570px;
+  flex-direction: column;
+  }
 `;
 
 export const Photo = styled.img`
@@ -37,6 +42,12 @@ export const Photo = styled.img`
   width: 513px;
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
+  @media (max-width: 600px) {
+    width: 100%;
+  height: 234px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 25px;
+  }
 `;
 
 export const Title = styled.div`
@@ -55,6 +66,12 @@ export const TextArea = styled.div`
   padding: 30px;
   width: 280px;
   position: relative;
+  @media (max-width: 600px) {
+  height: 50%;
+  width: 250px;
+  padding: 25px;
+  flex-direction: column;
+  }
 `;
 
 export const Duration = styled.div`

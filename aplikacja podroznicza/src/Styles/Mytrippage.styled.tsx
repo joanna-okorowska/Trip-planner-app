@@ -58,7 +58,7 @@ export const Box = styled.div`
   
 `;
 
-export const BoxInfo = styled.h3`
+export const BoxInfo = styled.span`
   padding: 0 10px 10px;
   font-family: "Krub", serif;
   font-size: 17px;
@@ -210,7 +210,7 @@ export const Boxitem=styled.div`
     text-decoration: underline;
    }
 `
-export const Info=styled.h3`
+export const Info=styled.span`
     padding: 0 10px 10px;
     font-family: "Krub", serif;
     font-size: 17px;

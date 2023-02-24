@@ -50,18 +50,18 @@ export function CityPage(): JSX.Element {
       try {
         await setDoc(docRef, {
           Trips: [
-            ...trips,
+            
             { title: tripName, city: "Funcial", id: id || "", attractions: [] },
           ],
           
         });
         //aktualizacja contextu
         setTrips([
-          ...trips,
+          
           { title: tripName, city: "Funcial", id: id || "", attractions: [] },
           
         ]);
-
+        localStorage.setItem( "title", tripName ) ;
         handleCloseTripModal();
         navigate(`/venues/${id}`, { relative: "path" });
       } catch (error) {

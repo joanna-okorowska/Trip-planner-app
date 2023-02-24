@@ -70,8 +70,12 @@ function App() {
           <Route path="/signUp" element={<Register />} />
           <Route path="/signIn" element={<Login />} />
           <Route path="/main" element={<Main />} />
-          {/* <Route path="/video" element={<VideoBackground />} /> */}
-          {/* <Route path="/nav" element={<Navbar />} /> */}
+          <Route
+            path="/create-new-trip/:tripId"
+            element={
+              <Mytrippage/>
+            }
+          />
           <Route path="/myTrips" element={<MyTrips />} />
           <Route path="/funchal" element={<CityPage />} />
           <Route

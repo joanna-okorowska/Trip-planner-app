@@ -4,7 +4,7 @@ import { Link } from "react-scroll";
 export const VideoContainer = styled.div`
   overflow: hidden;
   width: 100vw;
-  height: calc(100vh - 100px);
+  height: 100vh;
   pointer-events: none;
   position: relative;
   margin: 0;

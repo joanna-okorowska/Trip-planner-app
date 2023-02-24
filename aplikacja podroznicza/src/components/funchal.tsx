@@ -14,12 +14,14 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import { FormEvent, useEffect, useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../firebase-config";
-import {
-  setDoc,
-  doc,
-} from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 import { TripContext } from "../Provider/TripProvider";
 import { NameTripModal } from "./NameTripModal";
+
+const email = localStorage.getItem("info");
+const tst = JSON.parse(email);
+const docRef = doc(db, "Users", tst);
+const ary = await getDoc(docRef);
 
 export function CityPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,13 +33,12 @@ export function CityPage() {
   const { user, setUser, trips, setTrips, setTripsName, tripsName } =
     useContext(TripContext);
 
-  const docRef = doc(db, "Users", user || "");
+  
   const params = useParams();
 
   console.log(trips);
   console.log(user);
 
-  
   const handleSaveTripModal = async (tripName: string) => {
     const id = uuidv4();
     //aktualizacja bazy danych
@@ -48,25 +49,21 @@ export function CityPage() {
       try {
         await setDoc(docRef, {
           Trips: [
-            
             { title: tripName, city: "Funcial", id: id || "", attractions: [] },
           ],
-          
         });
         //aktualizacja contextu
         setTrips([
-          
           { title: tripName, city: "Funcial", id: id || "", attractions: [] },
-          
         ]);
-        localStorage.setItem( "title", tripName ) ;
+        localStorage.setItem("title", tripName);
         handleCloseTripModal();
         navigate(`/venues/${id}`, { relative: "path" });
       } catch (error) {
         console.log(error);
       }
     }
-  }
+  };
 
   const handleTripNameChange = (event: FormEvent<HTMLInputElement>) => {
     setTripsName(event.currentTarget.value);
@@ -87,7 +84,8 @@ export function CityPage() {
           type="button"
           disabled={!isLoggedIn}
           title={!isLoggedIn ? "You must be logged in!" : undefined}
-          onClick={() => handleShowTripModal()}>
+          onClick={() => handleShowTripModal()}
+        >
           Create Your Trip
         </ButtonTrp>
         <TxtContainer>
@@ -191,7 +189,11 @@ export function CityPage() {
           <ImgF src="src/assets/city page/funchal3.jpg" />
         </ContainerF>
       </ContAll>
-      <NameTripModal show={showTripModal} handleClose={handleCloseTripModal} handleSave={handleSaveTripModal} />
+      <NameTripModal
+        show={showTripModal}
+        handleClose={handleCloseTripModal}
+        handleSave={handleSaveTripModal}
+      />
     </PageContainer>
   );
 }

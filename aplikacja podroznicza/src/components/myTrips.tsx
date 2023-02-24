@@ -21,134 +21,28 @@ import {
   Background,
   Container,
 } from "../Styles/myTrips-styled";
+import {
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  getDocs,
+  DocumentData,
+} from "firebase/firestore";
+import { db } from "../firebase-config";
 
-var tst = [
-  {
-    info: "My new trip",
-    days: [
-      {
-        day: "1",
-        attractions: [
-          { title: "attraction1", duration: 3 },
-          { title: "attraction2", duration: 2 },
-        ],
-      },
-      {
-        day: "2",
-        attractions: [
-          { title: "attraction3", duration: 2 },
-          { title: "attraction4", duration: 2 },
-        ],
-      },
-      {
-        day: "3",
-        attractions: [
-          { title: "attraction5", duration: 2 },
-          { title: "attraction6", duration: 2 },
-        ],
-      },
-      {
-        day: "4",
-        attractions: [
-          { title: "attraction7", duration: 2 },
-          { title: "attraction8", duration: 2 },
-        ],
-      },
-      {
-        day: "5",
-        attractions: [
-          { title: "attraction9", duration: 2 },
-          { title: "attraction10", duration: 2 },
-        ],
-      },
-      {
-        day: "6",
-        attractions: [
-          { title: "attraction11", duration: 2 },
-          { title: "attraction12", duration: 2 },
-        ],
-      },
-      {
-        day: "7",
-        attractions: [
-          { title: "attraction13", duration: 2 },
-          { title: "attraction14", duration: 2 },
-        ],
-      },
-      {
-        day: "8",
-        attractions: [
-          { title: "attraction15", duration: 2 },
-          { title: "attraction16", duration: 2 },
-        ],
-      },
-    ],
-  },
-  {
-    info: "My new trip2",
-    days: [
-      {
-        day: "1",
-        attractions: [
-          { title: "attraction1", duration: 2 },
-          { title: "attraction2", duration: 2 },
-        ],
-      },
-      {
-        day: "2",
-        attractions: [
-          { title: "attraction3", duration: 2 },
-          { title: "attraction4", duration: 2 },
-        ],
-      },
-      {
-        day: "3",
-        attractions: [
-          { title: "attraction5", duration: 2 },
-          { title: "attraction6", duration: 2 },
-        ],
-      },
-      {
-        day: "4",
-        attractions: [
-          { title: "attraction7", duration: 2 },
-          { title: "attraction8", duration: 2 },
-        ],
-      },
-      {
-        day: "5",
-        attractions: [
-          { title: "attraction9", duration: 2 },
-          { title: "attraction10", duration: 2 },
-        ],
-      },
-      {
-        day: "6",
-        attractions: [
-          { title: "attraction11", duration: 2 },
-          { title: "attraction12", duration: 2 },
-        ],
-      },
-      {
-        day: "7",
-        attractions: [
-          { title: "attraction13", duration: 2 },
-          { title: "attraction14", duration: 2 },
-        ],
-      },
-      {
-        day: "8",
-        attractions: [
-          { title: "attraction15", duration: 2 },
-          { title: "attraction16", duration: 2 },
-        ],
-      },
-    ],
-  },
-];
+const email = localStorage.getItem("info");
+const tst = JSON.parse(email);
+const docRef = doc(db, "Users", tst);
+const ary = await getDoc(docRef);
 
 export function MyTrips() {
-  const Collapse = tst.map(({ info, days }) => {
+  let trips = [];
+  if (ary.exists()) {
+    const cos = ary.data();
+    trips.push(cos)
+  }
+  const Collapse = trips?.map(({ info, days }) => {
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     let direction = "src/assets/arrow-down-sign-to-navigate.png";
     if (isExpanded === true) {
@@ -171,11 +65,11 @@ export function MyTrips() {
                   <Inside>
                     <Title>Day{day}</Title>
                     <Content>
-                      {attractions.map(({ title, duration }) => {
+                      {attractions.map(({ name, duration }) => {
                         time = time + duration;
                         return (
-                          <Attraction key={title}>
-                            <Venue>{title}</Venue>
+                          <Attraction key={name}>
+                            <Venue>{name}</Venue>
                             <Duration>
                               <How>How long:</How>&nbsp;&nbsp;{duration}h
                             </Duration>

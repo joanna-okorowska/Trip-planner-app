@@ -7,7 +7,7 @@ import { auth } from "../firebase-config";
 import { Login } from "./login-page";
 import { ButtonExplore } from "../Styles/videoBackground-styled";
 import useCollapse from "@gaearon/react-collapsed";
-
+import { TripContext } from "../Provider/TripProvider";
 const GlobalStyleWrapper = createGlobalStyle`
    body {
   margin: 0;
@@ -166,6 +166,7 @@ export function Navbar() {
     navigate("/myTrips");
   };
   const navigateToExplore = () => {
+    
     navigate("/explore");
   };
   const logout = async () => {

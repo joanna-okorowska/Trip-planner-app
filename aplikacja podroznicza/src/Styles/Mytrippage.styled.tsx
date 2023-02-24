@@ -2,12 +2,13 @@ import styled, { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
   body {
-   margin: 0;
-   padding: 0;
-   background-image: url("src/assets/Background.jpg");
-   background-repeat: no-repeat;
-   backdrop-filter: blur(5px);
-   background-size: cover;
+    background-image: url("src/assets/VenuesBG.jpg");
+  background-repeat: no-repeat;
+  backdrop-filter: blur(5px);
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
    
   }
 `;
@@ -23,16 +24,17 @@ export const Title = styled.h1`
 export const BoxList = styled.div`
   
   display: flex;
-  
+  /* margin-top: 100px; */
   flex-direction: column;
   align-items: center;
   gap: 5px;
   background-color: #d9d9d949;
   border-radius: 10px;
-  width: 60vh;
+  width: 500px;
   padding: 20px 0;
   margin-left: auto;
   margin-right: auto;
+  /* margin-top: 100px; */
   display: flex;
   justify-content: center;
   margin-bottom: auto;
@@ -44,6 +46,7 @@ export const BoxList = styled.div`
 
 export const TripContainer = styled.div`
   min-height: 100vh;
+  padding-top: 100px;
 `;
 
 export const Box = styled.div`
@@ -56,6 +59,7 @@ export const Box = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 10px;
   
 `;
 
@@ -70,6 +74,7 @@ export const BoxInfo = styled.span`
 export const BoxTitle = styled.h1`
   font-size: 35px;
   margin: 5px;
+  
   font-family: "Domine", serif;
   font-weight: 400;
   

@@ -69,7 +69,7 @@ function App() {
           <Route
             path="/create-new-trip/:tripId"
             element={
-              <CreateTrip currentTrip={currentTrip} addToTrip={addToTrip} />
+              <Mytrippage/>
             }
           />
           <Route path="/myTrips" element={<MyTrips />} />

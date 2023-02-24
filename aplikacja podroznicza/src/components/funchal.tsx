@@ -14,10 +14,7 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import { FormEvent, useEffect, useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../firebase-config";
-import {
-  setDoc,
-  doc,
-} from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { TripContext } from "../Provider/TripProvider";
 import { NameTripModal } from "./NameTripModal";
 
@@ -31,33 +28,29 @@ export function CityPage() {
   const { user, setUser, trips, setTrips, setTripsName, tripsName } =
     useContext(TripContext);
 
-  const docRef = doc(db, "Users", user || "");
   const params = useParams();
 
   console.log(trips);
   console.log(user);
 
-  
   const handleSaveTripModal = async (tripName: string) => {
     const id = uuidv4();
     //aktualizacja bazy danych
     if (tripName?.trim()) {
       const id = uuidv4();
-      const docRef = doc(db, "Users", user || "");
 
       try {
+        const docRef = doc(db, "Users", user || "");
         await setDoc(docRef, {
           Trips: [
             ...trips,
             { title: tripName, city: "Funcial", id: id || "", attractions: [] },
           ],
-          
         });
         //aktualizacja contextu
         setTrips([
           ...trips,
           { title: tripName, city: "Funcial", id: id || "", attractions: [] },
-          
         ]);
 
         handleCloseTripModal();
@@ -66,7 +59,7 @@ export function CityPage() {
         console.log(error);
       }
     }
-  }
+  };
 
   const handleTripNameChange = (event: FormEvent<HTMLInputElement>) => {
     setTripsName(event.currentTarget.value);
@@ -191,7 +184,11 @@ export function CityPage() {
           <ImgF src="src/assets/city page/funchal3.jpg" />
         </ContainerF>
       </ContAll>
-      <NameTripModal show={showTripModal} handleClose={handleCloseTripModal} handleSave={handleSaveTripModal} />
+      <NameTripModal
+        show={showTripModal}
+        handleClose={handleCloseTripModal}
+        handleSave={handleSaveTripModal}
+      />
     </PageContainer>
   );
 }

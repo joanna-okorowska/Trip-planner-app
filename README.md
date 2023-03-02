@@ -4,25 +4,29 @@ Welcome to our travel app project
 __________________________________
 
 Let us introduce our team:
- -Joanna Okorowska
- -Martyna Ambramczyk
- -Jakub Dolecki
- -Sebastian Majda
- -Marek Rogiński
+ <li>Joanna Okorowska</li>
+ <li>Martyna Ambramczyk</li>
+ <li>Jakub Dolecki</li>
+ <li>Sebastian Majda</li>
+ <li>Marek Rogiński</li>
  _________________________________
 Our application is addressed mainly to people who like to have everything planned before visiting a given region, but not only. Possibility to use the application both as a guest and logged in user. The option to choose a region selected from the database and the ability to plan a trip for any number of days. Want to know more? we invite you to https://github.com/infoshareacademy/jfddr8-team-the-codefathers/tree/develop
  _________________________________
  Technology:
- -HTML
- -CSS (styled components library)
- -React
- -Typescript
- -Javascript
- -Firebase
- -Git bash
+ <ul>
+ <li>HTML</li>
+ <li>CSS (styled components library)</li>
+ <li>React</li>
+ <li>Typescript</li>
+ <li>Javascript</li>
+ <li>Firebase</li>
+ <li>Git bash</li>
+ </ul>
  _________________________________
 
  Methodology:
- -Jira
- -Scrum
+ <ul>
+ <li>Jira</li>
+ <li>Scrum</li>
+ </ul>
  _________________________________

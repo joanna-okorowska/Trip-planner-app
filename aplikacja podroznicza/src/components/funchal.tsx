@@ -14,7 +14,7 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import { FormEvent, useEffect, useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { db } from "../firebase-config";
-import { setDoc, doc, getDoc } from "firebase/firestore";
+import { setDoc, doc, getDoc, collection, addDoc } from "firebase/firestore";
 import { TripContext } from "../Provider/TripProvider";
 import { NameTripModal } from "./NameTripModal";
 
@@ -33,7 +33,6 @@ export function CityPage() {
   const { user, setUser, trips, setTrips, setTripsName, tripsName } =
     useContext(TripContext);
 
-  
   const params = useParams();
 
   console.log(trips);
@@ -46,8 +45,15 @@ export function CityPage() {
       const id = uuidv4();
 
       try {
+        const docRefi = collection(db, "Users", user, "Edited" || "");
         const docRef = doc(db, "Users", user || "");
-        await setDoc(docRef, {
+        const ext = await getDoc(docRef);
+        if (ext.data() === undefined) {
+          await setDoc(docRef, { Trips: [] });
+        }  else {
+          console.log(ext.data())
+        }
+        await setDoc(doc(docRefi, "Trips"), {
           Trips: [
             { title: tripName, city: "Funcial", id: id || "", attractions: [] },
           ],

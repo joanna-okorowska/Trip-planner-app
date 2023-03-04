@@ -101,7 +101,7 @@ export function Venues() {
 
   const params = useParams();
   async function SentAttractionsToFire() {
-    const docRefi = doc(db, "Users", user || "");
+    const docRefi = doc(db, "Users", user, "Edited" , "Trips" || "");
     //aktualizacja bazy danych
     if (attractions) {
       const index = trips.findIndex((i) => i.id === params.tripId);

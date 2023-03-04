@@ -35,14 +35,12 @@ const email = localStorage.getItem("info");
 const tst = JSON.parse(email);
 const docRef = doc(db, "Users", tst);
 const ary = await getDoc(docRef);
-
+const data = ary.data();
+const ready = data.Trips
 export function MyTrips() {
-  let trips = [];
-  if (ary.exists()) {
-    const cos = ary.data();
-    trips.push(cos)
-  }
-  const Collapse = trips?.map(({ info, days }) => {
+ 
+  
+  const Collapse = ready.map(({ info, days }) => {
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     let direction = "src/assets/arrow-down-sign-to-navigate.png";
     if (isExpanded === true) {

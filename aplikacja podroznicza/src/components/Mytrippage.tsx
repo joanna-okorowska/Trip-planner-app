@@ -75,8 +75,10 @@ const Thisday = styled.div`
 `;
 const email = localStorage.getItem("info");
 const tst = JSON.parse(email);
+const docRefi = doc(db, "Users", tst, "Edited", "Trips" || "");
 const docRef = doc(db, "Users", tst);
-const ary = await getDoc(docRef);
+const ary = await getDoc(docRefi);
+const aryy = await getDoc(docRef);
 const List = styled.div`
   display: flex;
   flex-direction: column;
@@ -88,7 +90,7 @@ const Record = styled.div`
 `;
 export function Mytrippage({ currentTrip }: IMytrippage) {
   const [myStyle, setMyStyle] = useState({});
-  const docRef = doc(db, "Users", tst);
+
   const [dayNumber, setDayNumber] = useState(1);
   const { user, tripsName } = useContext(TripContext);
   const [selectedDay, setSelectedDay] = useState(1);
@@ -143,17 +145,16 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
   };
 
   const handleSave = async () => {
-    const snapshot = ary.data();
+    const snapshot = aryy.data();
     const records = snapshot.Trips;
-    const obj = {};
+    let obj = {};
     const key = localStorage.getItem("title");
-    obj[key] = daysListNumber;
-    records.push(obj);
-    const Trips = records.filter((itm) => {
-      return !Object.keys(itm).includes("id");
-    });
-    console.log({ info: key, days: Trips[0][key] });
-    await setDoc(docRef, { info: key, days: Trips[0][key] });
+    obj = daysListNumber;
+    
+    records.push({ info: key, days: obj});
+    const Trips = records;
+    console.log(records);
+    await setDoc(docRef, {Trips});
   };
 
   return (
@@ -260,7 +261,7 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
                 border: "none",
                 fontFamily: "Krub",
                 marginTop: "10px",
-                marginLeft: "10px"
+                marginLeft: "10px",
               }}
               onClick={handleDecreaseDays}
             >
@@ -273,7 +274,7 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
               border: "none",
               fontFamily: "Krub",
               marginTop: "10px",
-              marginLeft: "10px"
+              marginLeft: "10px",
             }}
             onClick={() => {
               handleSave();

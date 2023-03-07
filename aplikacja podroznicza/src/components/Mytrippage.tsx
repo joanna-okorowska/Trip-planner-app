@@ -93,13 +93,16 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
   const [isLoading, setLoading] = useState(true);
   const getData = async () => {
     try {
-    const ary = await getDoc(docRefi);
-    const data = ary.data();
-    const neww = data.Trips;
-    const object = neww.find((obj) => obj.id === id);
-    console.log("działa");
-    setList(object.attractions);
-    setLoading(false);} catch(e){console.log(e)}
+      const ary = await getDoc(docRefi);
+      const data = ary.data();
+      const neww = data.Trips;
+      const object = neww.find((obj) => obj.id === id);
+      console.log("działa");
+      setList(object.attractions);
+      setLoading(false);
+    } catch (e) {
+      console.log(e);
+    }
   };
   useEffect(() => {
     getData();
@@ -178,48 +181,48 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
       <BoxList>
         {daysListNumber.map(({ attractions, day, children }) => {
           let isVisible = false;
-          if (isLoading) {
-            return <span>Loading...</span>;
-          } else {
-            return (
-              <Row key={day}>
-                <Box>
-                  <BoxInfo>
-                    <BoxTitle>{`Day ${day}`}</BoxTitle>
-                    <Info>
-                      {attractions.map(({ name, duration }) => {
-                        return <span>{name}</span>;
-                      })}
-                    </Info>
-                    <Add
-                      onClick={() => {
-                        handleClick(day);
-                      }}
-                    >
-                      Venues
-                    </Add>
-                  </BoxInfo>
-                  {children}
-                </Box>
-                <div
-                  style={{
-                    display: myStyle[`${day}`] ? "block" : "none",
-                    backgroundColor: "white",
-                    height: "500px",
-                    width: "400px",
-                    marginTop: "20px",
-                    padding: "10px",
-                    marginLeft: "5px",
-                    borderRadius: "15px",
-                    fontFamily: "Krub",
-                  }}
-                >
-                  {list.map(({ name, duration }) => {
-                    const handleClick = () => {
-                      attractions.push({ name, duration });
-                      setDaysCount(daysCount + 1);
-                    };
 
+          return (
+            <Row key={day}>
+              <Box>
+                <BoxInfo>
+                  <BoxTitle>{`Day ${day}`}</BoxTitle>
+                  <Info>
+                    {attractions.map(({ name, duration }) => {
+                      return <span>{name}</span>;
+                    })}
+                  </Info>
+                  <Add
+                    onClick={() => {
+                      handleClick(day);
+                    }}
+                  >
+                    Venues
+                  </Add>
+                </BoxInfo>
+                {children}
+              </Box>
+              <div
+                style={{
+                  display: myStyle[`${day}`] ? "block" : "none",
+                  backgroundColor: "white",
+                  height: "500px",
+                  width: "400px",
+                  marginTop: "20px",
+                  padding: "10px",
+                  marginLeft: "5px",
+                  borderRadius: "15px",
+                  fontFamily: "Krub",
+                }}
+              >
+                {list.map(({ name, duration }) => {
+                  const handleClick = () => {
+                    attractions.push({ name, duration });
+                    setDaysCount(daysCount + 1);
+                  };
+                  if (isLoading) {
+                    return <span>Loading</span>;
+                  } else {
                     return (
                       <List>
                         <Record>
@@ -253,11 +256,11 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
                         </Record>
                       </List>
                     );
-                  })}
-                </div>
-              </Row>
-            );
-          }
+                  }
+                })}
+              </div>
+            </Row>
+          );
         })}
         <div>
           <button

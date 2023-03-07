@@ -1,6 +1,6 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase-config";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   BoxList,
@@ -77,7 +77,7 @@ const email = localStorage.getItem("info");
 const tst = JSON.parse(email);
 const docRefi = doc(db, "Users", tst, "Edited", "Trips" || "");
 const docRef = doc(db, "Users", tst);
-const ary = await getDoc(docRefi);
+
 const aryy = await getDoc(docRef);
 const List = styled.div`
   display: flex;
@@ -89,6 +89,22 @@ const Record = styled.div`
   justify-content: space-between;
 `;
 export function Mytrippage({ currentTrip }: IMytrippage) {
+  const [list, setList] = useState([{ day: 0, attractions: [] }]);
+  const [isLoading, setLoading] = useState(true);
+  const getData = async () => {
+    try {
+    const ary = await getDoc(docRefi);
+    const data = ary.data();
+    const neww = data.Trips;
+    const object = neww.find((obj) => obj.id === id);
+    console.log("działa");
+    setList(object.attractions);
+    setLoading(false);} catch(e){console.log(e)}
+  };
+  useEffect(() => {
+    getData();
+  });
+
   const [myStyle, setMyStyle] = useState({});
 
   const [dayNumber, setDayNumber] = useState(1);
@@ -103,12 +119,9 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
   const navigateToMyTrips = () => {
     navigate("/myTrips");
   };
+  const [isFirstRender, setFirstRender] = useState(true);
 
-  const data = ary.data();
-  const neww = data.Trips;
-  const object = neww.find((obj) => obj.id === id);
-  const list = object.attractions;
-
+  console.log(daysListNumber);
   // const dayNumberList = () => {
   //   const list = [];
   //   for (let i = 1; i <= daysCount; i++) {
@@ -117,13 +130,14 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
   //   return [...list];
   // };
   const title = tripsName;
-  console.log(list);
+  // console.log(list);
   const handleIncreaseDays = () => {
     setDayNumber(dayNumber + 1);
     const display = dayNumber.toString();
     daysListNumber.push({ day: display, attractions: [] });
     setDaysListNumber([...daysListNumber]);
-    console.log(daysListNumber);
+
+    console.log(list);
   };
   const handleDecreaseDays = () => {
     const day = dayNumber;
@@ -134,7 +148,7 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
         return object.day !== day;
       })
     );
-    console.log(daysListNumber);
+    console.log("daysListNumber");
   };
 
   const handleClick = (day) => {
@@ -150,11 +164,11 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
     let obj = {};
     const key = localStorage.getItem("title");
     obj = daysListNumber;
-    
-    records.push({ info: key, days: obj});
+
+    records.push({ info: key, days: obj });
     const Trips = records;
     console.log(records);
-    await setDoc(docRef, {Trips});
+    await setDoc(docRef, { Trips });
   };
 
   return (
@@ -164,83 +178,86 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
       <BoxList>
         {daysListNumber.map(({ attractions, day, children }) => {
           let isVisible = false;
+          if (isLoading) {
+            return <span>Loading...</span>;
+          } else {
+            return (
+              <Row key={day}>
+                <Box>
+                  <BoxInfo>
+                    <BoxTitle>{`Day ${day}`}</BoxTitle>
+                    <Info>
+                      {attractions.map(({ name, duration }) => {
+                        return <span>{name}</span>;
+                      })}
+                    </Info>
+                    <Add
+                      onClick={() => {
+                        handleClick(day);
+                      }}
+                    >
+                      Venues
+                    </Add>
+                  </BoxInfo>
+                  {children}
+                </Box>
+                <div
+                  style={{
+                    display: myStyle[`${day}`] ? "block" : "none",
+                    backgroundColor: "white",
+                    height: "500px",
+                    width: "400px",
+                    marginTop: "20px",
+                    padding: "10px",
+                    marginLeft: "5px",
+                    borderRadius: "15px",
+                    fontFamily: "Krub",
+                  }}
+                >
+                  {list.map(({ name, duration }) => {
+                    const handleClick = () => {
+                      attractions.push({ name, duration });
+                      setDaysCount(daysCount + 1);
+                    };
 
-          return (
-            <Row key={day}>
-              <Box>
-                <BoxInfo>
-                  <BoxTitle>{`Day ${day}`}</BoxTitle>
-                  <Info>
-                    {attractions.map(({ name, duration }) => {
-                      return <span>{name}</span>;
-                    })}
-                  </Info>
-                  <Add
-                    onClick={() => {
-                      handleClick(day);
-                    }}
-                  >
-                    Venues
-                  </Add>
-                </BoxInfo>
-                {children}
-              </Box>
-              <div
-                style={{
-                  display: myStyle[`${day}`] ? "block" : "none",
-                  backgroundColor: "white",
-                  height: "500px",
-                  width: "400px",
-                  marginTop: "20px",
-                  padding: "10px",
-                  marginLeft: "5px",
-                  borderRadius: "15px",
-                  fontFamily: "Krub",
-                }}
-              >
-                {list.map(({ name, duration }) => {
-                  const handleClick = () => {
-                    attractions.push({ name, duration });
-                    setDaysCount(daysCount + 1);
-                  };
-
-                  return (
-                    <List>
-                      <Record>
-                        <span
-                          style={{
-                            marginTop: "7px",
-                          }}
-                        >
-                          {name}
-                        </span>
-                        <span
-                          style={{
-                            marginTop: "7px",
-                          }}
-                        >
-                          duration: {duration}h
-                        </span>
-                        <button
-                          onClick={() => {
-                            handleClick();
-                          }}
-                          style={{
-                            borderRadius: "15px",
-                            border: "none",
-                            fontFamily: "Krub",
-                            marginTop: "10px",
-                          }}
-                        >
-                          add
-                        </button>
-                      </Record>
-                    </List>
-                  );
-                })}
-              </div>
-            </Row>
-          );
+                    return (
+                      <List>
+                        <Record>
+                          <span
+                            style={{
+                              marginTop: "7px",
+                            }}
+                          >
+                            {name}
+                          </span>
+                          <span
+                            style={{
+                              marginTop: "7px",
+                            }}
+                          >
+                            duration: {duration}h
+                          </span>
+                          <button
+                            onClick={() => {
+                              handleClick();
+                            }}
+                            style={{
+                              borderRadius: "15px",
+                              border: "none",
+                              fontFamily: "Krub",
+                              marginTop: "10px",
+                            }}
+                          >
+                            add
+                          </button>
+                        </Record>
+                      </List>
+                    );
+                  })}
+                </div>
+              </Row>
+            );
+          }
         })}
         <div>
           <button

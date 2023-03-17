@@ -17,13 +17,17 @@ import { db } from "../firebase-config";
 import { setDoc, doc, getDoc, collection, addDoc } from "firebase/firestore";
 import { TripContext } from "../Provider/TripProvider";
 import { NameTripModal } from "./NameTripModal";
-
-const email = localStorage.getItem("info");
-const tst = JSON.parse(email);
-const docRef = doc(db, "Users", tst);
-const ary = await getDoc(docRef);
+import { EmailContext } from "../Provider/EmailProvider";
 
 export function CityPage() {
+  const { email } = useContext(EmailContext);
+  const getData = async () => {
+    const cred = email;
+    const tst = JSON.parse(cred);
+    const docRef = doc(db, "Users", tst);
+    const ary = await getDoc(docRef);
+  };
+  getData();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showTripModal, setShowTripModal] = useState(false);
   const navigate = useNavigate();
@@ -50,8 +54,8 @@ export function CityPage() {
         const ext = await getDoc(docRef);
         if (ext.data() === undefined) {
           await setDoc(docRef, { Trips: [] });
-        }  else {
-          console.log(ext.data())
+        } else {
+          console.log(ext.data());
         }
         await setDoc(doc(docRefi, "Trips"), {
           Trips: [

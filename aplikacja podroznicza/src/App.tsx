@@ -31,7 +31,7 @@ import { MyTrips } from "./components/myTrips";
 
 function App() {
   const { currentTrip, addToTrip } = useTrip();
-
+  
   const { user, setUser, trips, setTrips } = useContext(TripContext);
   useEffect((): void => {
     onAuthStateChanged(auth, async (user) => {

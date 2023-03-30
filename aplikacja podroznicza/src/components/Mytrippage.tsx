@@ -1,6 +1,6 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase-config";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   BoxList,
@@ -75,10 +75,7 @@ const Thisday = styled.div`
 `;
 const email = localStorage.getItem("info");
 const tst = JSON.parse(email);
-const docRefi = doc(db, "Users", tst, "Edited", "Trips" || "");
-const docRef = doc(db, "Users", tst);
-const ary = await getDoc(docRefi);
-const aryy = await getDoc(docRef);
+
 const List = styled.div`
   display: flex;
   flex-direction: column;
@@ -89,10 +86,31 @@ const Record = styled.div`
   justify-content: space-between;
 `;
 export function Mytrippage({ currentTrip }: IMytrippage) {
+  const { user, tripsName } = useContext(TripContext);
+  const [list, setList] = useState([{ day: 0, attractions: [] }]);
+  const [isLoading, setLoading] = useState(true);
+  const getData = async () => {
+    try {
+      const docRefi = doc(db, "Users", user, "Edited", "Trips" || "");
+      const ary = await getDoc(docRefi);
+      const data = ary.data();
+      const neww = data.Trips;
+      const object = neww.find((obj) => obj.id === id);
+      console.log("działa");
+      setList(object.attractions);
+      setLoading(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    getData();
+  });
+
   const [myStyle, setMyStyle] = useState({});
 
   const [dayNumber, setDayNumber] = useState(1);
-  const { user, tripsName } = useContext(TripContext);
+
   const [selectedDay, setSelectedDay] = useState(1);
   const [daysListNumber, setDaysListNumber] = useState([]);
   let [daysCount, setDaysCount] = useState(1);
@@ -103,12 +121,9 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
   const navigateToMyTrips = () => {
     navigate("/myTrips");
   };
+  const [isFirstRender, setFirstRender] = useState(true);
 
-  const data = ary.data();
-  const neww = data.Trips;
-  const object = neww.find((obj) => obj.id === id);
-  const list = object.attractions;
-
+  console.log(daysListNumber);
   // const dayNumberList = () => {
   //   const list = [];
   //   for (let i = 1; i <= daysCount; i++) {
@@ -117,13 +132,14 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
   //   return [...list];
   // };
   const title = tripsName;
-  console.log(list);
+  // console.log(list);
   const handleIncreaseDays = () => {
     setDayNumber(dayNumber + 1);
     const display = dayNumber.toString();
     daysListNumber.push({ day: display, attractions: [] });
     setDaysListNumber([...daysListNumber]);
-    console.log(daysListNumber);
+
+    console.log(list);
   };
   const handleDecreaseDays = () => {
     const day = dayNumber;
@@ -134,7 +150,7 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
         return object.day !== day;
       })
     );
-    console.log(daysListNumber);
+    console.log("daysListNumber");
   };
 
   const handleClick = (day) => {
@@ -145,16 +161,18 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
   };
 
   const handleSave = async () => {
+    const docRef = doc(db, "Users", user);
+    const aryy = await getDoc(docRef);
     const snapshot = aryy.data();
     const records = snapshot.Trips;
     let obj = {};
     const key = localStorage.getItem("title");
     obj = daysListNumber;
-    
-    records.push({ info: key, days: obj});
+
+    records.push({ info: key, days: obj });
     const Trips = records;
     console.log(records);
-    await setDoc(docRef, {Trips});
+    await setDoc(docRef, { Trips });
   };
 
   return (
@@ -203,40 +221,43 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
                     attractions.push({ name, duration });
                     setDaysCount(daysCount + 1);
                   };
-
-                  return (
-                    <List>
-                      <Record>
-                        <span
-                          style={{
-                            marginTop: "7px",
-                          }}
-                        >
-                          {name}
-                        </span>
-                        <span
-                          style={{
-                            marginTop: "7px",
-                          }}
-                        >
-                          duration: {duration}h
-                        </span>
-                        <button
-                          onClick={() => {
-                            handleClick();
-                          }}
-                          style={{
-                            borderRadius: "15px",
-                            border: "none",
-                            fontFamily: "Krub",
-                            marginTop: "10px",
-                          }}
-                        >
-                          add
-                        </button>
-                      </Record>
-                    </List>
-                  );
+                  if (isLoading) {
+                    return <span>Loading</span>;
+                  } else {
+                    return (
+                      <List>
+                        <Record>
+                          <span
+                            style={{
+                              marginTop: "7px",
+                            }}
+                          >
+                            {name}
+                          </span>
+                          <span
+                            style={{
+                              marginTop: "7px",
+                            }}
+                          >
+                            duration: {duration}h
+                          </span>
+                          <button
+                            onClick={() => {
+                              handleClick();
+                            }}
+                            style={{
+                              borderRadius: "15px",
+                              border: "none",
+                              fontFamily: "Krub",
+                              marginTop: "10px",
+                            }}
+                          >
+                            add
+                          </button>
+                        </Record>
+                      </List>
+                    );
+                  }
                 })}
               </div>
             </Row>

@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { Link } from "react-scroll";
+import { Link } from "react-scroll/modules";
 
 export const InfographicContainer = styled.div`
   width: 100vw;

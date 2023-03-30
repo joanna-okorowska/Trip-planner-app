@@ -23,7 +23,7 @@ export const TripContext = createContext<TripContextState>(
 );
 
 export const TripProvider = ({ children }: TripProviderProps): JSX.Element => {
-  const [user, setUser] = useState<string | null>("");
+  const [user, setUser] = useState<string | null>("123@123.pl");
   const [trips, setTrips] = useState([] as Trip[]);
   const [tripsName, setTripsName] = useState<string | null>("");
   return (

@@ -152,6 +152,7 @@ const MenuIcon = styled.img`
 `;
 
 export function Navbar() {
+  const { user, tripsName } = useContext(TripContext);
   const { pathname } = useLocation();
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
   const log = localStorage.getItem("info");
@@ -193,7 +194,7 @@ export function Navbar() {
             <Logo onClick={navigateToMain}>TripTastic</Logo>
           </Logocontainer>
           {localStorage.getItem("isLogged") === "true" ? (
-            <Usercred>Logged in as: {log}</Usercred>
+            <Usercred>Logged in as: {user}</Usercred>
           ) : null}
 
           {localStorage.getItem("isLogged") === "true" ? (

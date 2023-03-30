@@ -42,7 +42,7 @@ function App() {
         try {
           const docRef = doc(db, "Users", `${userEmail}`);
           const TripsSnapshot = await getDoc(docRef);
-          console.log(TripsSnapshot);
+          // console.log(TripsSnapshot);
           if (TripsSnapshot.exists()) {
             const data = TripsSnapshot.data();
             setTrips(data.Trips);

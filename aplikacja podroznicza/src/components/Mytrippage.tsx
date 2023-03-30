@@ -75,10 +75,7 @@ const Thisday = styled.div`
 `;
 const email = localStorage.getItem("info");
 const tst = JSON.parse(email);
-const docRefi = doc(db, "Users", tst, "Edited", "Trips" || "");
-const docRef = doc(db, "Users", tst);
 
-const aryy = await getDoc(docRef);
 const List = styled.div`
   display: flex;
   flex-direction: column;
@@ -89,10 +86,12 @@ const Record = styled.div`
   justify-content: space-between;
 `;
 export function Mytrippage({ currentTrip }: IMytrippage) {
+  const { user, tripsName } = useContext(TripContext);
   const [list, setList] = useState([{ day: 0, attractions: [] }]);
   const [isLoading, setLoading] = useState(true);
   const getData = async () => {
     try {
+      const docRefi = doc(db, "Users", user, "Edited", "Trips" || "");
       const ary = await getDoc(docRefi);
       const data = ary.data();
       const neww = data.Trips;
@@ -111,7 +110,7 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
   const [myStyle, setMyStyle] = useState({});
 
   const [dayNumber, setDayNumber] = useState(1);
-  const { user, tripsName } = useContext(TripContext);
+
   const [selectedDay, setSelectedDay] = useState(1);
   const [daysListNumber, setDaysListNumber] = useState([]);
   let [daysCount, setDaysCount] = useState(1);
@@ -162,6 +161,8 @@ export function Mytrippage({ currentTrip }: IMytrippage) {
   };
 
   const handleSave = async () => {
+    const docRef = doc(db, "Users", user);
+    const aryy = await getDoc(docRef);
     const snapshot = aryy.data();
     const records = snapshot.Trips;
     let obj = {};

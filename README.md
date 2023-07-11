@@ -14,10 +14,16 @@ Let us introduce our team:
  
 _______________________________________________________________________________________________________________________________
 
-Our application is addressed mainly to people who like to have everything planned before visiting a given region, but not only. Possibility to use the application both as a guest and logged in user. The option to choose a region selected from the database and the ability to plan a trip for any number of days. Want to know more? we invite you to https://github.com/infoshareacademy/jfddr8-team-the-codefathers/tree/develop
+Our application is addressed to people who like to have everything planned before visiting a given region. Possibility to use the application both as a guest and logged in user. The option to choose a region selected from the database and the ability to plan a trip for any number of days.
 
 _______________________________________________________________________________________________________________________________ 
- 
+
+While exploring as a guest, the app gives you only information about the region but you can't plan a trip. If you want to try planning functionality, you can sign up or log in with "guest@guest.com" and "guest123" password.
+
+!! IMPORTANT: For this moment the application provides only the possibility to plan a trip in Funchal. Madeira.
+
+_______________________________________________________________________________________________________________________________ 
+
  Technology:
  <ul>
  <li>HTML</li>

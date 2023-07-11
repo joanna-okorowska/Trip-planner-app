@@ -20,7 +20,7 @@ ________________________________________________________________________________
 
 While exploring as a guest, the app gives you only information about the region but you can't plan a trip. If you want to try planning functionality, you can sign up or log in with "guest@guest.com" and "guest123" password.
 
-!! IMPORTANT: For this moment the application provides only the possibility to plan a trip in Funchal. Madeira.
+!! <b>IMPORTANT:</b> For this moment the application provides only the possibility to plan a trip in Funchal, Madeira.
 
 _______________________________________________________________________________________________________________________________ 
 
